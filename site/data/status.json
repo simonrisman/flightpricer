@@ -1,27 +1,27 @@
 {
-  "last_run": "2026-11-23T18:15:46Z",
+  "last_run": "2026-11-23T18:58:33Z",
   "state": "degraded",
-  "searches_planned": 3000,
-  "searches_attempted": 226,
-  "searches_succeeded": 163,
+  "searches_planned": 2774,
+  "searches_attempted": 2774,
+  "searches_succeeded": 1490,
   "errors": [
-    "bcn|BOS|BCN|2027-06-02|2027-06-14: empty result",
-    "bcn|BOS|BCN|2027-06-03|2027-06-11: empty result",
-    "bcn|BOS|BCN|2027-06-03|2027-06-13: empty result",
-    "bcn|BOS|BCN|2027-06-03|2027-06-14: empty result",
-    "bcn|BOS|BCN|2027-06-04|2027-06-17: empty result",
-    "bcn|BOS|BCN|2027-06-05|2027-06-15: empty result",
-    "bcn|BOS|BCN|2027-06-06|2027-06-16: empty result",
-    "bcn|BOS|BCN|2027-06-07|2027-06-19: empty result",
-    "bcn|BOS|BCN|2027-06-07|2027-06-20: empty result",
-    "bcn|BOS|BCN|2027-06-11|2027-06-20: empty result"
+    "bkk|BOS|BKK|2027-01-17|2027-01-28: no flights",
+    "bkk|BOS|BKK|2027-01-17|2027-01-30: no flights",
+    "bkk|BOS|BKK|2027-01-18|2027-01-29: no flights",
+    "bkk|BOS|BKK|2027-01-19|2027-01-29: no flights",
+    "bkk|BOS|BKK|2027-01-19|2027-02-01: no flights",
+    "bkk|BOS|BKK|2027-01-20|2027-01-30: no flights",
+    "bkk|BOS|BKK|2027-01-20|2027-02-01: no flights",
+    "bkk|BOS|BKK|2027-01-20|2027-02-02: no flights",
+    "bkk|BOS|BKK|2027-01-21|2027-02-03: no flights",
+    "bkk|BOS|BKK|2027-01-22|2027-01-29: no flights"
   ],
-  "last_success": "2026-11-23T18:15:46Z",
+  "last_success": "2026-11-23T18:58:33Z",
   "coverage": {
     "total": 6453,
-    "scheduled": 3000,
+    "scheduled": 2774,
     "offset": 144,
     "origin": "BOS"
   },
-  "stopped_early": true
+  "stopped_early": false
 }
