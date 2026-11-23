@@ -1,0 +1,175 @@
+settings:
+  currency: USD
+  adults: 1
+  cabin: economy
+  max_requests_per_run: 150
+  delay_seconds: [3, 7]
+  dashboard_title: "Flight Pricer"
+  source: fast_flights
+  github_repo: simonrisman/flightpricer
+
+routes:
+  - id: bog
+    label: "Bogotá"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [BOG]
+    trip: round_trip
+    depart_window: { start: 2027-03-01, end: 2027-03-21 }
+    depart_days: [thu, fri, sat]
+    trip_length_days: [7, 8]
+    target_price: 300
+    active: true
+
+  - id: mde
+    label: "Medellín"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [MDE]
+    trip: round_trip
+    depart_window: { start: 2027-03-01, end: 2027-03-21 }
+    depart_days: [thu, fri, sat]
+    trip_length_days: [7, 8]
+    target_price: 330
+    active: true
+
+  - id: lim
+    label: "Lima"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [LIM]
+    trip: round_trip
+    depart_window: { start: 2027-01-11, end: 2027-02-28 }
+    depart_days: [thu, fri]
+    trip_length_days: [7]
+    target_price: 450
+    active: true
+
+  - id: eze
+    label: "Buenos Aires"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [EZE]
+    trip: round_trip
+    depart_window: { start: 2027-04-01, end: 2027-05-15 }
+    depart_days: [thu, fri]
+    trip_length_days: [10]
+    target_price: 700
+    active: true
+
+  - id: par
+    label: "Paris"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [CDG]
+    trip: round_trip
+    depart_window: { start: 2027-05-17, end: 2027-06-25 }
+    depart_days: [thu, fri]
+    trip_length_days: [8]
+    target_price: 500
+    active: true
+
+  - id: mad
+    label: "Madrid"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [MAD]
+    trip: round_trip
+    depart_window: { start: 2027-04-12, end: 2027-05-31 }
+    depart_days: [thu, fri]
+    trip_length_days: [8]
+    target_price: 450
+    active: true
+
+  - id: bcn
+    label: "Barcelona"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [BCN]
+    trip: round_trip
+    depart_window: { start: 2027-05-17, end: 2027-06-20 }
+    depart_days: [thu, fri]
+    trip_length_days: [8]
+    target_price: 500
+    active: true
+
+  - id: tyo
+    label: "Tokyo"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [HND, NRT]
+    trip: round_trip
+    depart_window: { start: 2027-10-20, end: 2027-11-30 }
+    depart_days: [thu, fri]
+    trip_length_days: [12]
+    target_price: 800
+    active: true
+
+  - id: sgn
+    label: "Ho Chi Minh City"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [SGN]
+    trip: round_trip
+    depart_window: { start: 2027-02-15, end: 2027-03-31 }
+    depart_days: [thu, fri]
+    trip_length_days: [12]
+    target_price: 850
+    active: true
+
+  - id: han
+    label: "Hanoi"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [HAN]
+    trip: round_trip
+    depart_window: { start: 2027-10-04, end: 2027-11-26 }
+    depart_days: [thu, fri]
+    trip_length_days: [12]
+    target_price: 850
+    active: true
+
+  - id: bkk
+    label: "Bangkok"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [BKK]
+    trip: round_trip
+    depart_window: { start: 2027-01-11, end: 2027-02-28 }
+    depart_days: [thu, fri]
+    trip_length_days: [12]
+    target_price: 800
+    active: true
+
+  - id: sin
+    label: "Singapore"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [SIN]
+    trip: round_trip
+    depart_window: { start: 2027-02-15, end: 2027-04-30 }
+    depart_days: [thu, fri]
+    trip_length_days: [10]
+    target_price: 900
+    active: true
+
+  - id: tbs
+    label: "Tbilisi"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [TBS]
+    trip: round_trip
+    depart_window: { start: 2027-05-03, end: 2027-06-20 }
+    depart_days: [thu, fri]
+    trip_length_days: [9]
+    target_price: 700
+    active: true
+
+  - id: pdl
+    label: "Ponta Delgada"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [PDL]
+    trip: round_trip
+    depart_window: { start: 2027-06-01, end: 2027-07-10 }
+    depart_days: [thu, fri]
+    trip_length_days: [7]
+    target_price: 450
+    active: true
+
+  - id: fnc
+    label: "Funchal"
+    origins: [JFK, EWR, LGA, BOS]
+    destinations: [FNC]
+    trip: round_trip
+    depart_window: { start: 2027-04-12, end: 2027-06-10 }
+    depart_days: [thu, fri]
+    trip_length_days: [7]
+    target_price: 550
+    active: true

@@ -1,0 +1,488 @@
+{
+  "generated_at": "2026-11-23T17:37:43Z",
+  "currency": "USD",
+  "routes": [
+    {
+      "id": "bog",
+      "label": "Bogotá",
+      "target_price": 300,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "BOG"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-03-01",
+        "end": "2027-03-21"
+      },
+      "depart_days": [
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "trip_length_days": [
+        7,
+        8
+      ],
+      "last_success": "2026-11-23T17:37:43Z",
+      "target_hits": 0,
+      "searches": [
+        {
+          "key": "bog|JFK|BOG|2027-03-04|2027-03-11",
+          "route_id": "bog",
+          "origin": "JFK",
+          "dest": "BOG",
+          "depart": "2027-03-04",
+          "return": "2027-03-11",
+          "price": 650,
+          "airline": "COPA",
+          "stops": 1,
+          "duration": "9h 4m",
+          "depart_time": "06:46",
+          "arrive_time": "15:50",
+          "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDMtMDRqBRIDSkZLcgUSA0JPRxoaEgoyMDI3LTAzLTExagUSA0JPR3IFEgNKRktCAQFIAZgBAQ==&hl=en&curr=USD",
+          "fetched_at": "2026-11-23T17:37:43Z",
+          "stale": false,
+          "error": null,
+          "prev_price": null,
+          "delta": null,
+          "best_ever": 650,
+          "best_ever_date": "2026-11-23",
+          "hit_target": false
+        }
+      ],
+      "cheapest": {
+        "key": "bog|JFK|BOG|2027-03-04|2027-03-11",
+        "price": 650
+      }
+    },
+    {
+      "id": "mde",
+      "label": "Medellín",
+      "target_price": 330,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "MDE"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-03-01",
+        "end": "2027-03-21"
+      },
+      "depart_days": [
+        "thu",
+        "fri",
+        "sat"
+      ],
+      "trip_length_days": [
+        7,
+        8
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "lim",
+      "label": "Lima",
+      "target_price": 450,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "LIM"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-01-11",
+        "end": "2027-02-28"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        7
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "eze",
+      "label": "Buenos Aires",
+      "target_price": 700,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "EZE"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-04-01",
+        "end": "2027-05-15"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        10
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "par",
+      "label": "Paris",
+      "target_price": 500,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "CDG"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-05-17",
+        "end": "2027-06-25"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        8
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "mad",
+      "label": "Madrid",
+      "target_price": 450,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "MAD"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-04-12",
+        "end": "2027-05-31"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        8
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "bcn",
+      "label": "Barcelona",
+      "target_price": 500,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "BCN"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-05-17",
+        "end": "2027-06-20"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        8
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "tyo",
+      "label": "Tokyo",
+      "target_price": 800,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "HND",
+        "NRT"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-10-20",
+        "end": "2027-11-30"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        12
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "sgn",
+      "label": "Ho Chi Minh City",
+      "target_price": 850,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "SGN"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-02-15",
+        "end": "2027-03-31"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        12
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "han",
+      "label": "Hanoi",
+      "target_price": 850,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "HAN"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-10-04",
+        "end": "2027-11-26"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        12
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "bkk",
+      "label": "Bangkok",
+      "target_price": 800,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "BKK"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-01-11",
+        "end": "2027-02-28"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        12
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "sin",
+      "label": "Singapore",
+      "target_price": 900,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "SIN"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-02-15",
+        "end": "2027-04-30"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        10
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "tbs",
+      "label": "Tbilisi",
+      "target_price": 700,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "TBS"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-05-03",
+        "end": "2027-06-20"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        9
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "pdl",
+      "label": "Ponta Delgada",
+      "target_price": 450,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "PDL"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-06-01",
+        "end": "2027-07-10"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        7
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    },
+    {
+      "id": "fnc",
+      "label": "Funchal",
+      "target_price": 550,
+      "origins": [
+        "JFK",
+        "EWR",
+        "LGA",
+        "BOS"
+      ],
+      "destinations": [
+        "FNC"
+      ],
+      "trip": "round_trip",
+      "depart_window": {
+        "start": "2027-04-12",
+        "end": "2027-06-10"
+      },
+      "depart_days": [
+        "thu",
+        "fri"
+      ],
+      "trip_length_days": [
+        7
+      ],
+      "last_success": null,
+      "target_hits": 0,
+      "searches": [],
+      "cheapest": null
+    }
+  ]
+}

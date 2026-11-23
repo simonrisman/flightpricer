@@ -1,0 +1,15 @@
+{
+  "last_run": "2026-11-23T17:37:43Z",
+  "state": "ok",
+  "searches_planned": 1,
+  "searches_attempted": 1,
+  "searches_succeeded": 1,
+  "errors": [],
+  "last_success": "2026-11-23T17:37:43Z",
+  "coverage": {
+    "total": 1,
+    "scheduled": 1,
+    "offset": 0
+  },
+  "stopped_early": false
+}
