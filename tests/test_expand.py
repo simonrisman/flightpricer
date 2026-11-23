@@ -11,23 +11,24 @@ from scraper.models import Search
 
 ROOT = Path(__file__).parents[1]
 TODAY = date(2026, 11, 23)
-ORIGINS = ["JFK", "EWR", "LGA", "BOS"]
+ORIGINS = ["JFK", "EWR", "BOS"]
+LENGTHS = [7, 8, 9, 10, 11, 12, 13, 14, 15]
 EXPECTED = {
-    "bog": ("Bogotá", ["BOG"], "2027-03-01", "2027-03-21", ["thu", "fri", "sat"], [7, 8], 300),
-    "mde": ("Medellín", ["MDE"], "2027-03-01", "2027-03-21", ["thu", "fri", "sat"], [7, 8], 330),
-    "lim": ("Lima", ["LIM"], "2027-01-11", "2027-02-28", ["thu", "fri"], [7], 450),
-    "eze": ("Buenos Aires", ["EZE"], "2027-04-01", "2027-05-15", ["thu", "fri"], [10], 700),
-    "par": ("Paris", ["CDG"], "2027-05-17", "2027-06-25", ["thu", "fri"], [8], 500),
-    "mad": ("Madrid", ["MAD"], "2027-04-12", "2027-05-31", ["thu", "fri"], [8], 450),
-    "bcn": ("Barcelona", ["BCN"], "2027-05-17", "2027-06-20", ["thu", "fri"], [8], 500),
-    "tyo": ("Tokyo", ["HND", "NRT"], "2027-10-20", "2027-11-30", ["thu", "fri"], [12], 800),
-    "sgn": ("Ho Chi Minh City", ["SGN"], "2027-02-15", "2027-03-31", ["thu", "fri"], [12], 850),
-    "han": ("Hanoi", ["HAN"], "2027-10-04", "2027-11-26", ["thu", "fri"], [12], 850),
-    "bkk": ("Bangkok", ["BKK"], "2027-01-11", "2027-02-28", ["thu", "fri"], [12], 800),
-    "sin": ("Singapore", ["SIN"], "2027-02-15", "2027-04-30", ["thu", "fri"], [10], 900),
-    "tbs": ("Tbilisi", ["TBS"], "2027-05-03", "2027-06-20", ["thu", "fri"], [9], 700),
-    "pdl": ("Ponta Delgada", ["PDL"], "2027-06-01", "2027-07-10", ["thu", "fri"], [7], 450),
-    "fnc": ("Funchal", ["FNC"], "2027-04-12", "2027-06-10", ["thu", "fri"], [7], 550),
+    "bog": ("Bogotá", ["BOG"], "2027-03-01", "2027-03-21"),
+    "mde": ("Medellín", ["MDE"], "2027-03-01", "2027-03-21"),
+    "lim": ("Lima", ["LIM"], "2027-01-11", "2027-02-28"),
+    "eze": ("Buenos Aires", ["EZE"], "2027-04-01", "2027-05-15"),
+    "par": ("Paris", ["CDG"], "2027-05-17", "2027-06-25"),
+    "mad": ("Madrid", ["MAD"], "2027-04-12", "2027-05-31"),
+    "bcn": ("Barcelona", ["BCN"], "2027-05-17", "2027-06-20"),
+    "tyo": ("Tokyo", ["HND", "NRT"], "2027-10-20", "2027-11-30"),
+    "sgn": ("Ho Chi Minh City", ["SGN"], "2027-02-15", "2027-03-31"),
+    "han": ("Hanoi", ["HAN"], "2027-10-04", "2027-11-26"),
+    "bkk": ("Bangkok", ["BKK"], "2027-01-11", "2027-02-28"),
+    "sin": ("Singapore", ["SIN"], "2027-02-15", "2027-04-30"),
+    "tbs": ("Tbilisi", ["TBS"], "2027-05-03", "2027-06-20"),
+    "pdl": ("Ponta Delgada", ["PDL"], "2027-06-01", "2027-07-10"),
+    "fnc": ("Funchal", ["FNC"], "2027-04-12", "2027-06-10"),
 }
 
 
@@ -35,7 +36,7 @@ def test_real_config_matches_the_route_list():
     config = load_config(ROOT / "config.yaml")
     assert [route.id for route in config.routes] == list(EXPECTED)
     for route in config.routes:
-        label, dests, start, end, days, lengths, target = EXPECTED[route.id]
+        label, dests, start, end = EXPECTED[route.id]
         assert route.label == label
         assert route.destinations == dests
         assert route.origins == ORIGINS
@@ -43,9 +44,9 @@ def test_real_config_matches_the_route_list():
         assert route.active is True
         assert route.depart_window.start.isoformat() == start
         assert route.depart_window.end.isoformat() == end
-        assert route.depart_days == days
-        assert route.trip_length_days == lengths
-        assert route.target_price == target
+        assert route.depart_days is None
+        assert route.trip_length_days == LENGTHS
+        assert route.target_price is None
 
 
 def test_invalid_config_explains_the_field(tmp_path: Path):

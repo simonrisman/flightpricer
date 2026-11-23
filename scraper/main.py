@@ -35,6 +35,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--limit", type=int, default=None, help="run at most this many searches")
     parser.add_argument("--route-id", default=None, help="with origin, dest, and depart, scrape one date")
     parser.add_argument("--origin", default=None)
+    parser.add_argument("--only-origin", default=None, help="limit a full run to one origin airport")
     parser.add_argument("--dest", default=None)
     parser.add_argument("--depart", default=None, help="YYYY-MM-DD")
     parser.add_argument("--return-date", default=None, help="YYYY-MM-DD")
@@ -140,6 +141,11 @@ def run(argv: list[str] | None = None) -> int:
             offset = 0
         else:
             searches = expand_routes(config.routes, today)
+            only_origin = (args.only_origin or "").strip().upper()
+            if only_origin:
+                searches = [item for item in searches if item.origin == only_origin]
+                if not searches:
+                    raise ConfigError(f"no searches for origin {only_origin}")
             chosen, offset = select_slice(searches, config.settings.max_requests_per_run, today)
             if args.limit is not None:
                 if args.limit < 1:
@@ -250,7 +256,12 @@ def run(argv: list[str] | None = None) -> int:
             "searches_succeeded": succeeded,
             "errors": errors[:10],
             "last_success": last_success,
-            "coverage": {"total": len(searches), "scheduled": len(run_list), "offset": offset},
+            "coverage": {
+                "total": len(searches),
+                "scheduled": len(run_list),
+                "offset": offset,
+                "origin": (args.only_origin or "").strip().upper() or None,
+            },
             "stopped_early": stopped_early,
         }
         _write_status(status_path, status)

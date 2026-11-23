@@ -3,7 +3,7 @@
     "currency": "USD",
     "adults": 1,
     "cabin": "economy",
-    "max_requests_per_run": 150,
+    "max_requests_per_run": 3000,
     "delay_seconds": [
       3.0,
       7.0
@@ -19,7 +19,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -30,17 +29,20 @@
         "start": "2027-03-01",
         "end": "2027-03-21"
       },
-      "depart_days": [
-        "thu",
-        "fri",
-        "sat"
-      ],
+      "depart_days": null,
       "trip_length_days": [
         7,
-        8
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 300,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -50,7 +52,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -61,17 +62,20 @@
         "start": "2027-03-01",
         "end": "2027-03-21"
       },
-      "depart_days": [
-        "thu",
-        "fri",
-        "sat"
-      ],
+      "depart_days": null,
       "trip_length_days": [
         7,
-        8
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 330,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -81,7 +85,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -92,15 +95,20 @@
         "start": "2027-01-11",
         "end": "2027-02-28"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        7
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 450,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -110,7 +118,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -121,15 +128,20 @@
         "start": "2027-04-01",
         "end": "2027-05-15"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        10
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 700,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -139,7 +151,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -150,15 +161,20 @@
         "start": "2027-05-17",
         "end": "2027-06-25"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        8
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 500,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -168,7 +184,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -179,15 +194,20 @@
         "start": "2027-04-12",
         "end": "2027-05-31"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        8
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 450,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -197,7 +217,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -208,15 +227,20 @@
         "start": "2027-05-17",
         "end": "2027-06-20"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        8
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 500,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -226,7 +250,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -238,15 +261,20 @@
         "start": "2027-10-20",
         "end": "2027-11-30"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        12
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 800,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -256,7 +284,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -267,15 +294,20 @@
         "start": "2027-02-15",
         "end": "2027-03-31"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        12
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 850,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -285,7 +317,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -296,15 +327,20 @@
         "start": "2027-10-04",
         "end": "2027-11-26"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        12
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 850,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -314,7 +350,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -325,15 +360,20 @@
         "start": "2027-01-11",
         "end": "2027-02-28"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        12
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 800,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -343,7 +383,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -354,15 +393,20 @@
         "start": "2027-02-15",
         "end": "2027-04-30"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        10
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 900,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -372,7 +416,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -383,15 +426,20 @@
         "start": "2027-05-03",
         "end": "2027-06-20"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        9
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 700,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -401,7 +449,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -412,15 +459,20 @@
         "start": "2027-06-01",
         "end": "2027-07-10"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        7
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 450,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     },
@@ -430,7 +482,6 @@
       "origins": [
         "JFK",
         "EWR",
-        "LGA",
         "BOS"
       ],
       "destinations": [
@@ -441,15 +492,20 @@
         "start": "2027-04-12",
         "end": "2027-06-10"
       },
-      "depart_days": [
-        "thu",
-        "fri"
-      ],
+      "depart_days": null,
       "trip_length_days": [
-        7
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
       ],
       "max_stops": null,
-      "target_price": 550,
+      "target_price": null,
       "active": true,
       "extra_dates": []
     }

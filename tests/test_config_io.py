@@ -38,8 +38,10 @@ if (context.searchKey("bog", "JFK", "BOG", "2027-03-05", "2027-03-12") !== "bog|
 if (context.addDays("2027-03-05", 7) !== "2027-03-12") throw new Error("addDays");
 const bog = config.routes.find((route) => route.id === "bog");
 if (!context.inWindow(bog, "2027-03-05", "2027-03-12")) throw new Error("expected inside window");
-if (context.inWindow(bog, "2027-03-07", "2027-03-14")) throw new Error("sunday should be outside");
-if (context.inWindow(bog, "2027-03-05", "2027-03-14")) throw new Error("wrong length");
+if (!context.inWindow(bog, "2027-03-05", "2027-03-20")) throw new Error("15-day trip should be inside");
+if (!context.inWindow(bog, "2027-03-07", "2027-03-14")) throw new Error("sunday should be inside the window");
+if (context.inWindow(bog, "2027-03-05", "2027-03-11")) throw new Error("6-day trip should be outside");
+if (context.inWindow(bog, "2027-03-05", "2027-03-21")) throw new Error("16-day trip should be outside");
 const withExtra = JSON.parse(JSON.stringify(config));
 withExtra.routes[0].extra_dates = [{ depart: "2027-08-05", return: "2027-08-12", origin: "BOS", dest: "BOG" }];
 fs.writeFileSync(process.argv[3], context.emitYaml(withExtra));
@@ -68,4 +70,4 @@ fs.writeFileSync(process.argv[3], context.emitYaml(withExtra));
         {"depart": "2027-08-05", "return": "2027-08-12", "trip_length_days": None, "origin": "BOS", "dest": "BOG"}
     ]
     assert bog["label"] == "Bogotá"
-    assert bog["origins"] == ["JFK", "EWR", "LGA", "BOS"]
+    assert bog["origins"] == ["JFK", "EWR", "BOS"]

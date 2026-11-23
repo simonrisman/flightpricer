@@ -9,7 +9,7 @@ const DAY_OPTIONS = [
   ["sat", "Sat"],
   ["sun", "Sun"],
 ];
-const ORIGIN_CHOICES = ["JFK", "EWR", "LGA", "BOS"];
+const ORIGIN_CHOICES = ["JFK", "EWR", "BOS"];
 const AIRPORTS = {
   JFK: "New York JFK",
   EWR: "Newark",
@@ -41,6 +41,8 @@ const state = {
   sorts: {},
   queries: {},
   focus: null,
+  open: {},
+  openFares: {},
 };
 
 function el(tag, attrs, children) {
@@ -85,16 +87,36 @@ function money(amount) {
   }).format(amount);
 }
 
+function dateParts(iso) {
+  const parts = String(iso || "").slice(0, 10).split("-").map(Number);
+  if (parts.length < 3 || !parts[0]) return null;
+  return new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+}
+
 function prettyDate(iso) {
-  if (!iso) return "—";
-  const parts = String(iso).slice(0, 10).split("-").map(Number);
-  if (parts.length < 3 || !parts[0]) return iso;
+  const when = dateParts(iso);
+  if (!when) return iso ? String(iso) : "—";
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
     timeZone: "UTC",
-  }).format(new Date(Date.UTC(parts[0], parts[1] - 1, parts[2])));
+  }).format(when);
+}
+
+function weekdayLabel(iso, style) {
+  const when = dateParts(iso);
+  if (!when) return "";
+  return new Intl.DateTimeFormat("en-US", { weekday: style || "long", timeZone: "UTC" }).format(when);
+}
+
+function clock(value) {
+  const match = String(value || "").match(/^(\d{1,2}):(\d{2})/);
+  if (!match) return "";
+  let hour = Number(match[1]);
+  const suffix = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12 || 12;
+  return hour + ":" + match[2] + " " + suffix;
 }
 
 function formatWhen(iso) {
@@ -342,9 +364,10 @@ function readRouteForm(form, route) {
     start: form.elements.start.value,
     end: form.elements.end.value,
   };
-  next.depart_days = Array.from(form.querySelectorAll('input[name="day"]:checked')).map(function (box) {
+  const days = Array.from(form.querySelectorAll('input[name="day"]:checked')).map(function (box) {
     return box.value;
   });
+  next.depart_days = days.length === DAY_OPTIONS.length ? null : days;
   next.origins = Array.from(form.querySelectorAll('input[name="origin"]:checked')).map(function (box) {
     return box.value;
   });
@@ -362,8 +385,7 @@ function readRouteForm(form, route) {
     .filter(function (length, index, all) {
       return length >= 1 && length <= 60 && all.indexOf(length) === index;
     });
-  const target = form.elements.target.value.trim();
-  next.target_price = target === "" ? null : Number(target);
+  next.target_price = null;
   next.active = form.elements.active.checked;
   return next;
 }
@@ -371,13 +393,10 @@ function readRouteForm(form, route) {
 function validateRoute(route) {
   if (!route.depart_window.start || !route.depart_window.end) return "Choose a start and end date.";
   if (route.depart_window.start > route.depart_window.end) return "The window start is after the end.";
-  if (!route.depart_days.length) return "Pick at least one weekday.";
+  if (route.depart_days && !route.depart_days.length) return "Pick at least one weekday.";
   if (!route.origins.length) return "Pick at least one origin airport.";
   if (!route.destinations.length) return "Enter at least one destination airport.";
   if (route.trip === "round_trip" && !route.trip_length_days.length) return "Enter at least one trip length.";
-  if (route.target_price != null && (!Number.isInteger(route.target_price) || route.target_price < 1)) {
-    return "Target price must be a whole dollar amount.";
-  }
   return "";
 }
 
@@ -494,61 +513,14 @@ function renderHeader() {
   }
   const coverage = document.getElementById("coverage");
   const cov = status.coverage;
-  if (cov && cov.total > cov.scheduled) {
-    coverage.textContent =
-      "Each daily run checks " +
-      cov.scheduled +
-      " of " +
-      cov.total +
-      " date combinations and rotates through the rest. Every route and date below shows when a price last came back successfully.";
-  } else if (status.last_run) {
-    coverage.textContent = "Every route and date shows when a price last came back successfully.";
-  } else {
-    coverage.textContent =
-      "Run the scrape workflow once to fill this in. After that, each route and date shows its own last successful update. LaGuardia is included with JFK, Newark, and Boston; uncheck it on a route if you want the daily budget spent on airports that actually fly these trips.";
+  const cap = state.config && state.config.settings && state.config.settings.max_requests_per_run;
+  let note = "Each city shows its cheapest saved fare, the trip dates for that fare, and when that price was fetched.";
+  if (cap) {
+    note += " JFK, Newark, and Boston each get their own run through the day, " + cap.toLocaleString("en-US") + " searches at a time.";
+  } else if (cov && cov.total > cov.scheduled) {
+    note += " A daily run refreshes " + cov.scheduled + " of " + cov.total + " searches, then continues through the rest.";
   }
-}
-
-function renderHits() {
-  const host = document.getElementById("hits");
-  host.replaceChildren();
-  const hits = [];
-  ((state.latest && state.latest.routes) || []).forEach(function (route) {
-    (route.searches || []).forEach(function (row) {
-      if (row.hit_target) hits.push({ route: route, row: row });
-    });
-  });
-  hits.sort(function (a, b) {
-    return a.row.price - b.row.price;
-  });
-  const section = el("div", { class: "hits" }, [
-    el("h2", {}, [hits.length ? "At or below target" : "No fares at target right now"]),
-  ]);
-  if (hits.length) {
-    section.append(
-      el(
-        "ul",
-        {},
-        hits.map(function (hit) {
-          return el("li", {}, [
-            el("a", { class: "hit-link", href: "#route-" + hit.route.id }, [
-              hit.route.label +
-                " · " +
-                hit.row.origin +
-                " " +
-                prettyDate(hit.row.depart) +
-                " – " +
-                prettyDate(hit.row["return"]),
-            ]),
-            el("span", {}, [
-              money(hit.row.price) + " · last success " + formatWhenShort(hit.row.fetched_at),
-            ]),
-          ]);
-        })
-      )
-    );
-  }
-  host.append(section);
+  coverage.textContent = note;
 }
 
 function compareRows(a, b, key, dir) {
@@ -565,92 +537,93 @@ function compareRows(a, b, key, dir) {
   return dir === "desc" ? -order : order;
 }
 
-function paintRows(tbody, rows) {
-  tbody.replaceChildren();
-  rows.forEach(function (row) {
-    const price = el("span", {}, [money(row.price)]);
-    const priceCell = el("td", { "data-label": "Price" }, [price]);
-    if (row.stale) priceCell.append(el("span", { class: "tag", title: row.error || "Last attempt failed" }, ["stale"]));
-    const deltaClass = row.delta == null ? "" : row.delta < 0 ? "delta-down" : row.delta > 0 ? "delta-up" : "";
-    const deltaText =
-      row.delta == null ? "—" : (row.delta < 0 ? "↓ " : row.delta > 0 ? "↑ " : "") + money(Math.abs(row.delta)).replace("US", "");
-    const best =
-      row.best_ever == null ? "—" : money(row.best_ever) + (row.best_ever_date ? " · " + prettyDate(row.best_ever_date) : "");
-    const tr = el("tr", { id: rowId(row.key), class: (row.hit_target ? "hit" : "") + (row.stale ? " stale" : "") }, [
-      el("td", { "data-label": "Depart" }, [prettyDate(row.depart)]),
-      el("td", { "data-label": "Return" }, [prettyDate(row["return"])]),
-      el("td", { "data-label": "From", title: place(row.origin) }, [row.origin]),
-      el("td", { "data-label": "To", title: place(row.dest) }, [row.dest]),
-      priceCell,
-      el("td", { "data-label": "Change", class: deltaClass }, [deltaText]),
-      el("td", { "data-label": "Best" }, [best]),
-      el("td", { "data-label": "Airline" }, [row.airline || "—"]),
-      el("td", { "data-label": "Stops" }, [stopsLabel(row.stops)]),
-      el("td", { "data-label": "Duration" }, [row.duration || "—"]),
-      el("td", { "data-label": "Last success", title: formatWhen(row.fetched_at) }, [formatWhenShort(row.fetched_at)]),
-      el("td", { "data-label": "Links" }, [
-        el("div", { class: "links" }, [
-          row.google_url
-            ? el("a", { href: row.google_url, target: "_blank", rel: "noopener noreferrer" }, ["Google Flights"])
-            : null,
-          el("a", { href: "https://travel.capitalone.com/", target: "_blank", rel: "noopener noreferrer" }, ["Capital One"]),
-        ]),
-      ]),
-    ]);
-    tbody.append(tr);
-  });
+function tripWhen(row) {
+  const depart = weekdayLabel(row.depart, "short") + ", " + prettyDate(row.depart);
+  if (!row["return"]) return depart;
+  return depart + " – " + weekdayLabel(row["return"], "short") + ", " + prettyDate(row["return"]);
 }
 
-function renderTable(route, rows) {
+function detailRows(row) {
+  const deltaText =
+    row.delta == null
+      ? "—"
+      : (row.delta < 0 ? "↓ " : row.delta > 0 ? "↑ " : "") + money(Math.abs(row.delta)).replace("US", "");
+  const best = row.best_ever == null ? "—" : money(row.best_ever) + (row.best_ever_date ? " · " + prettyDate(row.best_ever_date) : "");
+  return [
+    ["Price", money(row.price) + (row.stale ? " · last attempt failed" : "")],
+    ["Departure", weekdayLabel(row.depart) + ", " + prettyDate(row.depart)],
+    ["Departs", clock(row.depart_time) || "Time not saved yet"],
+    ["Arrives", clock(row.arrive_time) || "—"],
+    ["Return", row["return"] ? weekdayLabel(row["return"]) + ", " + prettyDate(row["return"]) : "—"],
+    ["From", place(row.origin)],
+    ["To", place(row.dest)],
+    ["Airline", row.airline || "—"],
+    ["Stops", stopsLabel(row.stops)],
+    ["Duration", row.duration || "—"],
+    ["Change", deltaText],
+    ["Best", best],
+    ["Updated", formatWhen(row.fetched_at)],
+  ];
+}
+
+function renderFareCard(row) {
+  const open = !!state.openFares[row.key];
+  const card = el("article", { class: "fare" + (row.stale ? " stale" : ""), id: rowId(row.key) });
+  const toggle = el(
+    "button",
+    { type: "button", class: "fare-toggle", "aria-expanded": open ? "true" : "false" },
+    [
+      el("strong", { class: "fare-price" }, [money(row.price)]),
+      el("span", { class: "fare-when" }, [tripWhen(row)]),
+      el("span", { class: "fare-meta" }, [
+        row.origin + " → " + row.dest + " · Departs " + (clock(row.depart_time) || "time unavailable"),
+      ]),
+    ]
+  );
+  const detail = el("div", { class: "fare-body" });
+  if (!open) detail.hidden = true;
+  const facts = el("dl", { class: "fare-detail" });
+  detailRows(row).forEach(function (pair) {
+    facts.append(el("dt", {}, [pair[0]]), el("dd", {}, [pair[1]]));
+  });
+  const links = el("div", { class: "links fare-links" }, [
+    row.google_url
+      ? el("a", { href: row.google_url, target: "_blank", rel: "noopener noreferrer" }, ["Google Flights"])
+      : null,
+    el("a", { href: "https://travel.capitalone.com/", target: "_blank", rel: "noopener noreferrer" }, ["Capital One"]),
+  ]);
+  detail.append(facts, links);
+  toggle.addEventListener("click", function () {
+    const willOpen = detail.hidden;
+    detail.hidden = !willOpen;
+    state.openFares[row.key] = willOpen;
+    toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  });
+  card.append(toggle, detail);
+  return card;
+}
+
+function renderFareList(route, rows) {
   const sort = state.sorts[route.id] || { key: "price", dir: "asc" };
   const sorted = rows.slice().sort(function (a, b) {
     return compareRows(a, b, sort.key, sort.dir);
   });
   const columns = [
-    ["depart", "Depart"],
-    ["return", "Return"],
-    ["origin", "From"],
-    ["dest", "To"],
     ["price", "Price"],
-    ["delta", "Δ"],
-    ["best_ever", "Best"],
-    ["airline", "Airline"],
-    ["stops", "Stops"],
-    ["duration", "Duration"],
-    ["fetched_at", "Last success"],
+    ["depart", "Date"],
+    ["depart_time", "Departure time"],
   ];
-  const tbody = el("tbody");
-  paintRows(tbody, sorted);
-  const table = el("table", {}, [
-    el(
-      "thead",
-      {},
-      [
-        el(
-          "tr",
-          {},
-          columns
-            .map(function (column) {
-              const active = sort.key === column[0];
-              const arrow = active ? (sort.dir === "asc" ? " ↑" : " ↓") : "";
-              return el("th", { "aria-sort": active ? (sort.dir === "asc" ? "ascending" : "descending") : "none" }, [
-                el(
-                  "button",
-                  {
-                    type: "button",
-                    class: "sort",
-                  },
-                  [column[1] + arrow]
-                ),
-              ]);
-            })
-            .concat([el("th", {}, ["Links"])])
-        ),
-      ]
-    ),
-    tbody,
-  ]);
-  table.querySelectorAll("th button").forEach(function (button, index) {
+  const bar = el(
+    "div",
+    { class: "fare-sort" },
+    columns.map(function (column) {
+      const active = sort.key === column[0];
+      const arrow = active ? (sort.dir === "asc" ? " ↑" : " ↓") : "";
+      return el("button", { type: "button", class: "secondary" + (active ? " active" : "") }, [column[1] + arrow]);
+    })
+  );
+  const list = el("div", { class: "fare-list", id: "fares-" + route.id }, [bar].concat(sorted.map(renderFareCard)));
+  bar.querySelectorAll("button").forEach(function (button, index) {
     button.addEventListener("click", function () {
       const key = columns[index][0];
       const current = state.sorts[route.id] || { key: "price", dir: "asc" };
@@ -658,11 +631,11 @@ function renderTable(route, rows) {
         key: key,
         dir: current.key === key && current.dir === "asc" ? "desc" : "asc",
       };
-      const holder = document.getElementById("table-" + route.id);
-      holder.replaceChildren(renderTable(route, rows));
+      const holder = document.getElementById("fares-" + route.id);
+      holder.replaceWith(renderFareList(route, rows));
     });
   });
-  return table;
+  return list;
 }
 
 function cheapestByDay(history) {
@@ -776,7 +749,6 @@ function renderEditor(route) {
       el("label", {}, ["Start", el("input", { type: "date", name: "start", value: route.depart_window.start, required: "required" })]),
       el("label", {}, ["End", el("input", { type: "date", name: "end", value: route.depart_window.end, required: "required" })]),
       el("label", {}, ["Trip lengths (days)", el("input", { name: "lengths", value: (route.trip_length_days || []).join(", ") })]),
-      el("label", {}, ["Target price", el("input", { name: "target", type: "number", min: "1", step: "1", value: route.target_price == null ? "" : String(route.target_price) })]),
       el("label", { class: "span-2" }, ["Destination airports", el("input", { name: "destinations", value: (route.destinations || []).join(", ") })]),
     ]),
     el("p", { class: "meta" }, ["Departure days"]),
@@ -1011,67 +983,85 @@ async function fetchDate(route, message) {
   }
 }
 
+function headlineFare(route) {
+  const rows = routeRows(route).filter(function (row) {
+    return typeof row.price === "number";
+  });
+  if (!rows.length) return null;
+  return rows.slice().sort(function (a, b) {
+    return a.price - b.price || String(a.depart).localeCompare(String(b.depart));
+  })[0];
+}
+
+function fillChart(route) {
+  const chartHost = document.getElementById("chart-" + route.id);
+  if (!chartHost || chartHost.dataset.drawn === "1") return;
+  chartHost.dataset.drawn = "1";
+  const series = cheapestByDay(state.histories[route.id]);
+  if (!series.length) {
+    chartHost.append(el("p", { class: "chart-empty" }, ["History starts after the first successful scrape."]));
+    return;
+  }
+  const canvas = el("canvas", { class: "spark", "aria-label": "Cheapest saved fare by day for " + route.label });
+  chartHost.append(el("p", { class: "meta" }, ["Cheapest saved fare by day"]), canvas);
+  requestAnimationFrame(function () {
+    drawSparkline(canvas, series);
+  });
+}
+
 function renderRoute(route) {
   const rows = routeRows(route);
-  const range = successRange(rows);
-  const saved = latestRoute(route.id);
-  const cheapest = saved && saved.cheapest;
-  const card = el("article", { class: "card", id: "route-" + route.id });
-  const summary = [
-    (route.depart_days || []).join(", ") || "any day",
-    (route.trip_length_days || []).join(" or ") + " days",
-    prettyDate(route.depart_window.start) + " – " + prettyDate(route.depart_window.end),
-    "from " + route.origins.join(", "),
-  ].join(" · ");
-  card.append(
-    el("div", { class: "card-head" }, [
-      el("div", {}, [
-        el("h2", {}, [route.label]),
-        el("p", {}, [summary]),
-        el("p", { class: "last-success" }, [
-          range.newest ? "Last successful update: " + formatWhen(range.newest) : "Last successful update: never",
-        ]),
-        range.oldest && range.newest && range.oldest !== range.newest
-          ? el("p", { class: "meta" }, ["Oldest date on this route last succeeded " + formatWhen(range.oldest)])
-          : null,
-      ]),
-      el("div", { class: "price-block" }, [
-        el("strong", {}, [cheapest ? money(cheapest.price) : "—"]),
-        el("span", {}, [route.target_price ? "Target " + money(route.target_price) : "No target"]),
-      ]),
-    ]),
-    el("div", { class: "chips" }, [
-      route.active === false ? el("span", { class: "chip" }, ["Paused"]) : null,
-      cheapest && route.target_price != null && cheapest.price <= route.target_price
-        ? el("span", { class: "chip hit" }, ["Cheapest fare is at target"])
-        : el("span", { class: "chip" }, [rows.length === 1 ? "1 saved date" : rows.length + " saved dates"]),
+  const fare = headlineFare(route);
+  const open = !!state.open[route.id];
+  const card = el("article", { class: "route" + (route.active === false ? " paused" : ""), id: "route-" + route.id });
+  const dates = fare
+    ? fare.origin + " → " + fare.dest + " · " + prettyDate(fare.depart) + (fare["return"] ? " – " + prettyDate(fare["return"]) : "")
+    : "No fare saved yet";
+  const updated = fare ? "Updated " + formatWhen(fare.fetched_at) : "Updated never";
+  const toggle = el("button", { type: "button", class: "edit-toggle", "aria-expanded": open ? "true" : "false" }, [open ? "Close" : "Edit"]);
+  const edit = el("div", { class: "route-edit", id: "edit-" + route.id });
+  if (!open) edit.hidden = true;
+  edit.append(
+    el("p", { class: "how" }, [
+      "Every day from the start date through the end date is checked, including weekends, unless you uncheck a weekday. Each departure is paired with each listed trip length. 7 through 15 means a 7-day trip, an 8-day trip, and so on up to 15 days. JFK runs in the morning, Newark in the afternoon, and Boston in the evening. Each of those runs refreshes " + ((state.config && state.config.settings && state.config.settings.max_requests_per_run) || 3000).toLocaleString("en-US") + " searches for that airport, then continues through the rest of that airport's dates the next time it runs.",
     ]),
     el("div", { class: "tools" }, [renderEditor(route), renderQuery(route)]),
     el("div", { class: "chart-wrap", id: "chart-" + route.id })
   );
-  const chartHost = card.querySelector("#chart-" + route.id);
-  const series = cheapestByDay(state.histories[route.id]);
-  if (!series.length) {
-    chartHost.append(el("p", { class: "chart-empty" }, ["History starts after the first successful scrape."]));
-  } else {
-    const canvas = el("canvas", { class: "spark", "aria-label": "Cheapest saved fare by day for " + route.label });
-    chartHost.append(el("p", { class: "meta" }, ["Cheapest saved fare by day"]), canvas);
-    requestAnimationFrame(function () {
-      drawSparkline(canvas, series);
-    });
-  }
-  if (!rows.length) {
-    card.append(el("p", { class: "meta" }, ["No fares saved for this route yet."]));
-  } else {
-    card.append(el("div", { class: "table-wrap", id: "table-" + route.id }, [renderTable(route, rows)]));
-  }
+  if (rows.length) edit.append(renderFareList(route, rows));
+  toggle.addEventListener("click", function () {
+    const willOpen = edit.hidden;
+    edit.hidden = !willOpen;
+    state.open[route.id] = willOpen;
+    toggle.textContent = willOpen ? "Close" : "Edit";
+    toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+    if (willOpen) fillChart(route);
+  });
+  card.append(
+    el("div", { class: "route-summary" }, [
+      el("div", {}, [
+        el("h2", {}, [route.label + (route.active === false ? " · paused" : "")]),
+        el("p", { class: "fare-dates" }, [dates]),
+        el("p", { class: "fare-updated" }, [updated + (fare && fare.stale ? " · last attempt failed" : "")]),
+      ]),
+      el("div", { class: "price-block" }, [
+        el("strong", {}, [fare ? money(fare.price) : "—"]),
+      ]),
+      toggle,
+    ]),
+    edit
+  );
+  if (open) requestAnimationFrame(function () { fillChart(route); });
   return card;
 }
 
 function render() {
   renderHeader();
-  renderHits();
   const host = document.getElementById("routes");
+  if (state.focus) {
+    state.open[state.focus.routeId] = true;
+    state.openFares[state.focus.key] = true;
+  }
   const routes = state.config ? state.config.routes : (state.latest.routes || []);
   host.replaceChildren(el("div", { class: "route-list" }, routes.map(renderRoute)));
   routes.forEach(function (route) {

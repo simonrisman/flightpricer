@@ -24,6 +24,18 @@ def test_dry_run_prints_the_real_search_count(capsys):
     assert "scheduled" in captured.out
 
 
+def test_only_origin_keeps_one_airport(capsys):
+    code = run(
+        ["--dry-run", "--today", "2026-11-23", "--config", str(ROOT / "config.yaml"), "--only-origin", "jfk"]
+    )
+    captured = capsys.readouterr()
+    assert code == 0
+    assert "|JFK|" in captured.out
+    assert "|EWR|" not in captured.out
+    assert "|BOS|" not in captured.out
+    assert "scheduled 3000" in captured.out
+
+
 def test_failures_do_not_blank_saved_prices(tmp_path: Path, monkeypatch):
     config = tmp_path / "config.yaml"
     _write(

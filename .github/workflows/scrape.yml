@@ -3,6 +3,8 @@ name: scrape
 on:
   schedule:
     - cron: "17 11 * * *"
+    - cron: "17 17 * * *"
+    - cron: "17 23 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -29,6 +31,10 @@ on:
         description: "Return date YYYY-MM-DD"
         required: false
         default: ""
+      only_origin:
+        description: "Limit a full run to one origin: JFK, EWR, or BOS"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -43,7 +49,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 360
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -70,6 +76,8 @@ jobs:
           DEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dest || '' }}
           DEPART: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.depart || '' }}
           RETURN_DATE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.return_date || '' }}
+          ONLY_ORIGIN: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.only_origin || '' }}
+          SCHEDULE: ${{ github.event.schedule }}
         run: |
           if [ "$SCRAPE_MODE" = "adhoc" ]; then
             args=(python -m scraper.main --route-id "$ROUTE_ID" --origin "$ORIGIN" --dest "$DEST" --depart "$DEPART")
@@ -78,7 +86,19 @@ jobs:
             fi
             "${args[@]}"
           else
-            python -m scraper.main
+            origin="$ONLY_ORIGIN"
+            if [ -z "$origin" ]; then
+              case "$SCHEDULE" in
+                "17 11 * * *") origin=JFK ;;
+                "17 17 * * *") origin=EWR ;;
+                "17 23 * * *") origin=BOS ;;
+              esac
+            fi
+            if [ -n "$origin" ]; then
+              python -m scraper.main --only-origin "$origin"
+            else
+              python -m scraper.main
+            fi
           fi
 
       - name: Commit data
