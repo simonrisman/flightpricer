@@ -1015,10 +1015,13 @@ function renderRoute(route) {
   const open = !!state.open[route.id];
   const card = el("article", { class: "route" + (route.active === false ? " paused" : ""), id: "route-" + route.id });
   const dates = fare
-    ? fare.origin + " → " + fare.dest + " · " + prettyDate(fare.depart) + (fare["return"] ? " – " + prettyDate(fare["return"]) : "")
+    ? tripWhen(fare) + " · " + fare.origin + " → " + fare.dest
     : "No fare saved yet";
-  const updated = fare ? "Updated " + formatWhen(fare.fetched_at) : "Updated never";
-  const toggle = el("button", { type: "button", class: "edit-toggle", "aria-expanded": open ? "true" : "false" }, [open ? "Close" : "Edit"]);
+  const toggle = el("button", { type: "button", class: "route-summary", "aria-expanded": open ? "true" : "false" }, [
+    el("span", { class: "route-name" }, [route.label + (route.active === false ? " · paused" : "")]),
+    el("strong", { class: "route-price" }, [fare ? money(fare.price) : "—"]),
+    el("span", { class: "fare-dates" }, [dates]),
+  ]);
   const edit = el("div", { class: "route-edit", id: "edit-" + route.id });
   if (!open) edit.hidden = true;
   edit.append(
@@ -1033,24 +1036,10 @@ function renderRoute(route) {
     const willOpen = edit.hidden;
     edit.hidden = !willOpen;
     state.open[route.id] = willOpen;
-    toggle.textContent = willOpen ? "Close" : "Edit";
     toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
     if (willOpen) fillChart(route);
   });
-  card.append(
-    el("div", { class: "route-summary" }, [
-      el("div", {}, [
-        el("h2", {}, [route.label + (route.active === false ? " · paused" : "")]),
-        el("p", { class: "fare-dates" }, [dates]),
-        el("p", { class: "fare-updated" }, [updated + (fare && fare.stale ? " · last attempt failed" : "")]),
-      ]),
-      el("div", { class: "price-block" }, [
-        el("strong", {}, [fare ? money(fare.price) : "—"]),
-      ]),
-      toggle,
-    ]),
-    edit
-  );
+  card.append(toggle, edit);
   if (open) requestAnimationFrame(function () { fillChart(route); });
   return card;
 }
