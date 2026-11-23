@@ -35,6 +35,10 @@ on:
         description: "Limit a full run to one origin: JFK, EWR, or BOS"
         required: false
         default: ""
+      skip:
+        description: "Skip this many searches already finished in today's slice"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -77,6 +81,7 @@ jobs:
           DEPART: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.depart || '' }}
           RETURN_DATE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.return_date || '' }}
           ONLY_ORIGIN: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.only_origin || '' }}
+          SKIP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
           SCHEDULE: ${{ github.event.schedule }}
         run: |
           if [ "$SCRAPE_MODE" = "adhoc" ]; then
@@ -95,10 +100,14 @@ jobs:
               esac
             fi
             if [ -n "$origin" ]; then
-              python -m scraper.main --only-origin "$origin"
+              args=(python -m scraper.main --only-origin "$origin")
             else
-              python -m scraper.main
+              args=(python -m scraper.main)
             fi
+            if [ -n "$SKIP" ]; then
+              args+=(--skip "$SKIP")
+            fi
+            "${args[@]}"
           fi
 
       - name: Commit data

@@ -36,6 +36,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--route-id", default=None, help="with origin, dest, and depart, scrape one date")
     parser.add_argument("--origin", default=None)
     parser.add_argument("--only-origin", default=None, help="limit a full run to one origin airport")
+    parser.add_argument("--skip", type=int, default=0, help="skip this many searches already finished in today's slice")
     parser.add_argument("--dest", default=None)
     parser.add_argument("--depart", default=None, help="YYYY-MM-DD")
     parser.add_argument("--return-date", default=None, help="YYYY-MM-DD")
@@ -147,6 +148,10 @@ def run(argv: list[str] | None = None) -> int:
                 if not searches:
                     raise ConfigError(f"no searches for origin {only_origin}")
             chosen, offset = select_slice(searches, config.settings.max_requests_per_run, today)
+            if args.skip < 0:
+                raise ConfigError("--skip must be 0 or more")
+            if args.skip:
+                chosen = chosen[args.skip :]
             if args.limit is not None:
                 if args.limit < 1:
                     raise ConfigError("--limit must be at least 1")
@@ -206,6 +211,10 @@ def run(argv: list[str] | None = None) -> int:
                 f"[{index}/{len(run_list)}] {item.origin}->{item.dest} {item.depart} ${result.cheapest.price} {result.cheapest.airlines}",
                 flush=True,
             )
+        elif result.error == "empty result":
+            message = f"{result.key}: no flights"
+            errors.append(message)
+            print(f"[{index}/{len(run_list)}] {message}", flush=True)
         else:
             consecutive_failures += 1
             message = f"{result.key}: {result.error}"
@@ -213,7 +222,7 @@ def run(argv: list[str] | None = None) -> int:
             print(f"[{index}/{len(run_list)}] FAIL {message}", flush=True)
             if consecutive_failures >= 5:
                 stopped_early = True
-                print("circuit breaker: 5 consecutive failures, stopping", flush=True)
+                print("circuit breaker: 5 consecutive errors, stopping", flush=True)
                 break
 
     attempted = len(results)

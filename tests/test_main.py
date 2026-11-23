@@ -149,6 +149,79 @@ routes:
     assert date(2027, 3, 4).isoformat() == "2027-03-04"
 
 
+def test_empty_results_do_not_stop_the_run(tmp_path: Path, monkeypatch):
+    config = tmp_path / "config.yaml"
+    _write(
+        config,
+        """
+settings:
+  currency: USD
+  max_requests_per_run: 20
+  delay_seconds: [0, 0]
+routes:
+  - id: x
+    label: Test
+    origins: [JFK]
+    destinations: [BOG]
+    trip: one_way
+    depart_window: { start: 2027-04-01, end: 2027-04-06 }
+    active: true
+""",
+    )
+    data = tmp_path / "data"
+    data.mkdir()
+
+    def fake_searcher(_source):
+        def search(item, **kwargs):
+            return SearchResult(
+                key=item.key,
+                route_id=item.route_id,
+                origin=item.origin,
+                dest=item.dest,
+                depart=item.depart,
+                return_date=item.return_date,
+                ok=False,
+                error="empty result",
+                options=[],
+                cheapest=None,
+                google_url="",
+                fetched_at=kwargs["fetched_at"],
+            )
+
+        return search
+
+    monkeypatch.setattr("scraper.main._searcher", fake_searcher)
+    code = run(["--config", str(config), "--data-dir", str(data), "--today", "2027-04-01"])
+    status = json.loads((data / "status.json").read_text(encoding="utf-8"))
+    assert code == 1
+    assert status["stopped_early"] is False
+    assert status["searches_attempted"] == 6
+
+
+def test_skip_continues_past_finished_searches(tmp_path: Path, capsys):
+    config = tmp_path / "config.yaml"
+    _write(
+        config,
+        """
+settings:
+  currency: USD
+  max_requests_per_run: 20
+  delay_seconds: [0, 0]
+routes:
+  - id: x
+    label: Test
+    origins: [JFK]
+    destinations: [BOG]
+    trip: one_way
+    depart_window: { start: 2027-04-01, end: 2027-04-06 }
+    active: true
+""",
+    )
+    code = run(["--dry-run", "--config", str(config), "--today", "2027-04-01", "--skip", "2"])
+    assert code == 0
+    assert "scheduled 4" in capsys.readouterr().out
+
+
 def test_circuit_breaker_stops_a_blocked_run(tmp_path: Path):
     config = tmp_path / "config.yaml"
     _write(
