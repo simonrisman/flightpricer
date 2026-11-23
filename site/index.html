@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,650&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
   <header class="top">
@@ -16,6 +16,10 @@
       <div>
         <p class="eyebrow">Round trips from New York and Boston</p>
         <h1 id="title">Flight Pricer</h1>
+      </div>
+      <div class="origin-toggle" role="group" aria-label="Departure city">
+        <button type="button" data-origin="nyc" aria-pressed="true">New York</button>
+        <button type="button" data-origin="bos" aria-pressed="false">Boston</button>
       </div>
       <div class="top-actions">
         <button type="button" id="run-full" hidden>Run full scrape</button>
@@ -49,7 +53,7 @@
     </form>
   </dialog>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-  <script src="config-io.js?v=10"></script>
-  <script src="app.js?v=10"></script>
+  <script src="config-io.js?v=11"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 const TOKEN_KEY = "flightpricer.githubToken";
+const ORIGIN_KEY = "flightpricer.origin";
 const DEFAULT_REPO = "simonrisman/flightpricer";
 const DAY_OPTIONS = [
   ["mon", "Mon"],
@@ -43,6 +44,7 @@ const state = {
   focus: null,
   open: {},
   openFares: {},
+  originGroup: "nyc",
 };
 
 function el(tag, attrs, children) {
@@ -189,9 +191,16 @@ function latestRoute(id) {
   });
 }
 
+function originsForGroup() {
+  return state.originGroup === "bos" ? ["BOS"] : ["JFK", "EWR"];
+}
+
 function routeRows(route) {
   const saved = latestRoute(route.id);
-  return (saved && saved.searches) || [];
+  const allowed = originsForGroup();
+  return ((saved && saved.searches) || []).filter(function (row) {
+    return allowed.indexOf(row.origin) !== -1;
+  });
 }
 
 async function loadJson(url) {
@@ -483,7 +492,15 @@ function successRange(rows) {
   return { oldest: stamps[0] || null, newest: stamps[stamps.length - 1] || null };
 }
 
+function syncOriginToggle() {
+  document.querySelectorAll(".origin-toggle button").forEach(function (button) {
+    const on = button.dataset.origin === (state.originGroup === "bos" ? "bos" : "nyc");
+    button.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+}
+
 function renderHeader() {
+  syncOriginToggle();
   const title = (state.config && state.config.settings && state.config.settings.dashboard_title) || "Flight Pricer";
   document.getElementById("title").textContent = title;
   document.title = title;
@@ -639,8 +656,11 @@ function renderFareList(route, rows) {
 }
 
 function cheapestByDay(history) {
+  const allowed = originsForGroup();
   const map = new Map();
   ((history && history.points) || []).forEach(function (point) {
+    const origin = String(point.key || "").split("|")[1];
+    if (allowed.indexOf(origin) === -1) return;
     const previous = map.get(point.date);
     if (previous == null || point.price < previous) map.set(point.date, point.price);
   });
@@ -827,7 +847,9 @@ function renderQuery(route) {
           el(
             "select",
             { name: "origin" },
-            route.origins.map(function (code) {
+            (route.origins || []).filter(function (code) {
+              return originsForGroup().indexOf(code) !== -1;
+            }).map(function (code) {
               return el("option", { value: code, selected: saved && saved.origin === code ? "selected" : null }, [code]);
             })
           ),
@@ -1063,7 +1085,25 @@ function render() {
   }
 }
 
+document.querySelectorAll(".origin-toggle button").forEach(function (button) {
+  button.addEventListener("click", function () {
+    state.originGroup = button.dataset.origin === "bos" ? "bos" : "nyc";
+    try {
+      localStorage.setItem(ORIGIN_KEY, state.originGroup);
+    } catch (err) {
+      /* the toggle still works for this page view */
+    }
+    render();
+  });
+});
+
 async function boot() {
+  try {
+    const savedOrigin = localStorage.getItem(ORIGIN_KEY);
+    if (savedOrigin === "bos" || savedOrigin === "nyc") state.originGroup = savedOrigin;
+  } catch (err) {
+    state.originGroup = "nyc";
+  }
   syncTokenUi();
   try {
     const configPromise = loadConfig();
