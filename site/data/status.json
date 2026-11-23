@@ -1,21 +1,27 @@
 {
-  "last_run": "2026-11-23T17:43:27Z",
+  "last_run": "2026-11-23T18:15:46Z",
   "state": "degraded",
-  "searches_planned": 150,
-  "searches_attempted": 150,
-  "searches_succeeded": 145,
+  "searches_planned": 3000,
+  "searches_attempted": 226,
+  "searches_succeeded": 163,
   "errors": [
-    "bog|LGA|BOG|2027-03-05|2027-03-12: IndexError: list index out of range",
-    "eze|BOS|EZE|2027-04-08|2027-04-18: empty result",
-    "bog|LGA|BOG|2027-03-12|2027-03-20: empty result",
-    "bog|LGA|BOG|2027-03-13|2027-03-20: empty result",
-    "eze|EWR|EZE|2027-05-07|2027-05-17: empty result"
+    "bcn|BOS|BCN|2027-06-02|2027-06-14: empty result",
+    "bcn|BOS|BCN|2027-06-03|2027-06-11: empty result",
+    "bcn|BOS|BCN|2027-06-03|2027-06-13: empty result",
+    "bcn|BOS|BCN|2027-06-03|2027-06-14: empty result",
+    "bcn|BOS|BCN|2027-06-04|2027-06-17: empty result",
+    "bcn|BOS|BCN|2027-06-05|2027-06-15: empty result",
+    "bcn|BOS|BCN|2027-06-06|2027-06-16: empty result",
+    "bcn|BOS|BCN|2027-06-07|2027-06-19: empty result",
+    "bcn|BOS|BCN|2027-06-07|2027-06-20: empty result",
+    "bcn|BOS|BCN|2027-06-11|2027-06-20: empty result"
   ],
-  "last_success": "2026-11-23T17:43:27Z",
+  "last_success": "2026-11-23T18:15:46Z",
   "coverage": {
-    "total": 924,
-    "scheduled": 150,
-    "offset": 78
+    "total": 6453,
+    "scheduled": 3000,
+    "offset": 144,
+    "origin": "BOS"
   },
-  "stopped_early": false
+  "stopped_early": true
 }
