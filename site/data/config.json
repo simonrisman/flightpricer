@@ -258,8 +258,8 @@
       ],
       "trip": "round_trip",
       "depart_window": {
-        "start": "2027-10-20",
-        "end": "2027-11-30"
+        "start": "2027-08-25",
+        "end": "2027-10-05"
       },
       "depart_days": null,
       "trip_length_days": [
@@ -325,7 +325,7 @@
       "trip": "round_trip",
       "depart_window": {
         "start": "2027-10-04",
-        "end": "2027-11-26"
+        "end": "2027-10-05"
       },
       "depart_days": null,
       "trip_length_days": [

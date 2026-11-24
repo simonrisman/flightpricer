@@ -45,9 +45,9 @@ All of these are round trips from JFK, EWR, and BOS. Edit the windows in `config
 | Paris | 2027-05-17 – 2027-06-25 | Every day | 7–15 |
 | Madrid | 2027-04-12 – 2027-05-31 | Every day | 7–15 |
 | Barcelona | 2027-05-17 – 2027-06-20 | Every day | 7–15 |
-| Tokyo (Haneda and Narita) | 2027-10-20 – 2027-11-30 | Every day | 7–15 |
+| Tokyo (Haneda and Narita) | 2027-08-25 – 2027-10-05 | Every day | 7–15 |
 | Ho Chi Minh City | 2027-02-15 – 2027-03-31 | Every day | 7–15 |
-| Hanoi | 2027-10-04 – 2027-11-26 | Every day | 7–15 |
+| Hanoi | 2027-10-04 – 2027-10-05 | Every day | 7–15 |
 | Bangkok | 2027-01-11 – 2027-02-28 | Every day | 7–15 |
 | Tbilisi | 2027-05-03 – 2027-06-20 | Every day | 7–15 |
 | Ponta Delgada | 2027-06-01 – 2027-07-10 | Every day | 7–15 |
@@ -62,6 +62,7 @@ pip install -r requirements-dev.txt
 pytest
 python -m scraper.main --dry-run
 python -m scraper.main --limit 3
+python -m scraper.main --price-pass --dry-run --only-route bog --only-origin JFK --only-dest BOG
 python -m scraper.export_config
 python -m http.server -d site 8000
 ```
@@ -69,3 +70,5 @@ python -m http.server -d site 8000
 `--dry-run` prints every search and does not touch the network. After a hand edit to `config.yaml`, run `python -m scraper.export_config` and commit `site/data/config.json` so the dashboard matches. The on-site editor writes both files.
 
 Google Flights access is isolated in `scraper/source_google.py` (`fast-flights` 3.1.0). `settings.source: playwright` is only a stub.
+
+The scheduled scrape job runs `--price-pass`: a SearchAPI calendar sweep over the same expanded date pairs (about 10 departure days per call, never more than 200 combinations), then a full itinerary for the 3 cheapest dates on each airport pair. An ad-hoc one-date job stays on fast-flights. Export `SEARCHAPI_API_KEY` in the environment, and store the same name as a GitHub Actions secret. If it is missing, the sweep stops and does not query every date. Do not put the key in the repo.

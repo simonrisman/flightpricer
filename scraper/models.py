@@ -7,11 +7,11 @@ from datetime import date
 @dataclass(frozen=True)
 class FlightOption:
     price: int
-    airlines: str
-    stops: int
-    duration: str
-    depart_time: str
-    arrive_time: str
+    airlines: str | None = None
+    stops: int | None = None
+    duration: str | None = None
+    depart_time: str | None = None
+    arrive_time: str | None = None
 
 
 @dataclass(frozen=True)

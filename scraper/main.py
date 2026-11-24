@@ -10,6 +10,14 @@ from pathlib import Path
 from scraper.config import AppConfig, ConfigError, Route, load_config
 from scraper.expand import build_adhoc, expand_routes, interleave_by_origin, select_slice
 from scraper.models import Search, SearchResult
+from scraper.price_pass import (
+    CalendarAuthError,
+    PricePassError,
+    chunk_searches,
+    collect_price_pass,
+    format_price_plan,
+    require_api_key,
+)
 from scraper.store import (
     StoreError,
     drop_expired,
@@ -43,6 +51,20 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--depart", default=None, help="YYYY-MM-DD")
     parser.add_argument("--return-date", default=None, help="YYYY-MM-DD")
     parser.add_argument("--today", default=None, help="override today's date (YYYY-MM-DD), for tests")
+    parser.add_argument(
+        "--price-pass",
+        action="store_true",
+        help=(
+            "Sweep SearchAPI calendar prices for every expanded date pair, then fetch a full "
+            "Google Flights itinerary for the 3 cheapest dates on each origin-destination pair. "
+            "Calendar chunks are about 10 departure days and stay within 200 combinations. "
+            "Requires SEARCHAPI_API_KEY and does not fall back to a per-date search. "
+            "The scheduled GitHub job uses this path. Without this flag, the run stays a full "
+            "fast-flights search per date, which is what an ad-hoc one-date job uses. "
+            "Honors --only-route, --only-origin, --only-dest, "
+            "--limit, and --skip, and does not use the rotating daily slice."
+        ),
+    )
     return parser.parse_args(argv)
 
 
@@ -154,6 +176,13 @@ def run(argv: list[str] | None = None) -> int:
     if adhoc and not all(adhoc_flags):
         print("An ad-hoc search needs --route-id, --origin, --dest, and --depart.", file=sys.stderr)
         return 1
+    if args.price_pass and adhoc:
+        print(
+            "--price-pass sweeps a date window. An ad-hoc search stays one full itinerary; "
+            "drop --price-pass or the ad-hoc flags.",
+            file=sys.stderr,
+        )
+        return 1
 
     try:
         if adhoc:
@@ -183,7 +212,11 @@ def run(argv: list[str] | None = None) -> int:
                 searches = [item for item in searches if item.dest == only_dest]
                 if not searches:
                     raise ConfigError(f"no searches for destination {only_dest}")
-            chosen, offset = select_slice(searches, config.settings.max_requests_per_run, today)
+            if args.price_pass:
+                chosen = list(searches)
+                offset = 0
+            else:
+                chosen, offset = select_slice(searches, config.settings.max_requests_per_run, today)
             if args.skip < 0:
                 raise ConfigError("--skip must be 0 or more")
             if args.skip:
@@ -206,8 +239,26 @@ def run(argv: list[str] | None = None) -> int:
         return 1
 
     if args.dry_run:
-        _print_plan(config, searches, chosen, offset)
+        if args.price_pass:
+            print(format_price_plan(chosen, chunk_searches(chosen)), flush=True)
+        else:
+            _print_plan(config, searches, chosen, offset)
         return 0
+
+    api_key = ""
+    if args.price_pass:
+        try:
+            api_key = require_api_key()
+        except PricePassError as exc:
+            print(str(exc), file=sys.stderr)
+            if data_dir.exists():
+                previous = None
+                try:
+                    previous = read_json(data_dir / "status.json")
+                except StoreError:
+                    previous = None
+                _fail_status(data_dir, str(exc), previous)
+            return 1
 
     data_dir.mkdir(parents=True, exist_ok=True)
     status_path = data_dir / "status.json"
@@ -222,56 +273,88 @@ def run(argv: list[str] | None = None) -> int:
     now = utc_now()
     run_date = today
     search_fn = _searcher(config.settings.source)
-    run_list = chosen if adhoc else interleave_by_origin(chosen)
     results: list[SearchResult] = []
     errors: list[str] = []
     consecutive_failures = 0
     stopped_early = False
+    detail_failures = 0
+    calendar_calls = 0
+    detail_calls = 0
     low, high = config.settings.delay_seconds
 
-    print(f"running {len(run_list)} of {len(searches)} searches", flush=True)
-    for index, item in enumerate(run_list, start=1):
-        if index > 1 and not adhoc:
+    if args.price_pass:
+        from scraper import source_google
+
+        def pause() -> None:
             time.sleep(random.uniform(low, high))
-        fetched_at = utc_now()
+
         try:
-            result = search_fn(
-                item,
+            outcome = collect_price_pass(
+                chosen,
+                api_key=api_key,
                 currency=config.settings.currency,
                 cabin=config.settings.cabin,
                 adults=config.settings.adults,
-                fetched_at=fetched_at,
+                detail=source_google.search,
+                pause=pause,
+                now=utc_now,
             )
-        except IndexError:
-            result = _failed_result(item, "unreadable result", fetched_at)
-        except Exception as exc:
-            result = _failed_result(item, f"{type(exc).__name__}: {exc}"[:300], fetched_at)
-        results.append(result)
-        if result.ok and result.cheapest is not None:
-            consecutive_failures = 0
-            print(
-                f"[{index}/{len(run_list)}] {item.origin}->{item.dest} {item.depart} ${result.cheapest.price} {result.cheapest.airlines}",
-                flush=True,
-            )
-        elif _keeps_going(result.error):
-            label = "no flights" if result.error == "empty result" else "unreadable, skipping"
-            message = f"{result.key}: {label}"
-            errors.append(message)
-            print(f"[{index}/{len(run_list)}] {message}", flush=True)
-        else:
-            consecutive_failures += 1
-            message = f"{result.key}: {result.error}"
-            errors.append(message)
-            print(f"[{index}/{len(run_list)}] FAIL {message}", flush=True)
-            if consecutive_failures >= 5:
-                stopped_early = True
-                print("circuit breaker: 5 consecutive errors, stopping", flush=True)
-                break
+        except CalendarAuthError as exc:
+            print(str(exc), file=sys.stderr)
+            _fail_status(data_dir, str(exc), previous_status)
+            return 1
+        results = outcome.results
+        errors = outcome.errors
+        stopped_early = outcome.stopped_early
+        detail_failures = outcome.detail_failures
+        calendar_calls = outcome.calendar_calls
+        detail_calls = outcome.detail_calls
+        run_list = chosen
+    else:
+        run_list = chosen if adhoc else interleave_by_origin(chosen)
+        print(f"running {len(run_list)} of {len(searches)} searches", flush=True)
+        for index, item in enumerate(run_list, start=1):
+            if index > 1 and not adhoc:
+                time.sleep(random.uniform(low, high))
+            fetched_at = utc_now()
+            try:
+                result = search_fn(
+                    item,
+                    currency=config.settings.currency,
+                    cabin=config.settings.cabin,
+                    adults=config.settings.adults,
+                    fetched_at=fetched_at,
+                )
+            except IndexError:
+                result = _failed_result(item, "unreadable result", fetched_at)
+            except Exception as exc:
+                result = _failed_result(item, f"{type(exc).__name__}: {exc}"[:300], fetched_at)
+            results.append(result)
+            if result.ok and result.cheapest is not None:
+                consecutive_failures = 0
+                print(
+                    f"[{index}/{len(run_list)}] {item.origin}->{item.dest} {item.depart} ${result.cheapest.price} {result.cheapest.airlines}",
+                    flush=True,
+                )
+            elif _keeps_going(result.error):
+                label = "no flights" if result.error == "empty result" else "unreadable, skipping"
+                message = f"{result.key}: {label}"
+                errors.append(message)
+                print(f"[{index}/{len(run_list)}] {message}", flush=True)
+            else:
+                consecutive_failures += 1
+                message = f"{result.key}: {result.error}"
+                errors.append(message)
+                print(f"[{index}/{len(run_list)}] FAIL {message}", flush=True)
+                if consecutive_failures >= 5:
+                    stopped_early = True
+                    print("circuit breaker: 5 consecutive errors, stopping", flush=True)
+                    break
 
     attempted = len(results)
     succeeded = sum(1 for result in results if result.ok and result.cheapest is not None)
     state = decide_state(attempted, succeeded)
-    if stopped_early and state == "ok":
+    if (stopped_early or detail_failures) and state == "ok":
         state = "degraded"
 
     try:
@@ -313,6 +396,11 @@ def run(argv: list[str] | None = None) -> int:
                 "scheduled": len(run_list),
                 "offset": offset,
                 "origin": (args.only_origin or "").strip().upper() or None,
+                **(
+                    {"mode": "price-pass", "calendar_calls": calendar_calls, "detail_calls": detail_calls}
+                    if args.price_pass
+                    else {}
+                ),
             },
             "stopped_early": stopped_early,
         }
