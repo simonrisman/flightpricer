@@ -1073,7 +1073,12 @@ function render() {
     state.open[state.focus.routeId] = true;
     state.openFares[state.focus.key] = true;
   }
-  const routes = state.config ? state.config.routes : (state.latest.routes || []);
+  const routes = (state.config ? state.config.routes : (state.latest.routes || [])).filter(function (route) {
+    const allowed = originsForGroup();
+    return (route.origins || []).some(function (code) {
+      return allowed.indexOf(code) !== -1;
+    });
+  });
   host.replaceChildren(el("div", { class: "route-list" }, routes.map(renderRoute)));
   routes.forEach(function (route) {
     if (route.origins && route.depart_window) paintPreview(route);
