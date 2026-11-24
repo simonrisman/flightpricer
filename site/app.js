@@ -46,6 +46,7 @@ const state = {
   openFares: {},
   originGroup: "nyc",
   queue: null,
+  queueOpen: false,
 };
 
 function el(tag, attrs, children) {
@@ -225,41 +226,85 @@ function legStatus(leg) {
   return age ? "waiting · last scraped " + age : "waiting";
 }
 
+function nowSummary(running) {
+  return running ? "Now: " + pairName(running) : "Nothing is scraping right now.";
+}
+
+function nextSummary(next) {
+  return next ? pairName(next) : "Nothing is waiting.";
+}
+
+function glance(kind, label, value, live) {
+  return el("p", { class: "queue-" + kind + (live ? " is-live" : "") }, [
+    el("span", { class: "queue-kicker" }, [label]),
+    el("span", { class: "queue-value" }, [value]),
+  ]);
+}
+
+function showRunningLeg(list) {
+  if (!list || list.clientHeight < 8) return;
+  const item = list.querySelector(".queue-leg.running");
+  if (!item) return;
+  const listRect = list.getBoundingClientRect();
+  const itemRect = item.getBoundingClientRect();
+  const delta = itemRect.top - listRect.top;
+  list.scrollTop += delta - (list.clientHeight - itemRect.height) / 2;
+}
+
 function renderQueue() {
   const queue = state.queue;
-  const box = el("div", { class: "queue-card" });
+  const legs = (queue && queue.legs) || [];
+  const running = legs.filter(function (leg) { return leg.state === "running"; })[0];
+  const next = legs.filter(function (leg) { return leg.state === "pending"; })[0];
+  const box = el("div", { class: "queue-card" + (state.queueOpen ? " is-open" : "") });
+  const disclosure = el("button", {
+    type: "button",
+    class: "queue-disclosure",
+    "aria-expanded": state.queueOpen ? "true" : "false",
+    "aria-controls": "queue-panel",
+  }, [
+    el("span", { class: "queue-disclosure-name" }, ["Scrape queue"]),
+    el("span", { class: "queue-disclosure-now" }, [
+      legs.length ? nowSummary(running) : "Waiting for a scrape",
+    ]),
+    el("span", { class: "queue-chevron", "aria-hidden": "true" }),
+  ]);
+  disclosure.addEventListener("click", function () {
+    state.queueOpen = !state.queueOpen;
+    box.classList.toggle("is-open", state.queueOpen);
+    disclosure.setAttribute("aria-expanded", state.queueOpen ? "true" : "false");
+    if (state.queueOpen) showRunningLeg(box.querySelector(".queue-list"));
+  });
   const head = el("div", { class: "queue-head" }, [el("h2", {}, ["Scrape queue"])]);
   if (queue && queue.run_url) {
     head.append(el("a", { href: queue.run_url }, ["Open the run"]));
   }
-  box.append(head);
-  const legs = (queue && queue.legs) || [];
+  const panel = el("div", { id: "queue-panel", class: "queue-panel" }, [head]);
   if (!legs.length) {
-    box.append(el("p", { class: "queue-now" }, ["The queue shows up here once a scrape starts."]));
-    return box;
+    panel.append(el("p", { class: "queue-empty" }, ["The queue shows up here once a scrape starts."]));
+  } else {
+    panel.append(glance("now", "Now", running ? pairName(running) : "Nothing is scraping right now.", !!running));
+    panel.append(glance("next", "Up next", nextSummary(next), false));
+    const list = el("ol", { class: "queue-list" });
+    legs.forEach(function (leg) {
+      list.append(el("li", { class: "queue-leg " + (leg.state || "pending") }, [
+        el("span", { class: "queue-pair" }, [pairName(leg)]),
+        el("span", { class: "queue-age" }, [legStatus(leg)]),
+      ]));
+    });
+    panel.append(list);
   }
-  const running = legs.filter(function (leg) { return leg.state === "running"; })[0];
-  const next = legs.filter(function (leg) { return leg.state === "pending"; })[0];
-  box.append(el("p", { class: "queue-now" }, [
-    running ? "Now: " + pairName(running) : "Nothing is scraping right now.",
-  ]));
-  box.append(el("p", { class: "queue-next" }, [
-    next ? "Up next: " + pairName(next) : "Nothing is waiting.",
-  ]));
-  const list = el("ol", { class: "queue-list" });
-  legs.forEach(function (leg) {
-    list.append(el("li", { class: "queue-leg " + (leg.state || "pending") }, [
-      el("span", { class: "queue-pair" }, [pairName(leg)]),
-      el("span", { class: "queue-age" }, [legStatus(leg)]),
-    ]));
-  });
-  box.append(list);
+  box.append(disclosure, panel);
   return box;
 }
 
 function paintQueue() {
   const host = document.getElementById("queue");
-  if (host) host.replaceChildren(renderQueue());
+  if (host) {
+    const card = renderQueue();
+    host.replaceChildren(card);
+    showRunningLeg(card.querySelector(".queue-list"));
+  }
   document.querySelectorAll(".fare-age").forEach(function (node) {
     const route = (state.config ? state.config.routes : []).filter(function (item) {
       return item.id === node.dataset.route;
@@ -698,6 +743,22 @@ function detailRows(row) {
   ];
 }
 
+function skyscannerUrl(row) {
+  if (!row.origin || !row.dest || !row.depart) return "";
+  const params = new URLSearchParams({
+    origin: row.origin,
+    destination: row.dest,
+    outboundDate: row.depart,
+    cabinclass: "economy",
+    adultsv2: "1",
+    market: "US",
+    locale: "en-US",
+    currency: "USD",
+  });
+  if (row["return"]) params.set("inboundDate", row["return"]);
+  return "https://skyscanner.net/g/referrals/v1/flights/day-view/?" + params.toString();
+}
+
 function renderFareCard(row) {
   const open = !!state.openFares[row.key];
   const card = el("article", { class: "fare" + (row.stale ? " stale" : ""), id: rowId(row.key) });
@@ -723,6 +784,9 @@ function renderFareCard(row) {
       ? el("a", { href: row.google_url, target: "_blank", rel: "noopener noreferrer" }, ["Google Flights"])
       : null,
     el("a", { href: "https://travel.capitalone.com/", target: "_blank", rel: "noopener noreferrer" }, ["Capital One"]),
+    skyscannerUrl(row)
+      ? el("a", { href: skyscannerUrl(row), target: "_blank", rel: "noopener noreferrer" }, ["Skyscanner"])
+      : null,
   ]);
   detail.append(facts, links);
   toggle.addEventListener("click", function () {
