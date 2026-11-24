@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T23:19:05Z",
+  "updated_at": "2026-11-24T23:19:33Z",
   "run_id": "45503110965",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45503110965",
   "legs": [
@@ -323,9 +323,9 @@
       "label": "Bangkok",
       "origin": "BOS",
       "dest": "BKK",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-24T23:19:05Z",
-      "finished_at": "2026-11-24T22:16:25Z"
+      "finished_at": "2026-11-24T23:19:33Z"
     },
     {
       "route": "tbs",
