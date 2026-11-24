@@ -1,18 +1,16 @@
 {
-  "last_run": "2026-11-24T23:02:08Z",
-  "state": "degraded",
+  "last_run": "2026-11-24T23:03:35Z",
+  "state": "ok",
   "searches_planned": 450,
   "searches_attempted": 450,
   "searches_succeeded": 450,
-  "errors": [
-    "mad|EWR|MAD|2027-04-12|2027-04-21: itinerary empty result"
-  ],
-  "last_success": "2026-11-24T23:02:08Z",
+  "errors": [],
+  "last_success": "2026-11-24T23:03:35Z",
   "coverage": {
     "total": 450,
     "scheduled": 450,
     "offset": 0,
-    "origin": "EWR",
+    "origin": "BOS",
     "mode": "price-pass",
     "calendar_calls": 5,
     "detail_calls": 3
