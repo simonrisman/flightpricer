@@ -48,6 +48,31 @@ def test_only_route_keeps_one_city(capsys):
     assert f"scheduled {len(lines)}" in captured.out
 
 
+def test_only_origin_and_dest_keep_one_pair(capsys):
+    code = run(
+        [
+            "--dry-run",
+            "--today",
+            "2026-11-23",
+            "--config",
+            str(ROOT / "config.yaml"),
+            "--only-route",
+            "tyo",
+            "--only-origin",
+            "bos",
+            "--only-dest",
+            "hnd",
+        ]
+    )
+    captured = capsys.readouterr()
+    assert code == 0
+    lines = [line for line in captured.out.splitlines() if "|BOS|HND|" in line]
+    assert lines
+    assert "|NRT|" not in captured.out
+    assert "|JFK|" not in captured.out
+    assert f"scheduled {len(lines)}" in captured.out
+
+
 def test_failures_do_not_blank_saved_prices(tmp_path: Path, monkeypatch):
     config = tmp_path / "config.yaml"
     _write(

@@ -37,6 +37,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--origin", default=None)
     parser.add_argument("--only-origin", default=None, help="limit a full run to one origin airport")
     parser.add_argument("--only-route", default=None, help="limit a full run to one route id")
+    parser.add_argument("--only-dest", default=None, help="limit a full run to one destination airport")
     parser.add_argument("--skip", type=int, default=0, help="skip this many searches already finished in today's slice")
     parser.add_argument("--dest", default=None)
     parser.add_argument("--depart", default=None, help="YYYY-MM-DD")
@@ -154,6 +155,11 @@ def run(argv: list[str] | None = None) -> int:
                 searches = [item for item in searches if item.origin == only_origin]
                 if not searches:
                     raise ConfigError(f"no searches for origin {only_origin}")
+            only_dest = (args.only_dest or "").strip().upper()
+            if only_dest:
+                searches = [item for item in searches if item.dest == only_dest]
+                if not searches:
+                    raise ConfigError(f"no searches for destination {only_dest}")
             chosen, offset = select_slice(searches, config.settings.max_requests_per_run, today)
             if args.skip < 0:
                 raise ConfigError("--skip must be 0 or more")

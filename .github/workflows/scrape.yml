@@ -53,7 +53,7 @@ jobs:
     if: github.event_name != 'workflow_dispatch' || github.event.inputs.mode != 'adhoc'
     runs-on: ubuntu-latest
     outputs:
-      ids: ${{ steps.list.outputs.ids }}
+      legs: ${{ steps.list.outputs.legs }}
     steps:
       - uses: actions/checkout@v4
 
@@ -69,13 +69,19 @@ jobs:
           import json, os
           import yaml
           config = yaml.safe_load(open("config.yaml"))
-          ids = [route["id"] for route in config["routes"] if route.get("active", True)]
+          legs = []
+          for route in config["routes"]:
+              if not route.get("active", True):
+                  continue
+              for origin in route["origins"]:
+                  for dest in route["destinations"]:
+                      legs.append({"route": route["id"], "origin": origin, "dest": dest})
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
-              handle.write("ids=" + json.dumps(ids) + "\n")
+              handle.write("legs=" + json.dumps(legs) + "\n")
           PY
 
   scrape:
-    name: ${{ matrix.route }}
+    name: ${{ matrix.leg.origin }}-${{ matrix.leg.dest }}
     needs: routes
     if: needs.routes.result == 'success'
     runs-on: ubuntu-latest
@@ -87,7 +93,7 @@ jobs:
       fail-fast: false
       max-parallel: 1
       matrix:
-        route: ${{ fromJson(needs.routes.outputs.ids) }}
+        leg: ${{ fromJson(needs.routes.outputs.legs) }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -105,14 +111,12 @@ jobs:
         id: scrape
         continue-on-error: true
         env:
-          ROUTE: ${{ matrix.route }}
-          ONLY_ORIGIN: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.only_origin || '' }}
+          ROUTE: ${{ matrix.leg.route }}
+          ORIGIN: ${{ matrix.leg.origin }}
+          DEST: ${{ matrix.leg.dest }}
           SKIP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
         run: |
-          args=(python -m scraper.main --only-route "$ROUTE")
-          if [ -n "$ONLY_ORIGIN" ]; then
-            args+=(--only-origin "$ONLY_ORIGIN")
-          fi
+          args=(python -m scraper.main --only-route "$ROUTE" --only-origin "$ORIGIN" --only-dest "$DEST")
           if [ -n "$SKIP" ]; then
             args+=(--skip "$SKIP")
           fi
@@ -125,7 +129,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No data changes"
           else
-            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "data: ${{ matrix.route }} $(date -u +%F)"
+            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "data: ${{ matrix.leg.origin }}-${{ matrix.leg.dest }} $(date -u +%F)"
             git push origin HEAD:main || {
               git fetch origin main
               git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main

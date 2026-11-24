@@ -21,7 +21,7 @@ Dates and prices in this repo are public, because GitHub Pages on a free account
 
 Saving and fetching need a fine-grained personal access token for this repo, with Contents read/write and Actions read/write. Paste it into **GitHub access**. It stays in this browser and is only sent to `api.github.com`.
 
-Each city is its own job and includes JFK, Newark, and Boston. The chain starts at 6:17am Eastern. The next city starts when the previous job has saved its prices, and the site updates after each city. A 3–7 second pause stays between Google requests.
+Each airport-to-city pair, such as Boston–Bogotá or Boston–Lima, is its own job. The chain starts at 6:17am Eastern. The next pair starts when the previous job has saved its prices, and the site updates after each pair. A 3–7 second pause stays between Google requests.
 
 ## One-time GitHub setup
 
@@ -30,7 +30,7 @@ Each city is its own job and includes JFK, Newark, and Boston. The chain starts 
 3. Actions → **scrape** → **Run workflow** for the first full pass.
 4. Open `https://simonrisman.github.io/flightpricer/`.
 
-The city chain starts at 11:17 UTC (6:17am Eastern Standard Time, 7:17am Eastern Daylight Time). A keepalive step re-enables the workflow on every run so GitHub does not disable it after 60 days of inactivity.
+The pair chain starts at 11:17 UTC (6:17am Eastern Standard Time, 7:17am Eastern Daylight Time). A keepalive step re-enables the workflow on every run so GitHub does not disable it after 60 days of inactivity.
 
 ## Routes
 
