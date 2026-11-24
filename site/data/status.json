@@ -1,27 +1,27 @@
 {
-  "last_run": "2026-11-24T09:54:34Z",
+  "last_run": "2026-11-24T10:27:38Z",
   "state": "degraded",
-  "searches_planned": 360,
-  "searches_attempted": 360,
-  "searches_succeeded": 209,
+  "searches_planned": 450,
+  "searches_attempted": 450,
+  "searches_succeeded": 270,
   "errors": [
-    "par|BOS|CDG|2027-05-17|2027-05-25: no flights",
-    "par|BOS|CDG|2027-05-17|2027-05-26: no flights",
-    "par|BOS|CDG|2027-05-17|2027-05-27: no flights",
-    "par|BOS|CDG|2027-05-17|2027-05-28: no flights",
-    "par|BOS|CDG|2027-05-17|2027-05-29: no flights",
-    "par|BOS|CDG|2027-05-17|2027-05-30: no flights",
-    "par|BOS|CDG|2027-05-17|2027-05-31: no flights",
-    "par|BOS|CDG|2027-05-18|2027-05-25: no flights",
-    "par|BOS|CDG|2027-05-18|2027-05-28: no flights",
-    "par|BOS|CDG|2027-05-18|2027-05-29: no flights"
+    "mad|JFK|MAD|2027-04-12|2027-04-20: no flights",
+    "mad|JFK|MAD|2027-04-12|2027-04-23: no flights",
+    "mad|JFK|MAD|2027-04-12|2027-04-24: no flights",
+    "mad|JFK|MAD|2027-04-12|2027-04-25: no flights",
+    "mad|JFK|MAD|2027-04-12|2027-04-27: no flights",
+    "mad|JFK|MAD|2027-04-13|2027-04-23: no flights",
+    "mad|JFK|MAD|2027-04-13|2027-04-28: no flights",
+    "mad|JFK|MAD|2027-04-14|2027-04-23: no flights",
+    "mad|JFK|MAD|2027-04-14|2027-04-24: no flights",
+    "mad|JFK|MAD|2027-04-14|2027-04-26: no flights"
   ],
-  "last_success": "2026-11-24T09:54:34Z",
+  "last_success": "2026-11-24T10:27:38Z",
   "coverage": {
-    "total": 360,
-    "scheduled": 360,
+    "total": 450,
+    "scheduled": 450,
     "offset": 0,
-    "origin": "BOS"
+    "origin": "JFK"
   },
   "stopped_early": false
 }
