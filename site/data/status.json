@@ -1,27 +1,27 @@
 {
-  "last_run": "2026-11-24T17:25:06Z",
-  "state": "failed",
+  "last_run": "2026-11-24T17:27:06Z",
+  "state": "degraded",
   "searches_planned": 405,
-  "searches_attempted": 11,
-  "searches_succeeded": 0,
+  "searches_attempted": 405,
+  "searches_succeeded": 302,
   "errors": [
-    "sgn|EWR|SGN|2027-02-15|2027-02-22: no flights",
-    "sgn|EWR|SGN|2027-02-15|2027-02-23: IndexError: list index out of range",
-    "sgn|EWR|SGN|2027-02-15|2027-02-24: no flights",
-    "sgn|EWR|SGN|2027-02-15|2027-02-25: IndexError: list index out of range",
-    "sgn|EWR|SGN|2027-02-15|2027-02-26: IndexError: list index out of range",
-    "sgn|EWR|SGN|2027-02-15|2027-02-27: no flights",
-    "sgn|EWR|SGN|2027-02-15|2027-02-28: IndexError: list index out of range",
-    "sgn|EWR|SGN|2027-02-15|2027-03-01: no flights",
-    "sgn|EWR|SGN|2027-02-15|2027-03-02: no flights",
-    "sgn|EWR|SGN|2027-02-16|2027-02-23: no flights"
+    "sgn|BOS|SGN|2027-02-15|2027-02-22: AttributeError: 'NoneType' object has no attribute 'text'",
+    "sgn|BOS|SGN|2027-02-15|2027-02-23: no flights",
+    "sgn|BOS|SGN|2027-02-15|2027-02-26: no flights",
+    "sgn|BOS|SGN|2027-02-15|2027-03-01: no flights",
+    "sgn|BOS|SGN|2027-02-16|2027-02-27: no flights",
+    "sgn|BOS|SGN|2027-02-17|2027-02-24: no flights",
+    "sgn|BOS|SGN|2027-02-18|2027-03-04: no flights",
+    "sgn|BOS|SGN|2027-02-19|2027-02-27: no flights",
+    "sgn|BOS|SGN|2027-02-19|2027-03-04: no flights",
+    "sgn|BOS|SGN|2027-02-19|2027-03-06: no flights"
   ],
-  "last_success": "2026-11-24T13:28:56Z",
+  "last_success": "2026-11-24T17:27:06Z",
   "coverage": {
     "total": 405,
     "scheduled": 405,
     "offset": 0,
-    "origin": "EWR"
+    "origin": "BOS"
   },
-  "stopped_early": true
+  "stopped_early": false
 }
