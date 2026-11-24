@@ -378,39 +378,6 @@
       "extra_dates": []
     },
     {
-      "id": "sin",
-      "label": "Singapore",
-      "origins": [
-        "JFK",
-        "EWR",
-        "BOS"
-      ],
-      "destinations": [
-        "SIN"
-      ],
-      "trip": "round_trip",
-      "depart_window": {
-        "start": "2027-02-15",
-        "end": "2027-04-30"
-      },
-      "depart_days": null,
-      "trip_length_days": [
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "max_stops": null,
-      "target_price": null,
-      "active": true,
-      "extra_dates": []
-    },
-    {
       "id": "tbs",
       "label": "Tbilisi",
       "origins": [

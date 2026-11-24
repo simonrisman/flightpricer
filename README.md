@@ -49,7 +49,6 @@ All of these are round trips from JFK, EWR, and BOS. Edit the windows in `config
 | Ho Chi Minh City | 2027-02-15 – 2027-03-31 | Every day | 7–15 |
 | Hanoi | 2027-10-04 – 2027-11-26 | Every day | 7–15 |
 | Bangkok | 2027-01-11 – 2027-02-28 | Every day | 7–15 |
-| Singapore | 2027-02-15 – 2027-04-30 | Every day | 7–15 |
 | Tbilisi | 2027-05-03 – 2027-06-20 | Every day | 7–15 |
 | Ponta Delgada | 2027-06-01 – 2027-07-10 | Every day | 7–15 |
 | Funchal | 2027-04-12 – 2027-06-10 | Every day | 7–15 |
