@@ -665,29 +665,6 @@ function renderHeader() {
   document.getElementById("title").textContent = title;
   document.title = title;
   const status = state.status || {};
-  const runLine = document.getElementById("run-line");
-  const successLine = document.getElementById("success-line");
-  const pill = document.getElementById("pill");
-  if (!status.last_run) {
-    runLine.textContent = "No scrape has run yet.";
-    successLine.textContent = "Last successful run: never";
-    pill.textContent = "No runs yet";
-    pill.className = "pill never";
-  } else {
-    runLine.textContent = "Last run: " + formatWhen(status.last_run);
-    successLine.textContent = "Last successful run: " + formatWhen(status.last_success);
-    const ageHours = (Date.now() - Date.parse(status.last_run)) / 36e5;
-    let label = status.state || "unknown";
-    let kind = status.state || "never";
-    if (ageHours > 36) {
-      label = "over 36h old";
-      kind = "old";
-    } else if (status.state === "ok") label = "ok";
-    else if (status.state === "degraded") label = "degraded";
-    else if (status.state === "failed") label = "failed";
-    pill.textContent = label;
-    pill.className = "pill " + kind;
-  }
   const coverage = document.getElementById("coverage");
   const cov = status.coverage;
   const cap = state.config && state.config.settings && state.config.settings.max_requests_per_run;
@@ -1315,8 +1292,7 @@ async function boot() {
       paintQueue();
     }, 60000);
   } catch (err) {
-    document.getElementById("run-line").textContent = "Could not load the dashboard.";
-    setAction(err.message);
+    setAction("Could not load the dashboard." + (err && err.message ? " " + err.message : ""));
   }
 }
 

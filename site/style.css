@@ -42,18 +42,9 @@ a { color: var(--pine); }
 .top { background: var(--pine-deep); color: var(--cream); padding: 28px 0 22px; }
 .top a { color: #f0d2c6; }
 .eyebrow { margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.75rem; color: #d5c4a1; }
-.top-row, .status-row, .top-actions, .dialog-actions, .row-actions, .query-actions { display: flex; gap: 12px; align-items: center; }
+.top-row, .top-actions, .dialog-actions, .row-actions, .query-actions { display: flex; gap: 12px; align-items: center; }
 .top-row { justify-content: space-between; align-items: flex-end; }
-.status-row { margin-top: 18px; flex-wrap: wrap; justify-content: space-between; }
-.status-row p { margin: 0; }
-#run-line, #success-line { color: #efe7d6; }
 .top-actions { flex-wrap: wrap; justify-content: flex-end; }
-
-.pill { border-radius: 999px; padding: 6px 12px; font-weight: 600; background: #314840; }
-.pill.ok { background: #1b7a43; }
-.pill.degraded, .pill.pending { background: #8a5a08; }
-.pill.failed, .pill.old { background: #9d2c24; }
-.pill.never { background: #314840; }
 
 main { padding: 22px 0 64px; }
 .note { color: var(--muted); margin: 0 0 14px; }
