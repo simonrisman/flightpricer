@@ -36,6 +36,18 @@ def test_only_origin_keeps_one_airport(capsys):
     assert "scheduled 3000" in captured.out
 
 
+def test_only_route_keeps_one_city(capsys):
+    code = run(
+        ["--dry-run", "--today", "2026-11-23", "--config", str(ROOT / "config.yaml"), "--only-route", "bog"]
+    )
+    captured = capsys.readouterr()
+    assert code == 0
+    lines = [line for line in captured.out.splitlines() if line.startswith("bog|")]
+    assert lines
+    assert "mde|" not in captured.out
+    assert f"scheduled {len(lines)}" in captured.out
+
+
 def test_failures_do_not_blank_saved_prices(tmp_path: Path, monkeypatch):
     config = tmp_path / "config.yaml"
     _write(

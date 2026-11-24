@@ -21,7 +21,7 @@ Dates and prices in this repo are public, because GitHub Pages on a free account
 
 Saving and fetching need a fine-grained personal access token for this repo, with Contents read/write and Actions read/write. Paste it into **GitHub access**. It stays in this browser and is only sent to `api.github.com`.
 
-Searches are split by airport across the day, with a 3–7 second pause between Google requests. JFK runs at 6:17am Eastern, Newark at 12:17pm, and Boston at 6:17pm. Each run checks up to `max_requests_per_run` searches for that airport (`config.yaml`, currently 3,000), which is as many as fit in one GitHub Actions job. One airport is about 6,500 searches, so the rest of that airport is picked up the next time it runs. A date that was not checked keeps its last price.
+Each city is its own job and includes JFK, Newark, and Boston. The chain starts at 6:17am Eastern. The next city starts when the previous job has saved its prices, and the site updates after each city. A 3–7 second pause stays between Google requests.
 
 ## One-time GitHub setup
 
@@ -30,7 +30,7 @@ Searches are split by airport across the day, with a 3–7 second pause between 
 3. Actions → **scrape** → **Run workflow** for the first full pass.
 4. Open `https://simonrisman.github.io/flightpricer/`.
 
-The scrape is scheduled for 11:17 UTC (about 6:17am Eastern Standard Time / 7:17am Eastern Daylight Time). A keepalive step re-enables the workflow on every run so GitHub does not disable it after 60 days of inactivity.
+The city chain starts at 11:17 UTC (6:17am Eastern Standard Time, 7:17am Eastern Daylight Time). A keepalive step re-enables the workflow on every run so GitHub does not disable it after 60 days of inactivity.
 
 ## Routes
 

@@ -533,7 +533,7 @@ function renderHeader() {
   const cap = state.config && state.config.settings && state.config.settings.max_requests_per_run;
   let note = "Each city shows its cheapest saved fare, the trip dates for that fare, and when that price was fetched.";
   if (cap) {
-    note += " JFK, Newark, and Boston each get their own run through the day, " + cap.toLocaleString("en-US") + " searches at a time.";
+    note += " Each city is its own job, including JFK, Newark, and Boston. The next city starts when the previous one finishes.";
   } else if (cov && cov.total > cov.scheduled) {
     note += " A daily run refreshes " + cov.scheduled + " of " + cov.total + " searches, then continues through the rest.";
   }
@@ -1048,7 +1048,7 @@ function renderRoute(route) {
   if (!open) edit.hidden = true;
   edit.append(
     el("p", { class: "how" }, [
-      "Every day from the start date through the end date is checked, including weekends, unless you uncheck a weekday. Each departure is paired with each listed trip length. 7 through 15 means a 7-day trip, an 8-day trip, and so on up to 15 days. JFK runs in the morning, Newark in the afternoon, and Boston in the evening. Each of those runs refreshes " + ((state.config && state.config.settings && state.config.settings.max_requests_per_run) || 3000).toLocaleString("en-US") + " searches for that airport, then continues through the rest of that airport's dates the next time it runs.",
+      "Every day from the start date through the end date is checked, including weekends, unless you uncheck a weekday. Each departure is paired with each listed trip length. 7 through 15 means a 7-day trip, an 8-day trip, and so on up to 15 days. Each city runs as its own job from JFK, Newark, and Boston. The chain starts at 6:17am Eastern, and the next city starts when the previous one has saved.",
     ]),
     el("div", { class: "tools" }, [renderEditor(route), renderQuery(route)]),
     el("div", { class: "chart-wrap", id: "chart-" + route.id })

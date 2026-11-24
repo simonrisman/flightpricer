@@ -3,8 +3,6 @@ name: scrape
 on:
   schedule:
     - cron: "17 11 * * *"
-    - cron: "17 17 * * *"
-    - cron: "17 23 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -47,13 +45,110 @@ permissions:
   id-token: write
 
 concurrency:
-  group: scrape
+  group: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'adhoc' && 'scrape-adhoc' || 'scrape' }}
   cancel-in-progress: false
 
 jobs:
+  routes:
+    if: github.event_name != 'workflow_dispatch' || github.event.inputs.mode != 'adhoc'
+    runs-on: ubuntu-latest
+    outputs:
+      ids: ${{ steps.list.outputs.ids }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install PyYAML==6.0.3
+
+      - id: list
+        run: |
+          python - << 'PY'
+          import json, os
+          import yaml
+          config = yaml.safe_load(open("config.yaml"))
+          ids = [route["id"] for route in config["routes"] if route.get("active", True)]
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
+              handle.write("ids=" + json.dumps(ids) + "\n")
+          PY
+
   scrape:
+    name: ${{ matrix.route }}
+    needs: routes
+    if: needs.routes.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        route: ${{ fromJson(needs.routes.outputs.ids) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Scrape
+        id: scrape
+        continue-on-error: true
+        env:
+          ROUTE: ${{ matrix.route }}
+          ONLY_ORIGIN: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.only_origin || '' }}
+          SKIP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+        run: |
+          args=(python -m scraper.main --only-route "$ROUTE")
+          if [ -n "$ONLY_ORIGIN" ]; then
+            args+=(--only-origin "$ONLY_ORIGIN")
+          fi
+          if [ -n "$SKIP" ]; then
+            args+=(--skip "$SKIP")
+          fi
+          "${args[@]}"
+
+      - name: Commit data
+        if: ${{ !cancelled() }}
+        run: |
+          git add site/data/latest.json site/data/status.json site/data/history
+          if git diff --cached --quiet; then
+            echo "No data changes"
+          else
+            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "data: ${{ matrix.route }} $(date -u +%F)"
+            git push origin HEAD:main || {
+              git fetch origin main
+              git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main
+              git push origin HEAD:main
+            }
+          fi
+
+      - uses: actions/configure-pages@v5
+        if: ${{ !cancelled() }}
+
+      - uses: actions/upload-pages-artifact@v3
+        if: ${{ !cancelled() }}
+        with:
+          path: site
+
+      - id: deployment
+        if: ${{ !cancelled() }}
+        uses: actions/deploy-pages@v4
+
+  adhoc:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'adhoc'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -74,41 +169,17 @@ jobs:
         id: scrape
         continue-on-error: true
         env:
-          SCRAPE_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode || 'full' }}
-          ROUTE_ID: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.route_id || '' }}
-          ORIGIN: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.origin || '' }}
-          DEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dest || '' }}
-          DEPART: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.depart || '' }}
-          RETURN_DATE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.return_date || '' }}
-          ONLY_ORIGIN: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.only_origin || '' }}
-          SKIP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
-          SCHEDULE: ${{ github.event.schedule }}
+          ROUTE_ID: ${{ github.event.inputs.route_id }}
+          ORIGIN: ${{ github.event.inputs.origin }}
+          DEST: ${{ github.event.inputs.dest }}
+          DEPART: ${{ github.event.inputs.depart }}
+          RETURN_DATE: ${{ github.event.inputs.return_date }}
         run: |
-          if [ "$SCRAPE_MODE" = "adhoc" ]; then
-            args=(python -m scraper.main --route-id "$ROUTE_ID" --origin "$ORIGIN" --dest "$DEST" --depart "$DEPART")
-            if [ -n "$RETURN_DATE" ]; then
-              args+=(--return-date "$RETURN_DATE")
-            fi
-            "${args[@]}"
-          else
-            origin="$ONLY_ORIGIN"
-            if [ -z "$origin" ]; then
-              case "$SCHEDULE" in
-                "17 11 * * *") origin=JFK ;;
-                "17 17 * * *") origin=EWR ;;
-                "17 23 * * *") origin=BOS ;;
-              esac
-            fi
-            if [ -n "$origin" ]; then
-              args=(python -m scraper.main --only-origin "$origin")
-            else
-              args=(python -m scraper.main)
-            fi
-            if [ -n "$SKIP" ]; then
-              args+=(--skip "$SKIP")
-            fi
-            "${args[@]}"
+          args=(python -m scraper.main --route-id "$ROUTE_ID" --origin "$ORIGIN" --dest "$DEST" --depart "$DEPART")
+          if [ -n "$RETURN_DATE" ]; then
+            args+=(--return-date "$RETURN_DATE")
           fi
+          "${args[@]}"
 
       - name: Commit data
         if: ${{ !cancelled() }}
@@ -117,7 +188,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No data changes"
           else
-            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "data: $(date -u +%F)"
+            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "data: ${{ github.event.inputs.route_id }} $(date -u +%F)"
             git push origin HEAD:main || {
               git fetch origin main
               git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main

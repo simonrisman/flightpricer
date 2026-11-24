@@ -36,6 +36,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--route-id", default=None, help="with origin, dest, and depart, scrape one date")
     parser.add_argument("--origin", default=None)
     parser.add_argument("--only-origin", default=None, help="limit a full run to one origin airport")
+    parser.add_argument("--only-route", default=None, help="limit a full run to one route id")
     parser.add_argument("--skip", type=int, default=0, help="skip this many searches already finished in today's slice")
     parser.add_argument("--dest", default=None)
     parser.add_argument("--depart", default=None, help="YYYY-MM-DD")
@@ -142,6 +143,12 @@ def run(argv: list[str] | None = None) -> int:
             offset = 0
         else:
             searches = expand_routes(config.routes, today)
+            only_route = (args.only_route or "").strip().lower()
+            if only_route:
+                _find_route(config, only_route)
+                searches = [item for item in searches if item.route_id == only_route]
+                if not searches:
+                    raise ConfigError(f"no searches for route {only_route}")
             only_origin = (args.only_origin or "").strip().upper()
             if only_origin:
                 searches = [item for item in searches if item.origin == only_origin]
