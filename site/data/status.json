@@ -1,18 +1,18 @@
 {
-  "last_run": "2026-11-24T23:07:31Z",
+  "last_run": "2026-11-24T23:08:39Z",
   "state": "ok",
-  "searches_planned": 315,
-  "searches_attempted": 315,
-  "searches_succeeded": 315,
+  "searches_planned": 378,
+  "searches_attempted": 378,
+  "searches_succeeded": 378,
   "errors": [],
-  "last_success": "2026-11-24T23:07:31Z",
+  "last_success": "2026-11-24T23:08:39Z",
   "coverage": {
-    "total": 315,
-    "scheduled": 315,
+    "total": 378,
+    "scheduled": 378,
     "offset": 0,
-    "origin": "BOS",
+    "origin": "JFK",
     "mode": "price-pass",
-    "calendar_calls": 4,
+    "calendar_calls": 5,
     "detail_calls": 3
   },
   "stopped_early": false
