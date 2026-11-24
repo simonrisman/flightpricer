@@ -313,6 +313,137 @@ function paintQueue() {
   });
 }
 
+let liveRunId = null;
+let nextRunCheck = 0;
+
+function pairJobName(job) {
+  return /^[A-Z]{3}-[A-Z]{3}$/.test(job.name);
+}
+
+function legFromJob(job) {
+  const parts = job.name.split("-");
+  return {
+    route: "",
+    label: "",
+    origin: parts[0],
+    dest: parts[1],
+    state: "pending",
+    started_at: null,
+    finished_at: null,
+  };
+}
+
+function applyLiveJobs(queue, run, jobs) {
+  const source = queue && queue.legs && queue.legs.length
+    ? queue.legs
+    : jobs.filter(pairJobName).map(legFromJob);
+  const byName = {};
+  jobs.forEach(function (job) {
+    if (pairJobName(job)) byName[job.name] = job;
+  });
+  const sameRun = String((queue && queue.run_id) || "") === String(run.id);
+  const legs = source.map(function (leg) {
+    const job = byName[leg.origin + "-" + leg.dest];
+    if (!job) return leg;
+    if (job.status === "in_progress") {
+      return Object.assign({}, leg, { state: "running", started_at: job.started_at || leg.started_at });
+    }
+    if (job.status === "queued" || job.status === "waiting" || job.status === "pending") {
+      return Object.assign({}, leg, { state: "pending", started_at: null });
+    }
+    if (job.status !== "completed") return leg;
+    if (sameRun && (leg.state === "done" || leg.state === "failed")) return leg;
+    if (job.conclusion === "failure") {
+      return Object.assign({}, leg, { state: "failed", finished_at: job.completed_at || leg.finished_at });
+    }
+    if (job.conclusion === "success") {
+      return Object.assign({}, leg, { state: "done", finished_at: job.completed_at || leg.finished_at });
+    }
+    return Object.assign({}, leg, { state: "pending", started_at: null });
+  });
+  return {
+    updated_at: run.updated_at || (queue && queue.updated_at) || null,
+    run_id: run.id,
+    run_url: run.html_url,
+    legs: legs,
+  };
+}
+
+async function githubJson(path) {
+  const response = await fetch("https://api.github.com/repos/" + DEFAULT_REPO + path, {
+    headers: { Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" },
+    cache: "no-store",
+  });
+  if (!response.ok) return null;
+  return response.json();
+}
+
+async function liveScrapeRun() {
+  const data = await githubJson("/actions/workflows/scrape.yml/runs?per_page=5&t=" + Date.now());
+  const runs = (data && data.workflow_runs) || [];
+  return runs.filter(function (run) { return run.status !== "completed"; })[0] || null;
+}
+
+async function runJobs(runId) {
+  const jobs = [];
+  let page = 1;
+  while (page < 6) {
+    const data = await githubJson(
+      "/actions/runs/" + runId + "/jobs?per_page=100&page=" + page + "&t=" + Date.now()
+    );
+    if (!data) return null;
+    const batch = data.jobs || [];
+    jobs.push.apply(jobs, batch);
+    if (batch.length < 100) return jobs;
+    page += 1;
+  }
+  return jobs;
+}
+
+function jobsStillGoing(jobs) {
+  return jobs.some(function (job) {
+    return pairJobName(job) && (job.status === "in_progress" || job.status === "queued" || job.status === "waiting" || job.status === "pending");
+  });
+}
+
+async function withLiveJobs(fileQueue) {
+  try {
+    let run = null;
+    if (liveRunId) {
+      run = {
+        id: liveRunId,
+        html_url: "https://github.com/" + DEFAULT_REPO + "/actions/runs/" + liveRunId,
+        updated_at: new Date().toISOString(),
+      };
+    } else if (Date.now() >= nextRunCheck) {
+      run = await liveScrapeRun();
+      nextRunCheck = Date.now() + 180000;
+      if (run) liveRunId = run.id;
+    }
+    if (!run) return fileQueue;
+    const jobs = await runJobs(run.id);
+    if (!jobs) {
+      if (state.queue && String(state.queue.run_id) === String(liveRunId)) return state.queue;
+      return fileQueue;
+    }
+    if (!jobsStillGoing(jobs)) {
+      liveRunId = null;
+      nextRunCheck = Date.now() + 180000;
+    }
+    return applyLiveJobs(fileQueue || { legs: [] }, run, jobs);
+  } catch (err) {
+    return fileQueue;
+  }
+}
+
+async function refreshQueue() {
+  const fileQueue = await loadJson("data/queue.json");
+  const queue = await withLiveJobs(fileQueue);
+  if (!queue) return;
+  state.queue = queue;
+  paintQueue();
+}
+
 function stopsLabel(stops) {
   if (stops == null) return "—";
   if (stops === 0) return "Nonstop";
@@ -1277,7 +1408,7 @@ async function boot() {
     state.config = loaded[0];
     state.latest = loaded[1] || { routes: [], currency: "USD" };
     state.status = loaded[2];
-    state.queue = loaded[3];
+    state.queue = await withLiveJobs(loaded[3]);
     const ids = state.config.routes.map(function (route) { return route.id; });
     await Promise.all(
       ids.map(async function (id) {
@@ -1285,12 +1416,7 @@ async function boot() {
       })
     );
     render();
-    setInterval(async function () {
-      const queue = await loadJson("data/queue.json");
-      if (!queue) return;
-      state.queue = queue;
-      paintQueue();
-    }, 60000);
+    setInterval(refreshQueue, 60000);
   } catch (err) {
     setAction("Could not load the dashboard." + (err && err.message ? " " + err.message : ""));
   }
