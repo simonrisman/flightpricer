@@ -1,27 +1,27 @@
 {
-  "last_run": "2026-11-24T17:27:06Z",
+  "last_run": "2026-11-24T18:05:14Z",
   "state": "degraded",
-  "searches_planned": 405,
-  "searches_attempted": 405,
-  "searches_succeeded": 302,
+  "searches_planned": 486,
+  "searches_attempted": 486,
+  "searches_succeeded": 39,
   "errors": [
-    "sgn|BOS|SGN|2027-02-15|2027-02-22: AttributeError: 'NoneType' object has no attribute 'text'",
-    "sgn|BOS|SGN|2027-02-15|2027-02-23: no flights",
-    "sgn|BOS|SGN|2027-02-15|2027-02-26: no flights",
-    "sgn|BOS|SGN|2027-02-15|2027-03-01: no flights",
-    "sgn|BOS|SGN|2027-02-16|2027-02-27: no flights",
-    "sgn|BOS|SGN|2027-02-17|2027-02-24: no flights",
-    "sgn|BOS|SGN|2027-02-18|2027-03-04: no flights",
-    "sgn|BOS|SGN|2027-02-19|2027-02-27: no flights",
-    "sgn|BOS|SGN|2027-02-19|2027-03-04: no flights",
-    "sgn|BOS|SGN|2027-02-19|2027-03-06: no flights"
+    "han|JFK|HAN|2027-10-04|2027-10-12: no flights",
+    "han|JFK|HAN|2027-10-04|2027-10-17: no flights",
+    "han|JFK|HAN|2027-10-04|2027-10-18: no flights",
+    "han|JFK|HAN|2027-10-05|2027-10-19: no flights",
+    "han|JFK|HAN|2027-10-06|2027-10-15: no flights",
+    "han|JFK|HAN|2027-10-06|2027-10-21: no flights",
+    "han|JFK|HAN|2027-10-07|2027-10-14: no flights",
+    "han|JFK|HAN|2027-10-07|2027-10-18: no flights",
+    "han|JFK|HAN|2027-10-07|2027-10-19: no flights",
+    "han|JFK|HAN|2027-10-07|2027-10-21: no flights"
   ],
-  "last_success": "2026-11-24T17:27:06Z",
+  "last_success": "2026-11-24T18:05:14Z",
   "coverage": {
-    "total": 405,
-    "scheduled": 405,
+    "total": 486,
+    "scheduled": 486,
     "offset": 0,
-    "origin": "BOS"
+    "origin": "JFK"
   },
   "stopped_early": false
 }
