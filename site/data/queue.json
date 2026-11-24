@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T13:28:55Z",
+  "updated_at": "2026-11-24T13:57:29Z",
   "run_id": "45318277847",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45318277847",
   "legs": [
@@ -188,9 +188,9 @@
       "label": "Barcelona",
       "origin": "BOS",
       "dest": "BCN",
-      "state": "running",
+      "state": "done",
       "started_at": "2026-11-24T13:28:55Z",
-      "finished_at": "2026-11-23T18:31:13Z"
+      "finished_at": "2026-11-24T13:57:29Z"
     },
     {
       "route": "tyo",
