@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T19:31:40Z",
+  "updated_at": "2026-11-24T20:14:45Z",
   "run_id": "45318277847",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45318277847",
   "legs": [
@@ -296,9 +296,9 @@
       "label": "Hanoi",
       "origin": "BOS",
       "dest": "HAN",
-      "state": "running",
+      "state": "done",
       "started_at": "2026-11-24T19:31:40Z",
-      "finished_at": "2026-11-23T21:22:32Z"
+      "finished_at": "2026-11-24T20:14:45Z"
     },
     {
       "route": "bkk",
