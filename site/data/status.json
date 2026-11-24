@@ -1,18 +1,20 @@
 {
-  "last_run": "2026-11-24T22:57:38Z",
-  "state": "ok",
-  "searches_planned": 360,
-  "searches_attempted": 360,
-  "searches_succeeded": 360,
-  "errors": [],
-  "last_success": "2026-11-24T22:57:38Z",
+  "last_run": "2026-11-24T23:00:36Z",
+  "state": "degraded",
+  "searches_planned": 450,
+  "searches_attempted": 450,
+  "searches_succeeded": 450,
+  "errors": [
+    "mad|JFK|MAD|2027-04-12|2027-04-19: itinerary empty result"
+  ],
+  "last_success": "2026-11-24T23:00:36Z",
   "coverage": {
-    "total": 360,
-    "scheduled": 360,
+    "total": 450,
+    "scheduled": 450,
     "offset": 0,
-    "origin": "EWR",
+    "origin": "JFK",
     "mode": "price-pass",
-    "calendar_calls": 4,
+    "calendar_calls": 5,
     "detail_calls": 3
   },
   "stopped_early": false
