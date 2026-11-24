@@ -1,27 +1,27 @@
 {
-  "last_run": "2026-11-24T08:49:07Z",
+  "last_run": "2026-11-24T09:22:08Z",
   "state": "degraded",
   "searches_planned": 360,
   "searches_attempted": 360,
-  "searches_succeeded": 180,
+  "searches_succeeded": 173,
   "errors": [
-    "par|JFK|CDG|2027-05-17|2027-05-25: no flights",
-    "par|JFK|CDG|2027-05-17|2027-05-28: no flights",
-    "par|JFK|CDG|2027-05-17|2027-05-29: no flights",
-    "par|JFK|CDG|2027-05-17|2027-05-30: no flights",
-    "par|JFK|CDG|2027-05-18|2027-05-25: no flights",
-    "par|JFK|CDG|2027-05-18|2027-05-26: no flights",
-    "par|JFK|CDG|2027-05-18|2027-05-27: no flights",
-    "par|JFK|CDG|2027-05-18|2027-05-28: no flights",
-    "par|JFK|CDG|2027-05-18|2027-05-30: no flights",
-    "par|JFK|CDG|2027-05-18|2027-05-31: no flights"
+    "par|EWR|CDG|2027-05-17|2027-05-24: no flights",
+    "par|EWR|CDG|2027-05-17|2027-05-25: no flights",
+    "par|EWR|CDG|2027-05-17|2027-05-26: no flights",
+    "par|EWR|CDG|2027-05-17|2027-05-27: no flights",
+    "par|EWR|CDG|2027-05-17|2027-05-28: no flights",
+    "par|EWR|CDG|2027-05-17|2027-05-29: no flights",
+    "par|EWR|CDG|2027-05-17|2027-05-30: no flights",
+    "par|EWR|CDG|2027-05-17|2027-05-31: no flights",
+    "par|EWR|CDG|2027-05-18|2027-05-25: no flights",
+    "par|EWR|CDG|2027-05-18|2027-05-27: no flights"
   ],
-  "last_success": "2026-11-24T08:49:07Z",
+  "last_success": "2026-11-24T09:22:08Z",
   "coverage": {
     "total": 360,
     "scheduled": 360,
     "offset": 0,
-    "origin": "JFK"
+    "origin": "EWR"
   },
   "stopped_early": false
 }
