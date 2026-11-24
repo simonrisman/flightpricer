@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T23:13:10Z",
+  "updated_at": "2026-11-24T23:13:36Z",
   "run_id": "45503110965",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45503110965",
   "legs": [
@@ -233,9 +233,9 @@
       "label": "Tokyo",
       "origin": "BOS",
       "dest": "HND",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-24T23:13:10Z",
-      "finished_at": "2026-11-24T16:48:38Z"
+      "finished_at": "2026-11-24T23:13:36Z"
     },
     {
       "route": "tyo",
