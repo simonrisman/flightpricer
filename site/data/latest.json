@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T23:16:39Z",
+  "generated_at": "2026-11-24T23:17:01Z",
   "currency": "USD",
   "routes": [
     {
@@ -188562,13 +188562,14 @@
           "arrive_time": "13:15",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDRqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTE0agUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:49:01Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1211,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-04|2027-10-14",
@@ -188680,13 +188681,14 @@
           "arrive_time": "13:15",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDRqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTE3agUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:49:17Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1261,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|BOS|HAN|2027-10-04|2027-10-18",
@@ -188727,13 +188729,14 @@
           "arrive_time": "22:15",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDRqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTE4agUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:49:20Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 902,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-04|2027-10-19",
@@ -188797,13 +188800,14 @@
           "arrive_time": "13:15",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDVqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTEyagUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:49:31Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1211,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-05|2027-10-12",
@@ -188867,13 +188871,14 @@
           "arrive_time": "13:15",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDVqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTEzagUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:49:37Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1211,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-05|2027-10-13",
@@ -188937,13 +188942,14 @@
           "arrive_time": "21:35",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDVqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTE0agUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:49:43Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1084,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-05|2027-10-14",
@@ -189056,13 +189062,14 @@
           "arrive_time": "21:35",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDVqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTE2agUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:49:53Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1252,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-05|2027-10-16",
@@ -189126,13 +189133,14 @@
           "arrive_time": "21:35",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDVqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTE3agUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:49:59Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1244,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-05|2027-10-17",
@@ -189196,13 +189204,14 @@
           "arrive_time": "13:15",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDVqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTE4agUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:50:04Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1211,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-05|2027-10-18",
@@ -189266,13 +189275,14 @@
           "arrive_time": "13:15",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDVqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTE5agUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:50:11Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1211,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|BOS|HAN|2027-10-05|2027-10-20",
@@ -189312,13 +189322,14 @@
           "arrive_time": "13:15",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMTAtMDVqBRIDRVdScgUSA0hBThoaEgoyMDI3LTEwLTIwagUSA0hBTnIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T18:50:17Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": null,
           "delta": null,
           "best_ever": 1211,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-24T23:17:01Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-05|2027-10-20",
