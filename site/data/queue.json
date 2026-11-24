@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T16:48:58Z",
+  "updated_at": "2026-11-24T17:22:49Z",
   "run_id": "45318277847",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45318277847",
   "legs": [
@@ -242,9 +242,9 @@
       "label": "Tokyo",
       "origin": "BOS",
       "dest": "NRT",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-24T16:48:58Z",
-      "finished_at": null
+      "finished_at": "2026-11-24T17:22:49Z"
     },
     {
       "route": "sgn",
