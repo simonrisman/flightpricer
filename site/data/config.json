@@ -316,7 +316,8 @@
       "label": "Hanoi",
       "origins": [
         "JFK",
-        "EWR"
+        "EWR",
+        "BOS"
       ],
       "destinations": [
         "HAN"

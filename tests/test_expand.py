@@ -39,7 +39,7 @@ def test_real_config_matches_the_route_list():
         label, dests, start, end = EXPECTED[route.id]
         assert route.label == label
         assert route.destinations == dests
-        assert route.origins == (["JFK", "EWR"] if route.id == "han" else ORIGINS)
+        assert route.origins == ORIGINS
         assert route.trip == "round_trip"
         assert route.active is True
         assert route.depart_window.start.isoformat() == start

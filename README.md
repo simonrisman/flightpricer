@@ -34,7 +34,7 @@ The scrape is scheduled for 11:17 UTC (about 6:17am Eastern Standard Time / 7:17
 
 ## Routes
 
-All of these are round trips from JFK, EWR, and BOS, except Hanoi, which is JFK and Newark only. Edit the windows in `config.yaml` or on the site.
+All of these are round trips from JFK, EWR, and BOS. Edit the windows in `config.yaml` or on the site.
 
 | Route | Window | Days | Nights |
 | --- | --- | --- | --- |
