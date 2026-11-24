@@ -1,27 +1,27 @@
 {
-  "last_run": "2026-11-24T03:33:37Z",
+  "last_run": "2026-11-24T03:50:44Z",
   "state": "degraded",
   "searches_planned": 189,
   "searches_attempted": 189,
-  "searches_succeeded": 143,
+  "searches_succeeded": 124,
   "errors": [
-    "bog|EWR|BOG|2027-03-01|2027-03-09: no flights",
-    "bog|EWR|BOG|2027-03-01|2027-03-10: no flights",
-    "bog|EWR|BOG|2027-03-01|2027-03-12: no flights",
-    "bog|EWR|BOG|2027-03-01|2027-03-13: no flights",
-    "bog|EWR|BOG|2027-03-01|2027-03-16: no flights",
-    "bog|EWR|BOG|2027-03-02|2027-03-09: no flights",
-    "bog|EWR|BOG|2027-03-02|2027-03-11: no flights",
-    "bog|EWR|BOG|2027-03-02|2027-03-13: no flights",
-    "bog|EWR|BOG|2027-03-02|2027-03-16: no flights",
-    "bog|EWR|BOG|2027-03-02|2027-03-17: no flights"
+    "bog|BOS|BOG|2027-03-03|2027-03-15: no flights",
+    "bog|BOS|BOG|2027-03-14|2027-03-22: no flights",
+    "bog|BOS|BOG|2027-03-14|2027-03-23: no flights",
+    "bog|BOS|BOG|2027-03-14|2027-03-27: no flights",
+    "bog|BOS|BOG|2027-03-14|2027-03-29: no flights",
+    "bog|BOS|BOG|2027-03-15|2027-03-22: no flights",
+    "bog|BOS|BOG|2027-03-15|2027-03-23: no flights",
+    "bog|BOS|BOG|2027-03-15|2027-03-24: no flights",
+    "bog|BOS|BOG|2027-03-15|2027-03-25: no flights",
+    "bog|BOS|BOG|2027-03-15|2027-03-26: no flights"
   ],
-  "last_success": "2026-11-24T03:33:37Z",
+  "last_success": "2026-11-24T03:50:44Z",
   "coverage": {
     "total": 189,
     "scheduled": 189,
     "offset": 0,
-    "origin": "EWR"
+    "origin": "BOS"
   },
   "stopped_early": false
 }
