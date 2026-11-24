@@ -45,6 +45,7 @@ const state = {
   open: {},
   openFares: {},
   originGroup: "nyc",
+  queue: null,
 };
 
 function el(tag, attrs, children) {
@@ -161,6 +162,110 @@ function relativeTime(when) {
 
 function place(code) {
   return AIRPORTS[code] ? AIRPORTS[code] + " (" + code + ")" : code;
+}
+
+const ORIGIN_SHORT = { JFK: "JFK", EWR: "Newark", BOS: "Boston" };
+
+function pairName(leg) {
+  const origin = ORIGIN_SHORT[leg.origin] || leg.origin;
+  const dest = AIRPORTS[leg.dest] || leg.dest;
+  return origin + "–" + dest;
+}
+
+function ageOf(iso) {
+  if (!iso) return "";
+  const when = new Date(iso);
+  if (Number.isNaN(when.getTime())) return "";
+  return relativeTime(when);
+}
+
+function legsForRoute(route, origins) {
+  const legs = (state.queue && state.queue.legs) || [];
+  const dests = route.destinations || [];
+  return legs.filter(function (leg) {
+    return leg.route === route.id && origins.indexOf(leg.origin) !== -1 && dests.indexOf(leg.dest) !== -1;
+  });
+}
+
+const DEST_SHORT = { HND: "Haneda", NRT: "Narita" };
+
+function legPhrase(leg) {
+  if (leg.state === "running") return "scraping now";
+  const age = ageOf(leg.finished_at);
+  if (leg.state === "failed") return age ? "failed " + age : "failed";
+  if (age) return "scraped " + age;
+  return "not scraped yet";
+}
+
+function cardScrapeLine(route) {
+  const grouped = {};
+  legsForRoute(route, originsForGroup()).forEach(function (leg) {
+    (grouped[leg.origin] = grouped[leg.origin] || []).push(leg);
+  });
+  return Object.keys(grouped).map(function (origin) {
+    const group = grouped[origin];
+    const label = ORIGIN_SHORT[origin] || origin;
+    const phrases = group.map(legPhrase);
+    const same = phrases.every(function (phrase) { return phrase === phrases[0]; });
+    if (same) return label + " " + phrases[0];
+    return group.map(function (leg) {
+      return label + " " + (DEST_SHORT[leg.dest] || AIRPORTS[leg.dest] || leg.dest) + " " + legPhrase(leg);
+    }).join(" · ");
+  }).join(" · ");
+}
+
+function legStatus(leg) {
+  if (leg.state === "running") {
+    const age = ageOf(leg.started_at);
+    return age ? "scraping now · started " + age : "scraping now";
+  }
+  if (leg.state === "done") return "scraped " + (ageOf(leg.finished_at) || "just now");
+  if (leg.state === "failed") return "failed " + (ageOf(leg.finished_at) || "just now");
+  const age = ageOf(leg.finished_at);
+  return age ? "waiting · last scraped " + age : "waiting";
+}
+
+function renderQueue() {
+  const queue = state.queue;
+  const box = el("div", { class: "queue-card" });
+  const head = el("div", { class: "queue-head" }, [el("h2", {}, ["Scrape queue"])]);
+  if (queue && queue.run_url) {
+    head.append(el("a", { href: queue.run_url }, ["Open the run"]));
+  }
+  box.append(head);
+  const legs = (queue && queue.legs) || [];
+  if (!legs.length) {
+    box.append(el("p", { class: "queue-now" }, ["The queue shows up here once a scrape starts."]));
+    return box;
+  }
+  const running = legs.filter(function (leg) { return leg.state === "running"; })[0];
+  const next = legs.filter(function (leg) { return leg.state === "pending"; })[0];
+  box.append(el("p", { class: "queue-now" }, [
+    running ? "Now: " + pairName(running) : "Nothing is scraping right now.",
+  ]));
+  box.append(el("p", { class: "queue-next" }, [
+    next ? "Up next: " + pairName(next) : "Nothing is waiting.",
+  ]));
+  const list = el("ol", { class: "queue-list" });
+  legs.forEach(function (leg) {
+    list.append(el("li", { class: "queue-leg " + (leg.state || "pending") }, [
+      el("span", { class: "queue-pair" }, [pairName(leg)]),
+      el("span", { class: "queue-age" }, [legStatus(leg)]),
+    ]));
+  });
+  box.append(list);
+  return box;
+}
+
+function paintQueue() {
+  const host = document.getElementById("queue");
+  if (host) host.replaceChildren(renderQueue());
+  document.querySelectorAll(".fare-age").forEach(function (node) {
+    const route = (state.config ? state.config.routes : []).filter(function (item) {
+      return item.id === node.dataset.route;
+    })[0];
+    if (route) node.textContent = cardScrapeLine(route);
+  });
 }
 
 function stopsLabel(stops) {
@@ -1043,6 +1148,7 @@ function renderRoute(route) {
     el("span", { class: "route-name" }, [route.label + (route.active === false ? " · paused" : "")]),
     el("strong", { class: "route-price" }, [fare ? money(fare.price) : "—"]),
     el("span", { class: "fare-dates" }, [dates]),
+    el("span", { class: "fare-age", "data-route": route.id }, [cardScrapeLine(route)]),
   ]);
   const edit = el("div", { class: "route-edit", id: "edit-" + route.id });
   if (!open) edit.hidden = true;
@@ -1068,6 +1174,7 @@ function renderRoute(route) {
 
 function render() {
   renderHeader();
+  paintQueue();
   const host = document.getElementById("routes");
   if (state.focus) {
     state.open[state.focus.routeId] = true;
@@ -1114,10 +1221,12 @@ async function boot() {
     const configPromise = loadConfig();
     const latestPromise = loadJson("data/latest.json");
     const statusPromise = loadJson("data/status.json");
-    const loaded = await Promise.all([configPromise, latestPromise, statusPromise]);
+    const queuePromise = loadJson("data/queue.json");
+    const loaded = await Promise.all([configPromise, latestPromise, statusPromise, queuePromise]);
     state.config = loaded[0];
     state.latest = loaded[1] || { routes: [], currency: "USD" };
     state.status = loaded[2];
+    state.queue = loaded[3];
     const ids = state.config.routes.map(function (route) { return route.id; });
     await Promise.all(
       ids.map(async function (id) {
@@ -1125,6 +1234,12 @@ async function boot() {
       })
     );
     render();
+    setInterval(async function () {
+      const queue = await loadJson("data/queue.json");
+      if (!queue) return;
+      state.queue = queue;
+      paintQueue();
+    }, 60000);
   } catch (err) {
     document.getElementById("run-line").textContent = "Could not load the dashboard.";
     setAction(err.message);

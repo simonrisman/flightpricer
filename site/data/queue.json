@@ -1,0 +1,412 @@
+{
+  "updated_at": "2026-11-24T03:14:45Z",
+  "run_id": null,
+  "run_url": null,
+  "legs": [
+    {
+      "route": "bog",
+      "label": "Bogotá",
+      "origin": "JFK",
+      "dest": "BOG",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T17:51:12Z"
+    },
+    {
+      "route": "bog",
+      "label": "Bogotá",
+      "origin": "EWR",
+      "dest": "BOG",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T17:49:59Z"
+    },
+    {
+      "route": "bog",
+      "label": "Bogotá",
+      "origin": "BOS",
+      "dest": "BOG",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T19:51:28Z"
+    },
+    {
+      "route": "mde",
+      "label": "Medellín",
+      "origin": "JFK",
+      "dest": "MDE",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "mde",
+      "label": "Medellín",
+      "origin": "EWR",
+      "dest": "MDE",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "mde",
+      "label": "Medellín",
+      "origin": "BOS",
+      "dest": "MDE",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "lim",
+      "label": "Lima",
+      "origin": "JFK",
+      "dest": "LIM",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "lim",
+      "label": "Lima",
+      "origin": "EWR",
+      "dest": "LIM",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "lim",
+      "label": "Lima",
+      "origin": "BOS",
+      "dest": "LIM",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T22:38:32Z"
+    },
+    {
+      "route": "eze",
+      "label": "Buenos Aires",
+      "origin": "JFK",
+      "dest": "EZE",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T17:56:05Z"
+    },
+    {
+      "route": "eze",
+      "label": "Buenos Aires",
+      "origin": "EWR",
+      "dest": "EZE",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T17:55:06Z"
+    },
+    {
+      "route": "eze",
+      "label": "Buenos Aires",
+      "origin": "BOS",
+      "dest": "EZE",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T20:27:59Z"
+    },
+    {
+      "route": "par",
+      "label": "Paris",
+      "origin": "JFK",
+      "dest": "CDG",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "par",
+      "label": "Paris",
+      "origin": "EWR",
+      "dest": "CDG",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "par",
+      "label": "Paris",
+      "origin": "BOS",
+      "dest": "CDG",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "mad",
+      "label": "Madrid",
+      "origin": "JFK",
+      "dest": "MAD",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "mad",
+      "label": "Madrid",
+      "origin": "EWR",
+      "dest": "MAD",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "mad",
+      "label": "Madrid",
+      "origin": "BOS",
+      "dest": "MAD",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T23:11:19Z"
+    },
+    {
+      "route": "bcn",
+      "label": "Barcelona",
+      "origin": "JFK",
+      "dest": "BCN",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "bcn",
+      "label": "Barcelona",
+      "origin": "EWR",
+      "dest": "BCN",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "bcn",
+      "label": "Barcelona",
+      "origin": "BOS",
+      "dest": "BCN",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T18:31:13Z"
+    },
+    {
+      "route": "tyo",
+      "label": "Tokyo",
+      "origin": "JFK",
+      "dest": "HND",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "tyo",
+      "label": "Tokyo",
+      "origin": "JFK",
+      "dest": "NRT",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "tyo",
+      "label": "Tokyo",
+      "origin": "EWR",
+      "dest": "HND",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "tyo",
+      "label": "Tokyo",
+      "origin": "EWR",
+      "dest": "NRT",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "tyo",
+      "label": "Tokyo",
+      "origin": "BOS",
+      "dest": "HND",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "tyo",
+      "label": "Tokyo",
+      "origin": "BOS",
+      "dest": "NRT",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "sgn",
+      "label": "Ho Chi Minh City",
+      "origin": "JFK",
+      "dest": "SGN",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "sgn",
+      "label": "Ho Chi Minh City",
+      "origin": "EWR",
+      "dest": "SGN",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "sgn",
+      "label": "Ho Chi Minh City",
+      "origin": "BOS",
+      "dest": "SGN",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "han",
+      "label": "Hanoi",
+      "origin": "JFK",
+      "dest": "HAN",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "han",
+      "label": "Hanoi",
+      "origin": "EWR",
+      "dest": "HAN",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "han",
+      "label": "Hanoi",
+      "origin": "BOS",
+      "dest": "HAN",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T21:22:32Z"
+    },
+    {
+      "route": "bkk",
+      "label": "Bangkok",
+      "origin": "JFK",
+      "dest": "BKK",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T17:44:34Z"
+    },
+    {
+      "route": "bkk",
+      "label": "Bangkok",
+      "origin": "EWR",
+      "dest": "BKK",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "bkk",
+      "label": "Bangkok",
+      "origin": "BOS",
+      "dest": "BKK",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T19:33:50Z"
+    },
+    {
+      "route": "tbs",
+      "label": "Tbilisi",
+      "origin": "JFK",
+      "dest": "TBS",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "tbs",
+      "label": "Tbilisi",
+      "origin": "EWR",
+      "dest": "TBS",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "tbs",
+      "label": "Tbilisi",
+      "origin": "BOS",
+      "dest": "TBS",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "pdl",
+      "label": "Ponta Delgada",
+      "origin": "JFK",
+      "dest": "PDL",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "pdl",
+      "label": "Ponta Delgada",
+      "origin": "EWR",
+      "dest": "PDL",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "pdl",
+      "label": "Ponta Delgada",
+      "origin": "BOS",
+      "dest": "PDL",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "fnc",
+      "label": "Funchal",
+      "origin": "JFK",
+      "dest": "FNC",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "fnc",
+      "label": "Funchal",
+      "origin": "EWR",
+      "dest": "FNC",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": null
+    },
+    {
+      "route": "fnc",
+      "label": "Funchal",
+      "origin": "BOS",
+      "dest": "FNC",
+      "state": "pending",
+      "started_at": null,
+      "finished_at": "2026-11-23T21:15:41Z"
+    }
+  ]
+}
