@@ -1,27 +1,27 @@
 {
-  "last_run": "2026-11-24T04:41:53Z",
+  "last_run": "2026-11-24T04:58:58Z",
   "state": "degraded",
-  "searches_planned": 189,
-  "searches_attempted": 189,
-  "searches_succeeded": 117,
+  "searches_planned": 441,
+  "searches_attempted": 441,
+  "searches_succeeded": 241,
   "errors": [
-    "mde|BOS|MDE|2027-03-01|2027-03-08: no flights",
-    "mde|BOS|MDE|2027-03-01|2027-03-10: no flights",
-    "mde|BOS|MDE|2027-03-01|2027-03-14: no flights",
-    "mde|BOS|MDE|2027-03-02|2027-03-09: no flights",
-    "mde|BOS|MDE|2027-03-02|2027-03-10: no flights",
-    "mde|BOS|MDE|2027-03-02|2027-03-14: no flights",
-    "mde|BOS|MDE|2027-03-02|2027-03-16: no flights",
-    "mde|BOS|MDE|2027-03-03|2027-03-10: no flights",
-    "mde|BOS|MDE|2027-03-03|2027-03-14: no flights",
-    "mde|BOS|MDE|2027-03-03|2027-03-15: no flights"
+    "lim|JFK|LIM|2027-01-11|2027-01-19: no flights",
+    "lim|JFK|LIM|2027-01-11|2027-01-24: no flights",
+    "lim|JFK|LIM|2027-01-12|2027-01-22: no flights",
+    "lim|JFK|LIM|2027-01-12|2027-01-27: no flights",
+    "lim|JFK|LIM|2027-01-13|2027-01-22: no flights",
+    "lim|JFK|LIM|2027-01-13|2027-01-24: no flights",
+    "lim|JFK|LIM|2027-01-13|2027-01-25: no flights",
+    "lim|JFK|LIM|2027-01-13|2027-01-26: no flights",
+    "lim|JFK|LIM|2027-01-13|2027-01-28: no flights",
+    "lim|JFK|LIM|2027-01-14|2027-01-21: no flights"
   ],
-  "last_success": "2026-11-24T04:41:53Z",
+  "last_success": "2026-11-24T04:58:58Z",
   "coverage": {
-    "total": 189,
-    "scheduled": 189,
+    "total": 441,
+    "scheduled": 441,
     "offset": 0,
-    "origin": "BOS"
+    "origin": "JFK"
   },
   "stopped_early": false
 }
