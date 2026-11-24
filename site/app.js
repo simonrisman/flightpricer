@@ -308,10 +308,20 @@ function routeRows(route) {
   });
 }
 
+function dataUrl(path) {
+  const local = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+  if (local) return path;
+  return "https://raw.githubusercontent.com/" + DEFAULT_REPO + "/main/site/" + path;
+}
+
 async function loadJson(url) {
-  const response = await fetch(url + (url.includes("?") ? "&" : "?") + "t=" + Date.now(), { cache: "no-store" });
-  if (!response.ok) return null;
-  return response.json();
+  const local = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+  const response = await fetch(dataUrl(url) + "?t=" + Date.now(), { cache: "no-store" });
+  if (response.ok) return response.json();
+  if (local) return null;
+  const fallback = await fetch(url + "?t=" + Date.now(), { cache: "no-store" });
+  if (!fallback.ok) return null;
+  return fallback.json();
 }
 
 async function loadConfig() {

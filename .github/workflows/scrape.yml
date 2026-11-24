@@ -68,6 +68,8 @@ jobs:
         env:
           RUN_ID: ${{ github.run_id }}
           RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           python -m scraper.queue init --run-id "$RUN_ID" --run-url "$RUN_URL"
           python - << 'PY'
@@ -78,6 +80,7 @@ jobs:
               handle.write("legs=" + json.dumps(legs) + "\n")
           PY
           git add site/data/queue.json
+          published=0
           if git diff --cached --quiet; then
             echo "Queue already current"
           else
@@ -87,6 +90,10 @@ jobs:
               git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main
               git push origin HEAD:main
             }
+            published=1
+          fi
+          if [ "$published" = 1 ]; then
+            gh workflow run pages.yml --ref main
           fi
 
   scrape:
@@ -118,9 +125,12 @@ jobs:
           ROUTE: ${{ matrix.leg.route }}
           ORIGIN: ${{ matrix.leg.origin }}
           DEST: ${{ matrix.leg.dest }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           python -m scraper.queue mark --route "$ROUTE" --origin "$ORIGIN" --dest "$DEST" --state running
           git add site/data/queue.json
+          published=0
           if git diff --cached --quiet; then
             echo "Queue already running"
           else
@@ -130,6 +140,10 @@ jobs:
               git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main
               git push origin HEAD:main
             }
+            published=1
+          fi
+          if [ "$published" = 1 ]; then
+            gh workflow run pages.yml --ref main
           fi
 
       - name: Scrape
@@ -154,6 +168,8 @@ jobs:
           ORIGIN: ${{ matrix.leg.origin }}
           DEST: ${{ matrix.leg.dest }}
           SCRAPE_OUTCOME: ${{ steps.scrape.outcome }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           state=done
           if [ "$SCRAPE_OUTCOME" != "success" ]; then
@@ -161,6 +177,7 @@ jobs:
           fi
           python -m scraper.queue mark --route "$ROUTE" --origin "$ORIGIN" --dest "$DEST" --state "$state"
           git add site/data/latest.json site/data/status.json site/data/history site/data/queue.json
+          published=0
           if git diff --cached --quiet; then
             echo "No data changes"
           else
@@ -170,6 +187,10 @@ jobs:
               git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main
               git push origin HEAD:main
             }
+            published=1
+          fi
+          if [ "$published" = 1 ]; then
+            gh workflow run pages.yml --ref main
           fi
 
   adhoc:
@@ -207,8 +228,12 @@ jobs:
 
       - name: Commit data
         if: ${{ !cancelled() }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           git add site/data/latest.json site/data/status.json site/data/history
+          published=0
           if git diff --cached --quiet; then
             echo "No data changes"
           else
@@ -218,6 +243,10 @@ jobs:
               git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main
               git push origin HEAD:main
             }
+            published=1
+          fi
+          if [ "$published" = 1 ]; then
+            gh workflow run pages.yml --ref main
           fi
 
   keepalive:
