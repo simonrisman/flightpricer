@@ -41,8 +41,6 @@ on:
 permissions:
   contents: write
   actions: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'adhoc' && 'scrape-adhoc' || 'scrape' }}
@@ -86,9 +84,6 @@ jobs:
     if: needs.routes.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 360
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       fail-fast: false
       max-parallel: 1
@@ -137,25 +132,10 @@ jobs:
             }
           fi
 
-      - uses: actions/configure-pages@v5
-        if: ${{ !cancelled() }}
-
-      - uses: actions/upload-pages-artifact@v3
-        if: ${{ !cancelled() }}
-        with:
-          path: site
-
-      - id: deployment
-        if: ${{ !cancelled() }}
-        uses: actions/deploy-pages@v4
-
   adhoc:
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'adhoc'
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -199,18 +179,6 @@ jobs:
               git push origin HEAD:main
             }
           fi
-
-      - uses: actions/configure-pages@v5
-        if: ${{ !cancelled() }}
-
-      - uses: actions/upload-pages-artifact@v3
-        if: ${{ !cancelled() }}
-        with:
-          path: site
-
-      - id: deployment
-        if: ${{ !cancelled() }}
-        uses: actions/deploy-pages@v4
 
   keepalive:
     runs-on: ubuntu-latest
