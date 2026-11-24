@@ -1,27 +1,27 @@
 {
-  "last_run": "2026-11-24T03:16:21Z",
+  "last_run": "2026-11-24T03:33:37Z",
   "state": "degraded",
   "searches_planned": 189,
   "searches_attempted": 189,
-  "searches_succeeded": 109,
+  "searches_succeeded": 143,
   "errors": [
-    "bog|JFK|BOG|2027-03-01|2027-03-11: no flights",
-    "bog|JFK|BOG|2027-03-01|2027-03-12: no flights",
-    "bog|JFK|BOG|2027-03-01|2027-03-13: no flights",
-    "bog|JFK|BOG|2027-03-01|2027-03-16: no flights",
-    "bog|JFK|BOG|2027-03-02|2027-03-11: no flights",
-    "bog|JFK|BOG|2027-03-02|2027-03-12: no flights",
-    "bog|JFK|BOG|2027-03-03|2027-03-11: no flights",
-    "bog|JFK|BOG|2027-03-03|2027-03-12: no flights",
-    "bog|JFK|BOG|2027-03-03|2027-03-13: no flights",
-    "bog|JFK|BOG|2027-03-03|2027-03-14: no flights"
+    "bog|EWR|BOG|2027-03-01|2027-03-09: no flights",
+    "bog|EWR|BOG|2027-03-01|2027-03-10: no flights",
+    "bog|EWR|BOG|2027-03-01|2027-03-12: no flights",
+    "bog|EWR|BOG|2027-03-01|2027-03-13: no flights",
+    "bog|EWR|BOG|2027-03-01|2027-03-16: no flights",
+    "bog|EWR|BOG|2027-03-02|2027-03-09: no flights",
+    "bog|EWR|BOG|2027-03-02|2027-03-11: no flights",
+    "bog|EWR|BOG|2027-03-02|2027-03-13: no flights",
+    "bog|EWR|BOG|2027-03-02|2027-03-16: no flights",
+    "bog|EWR|BOG|2027-03-02|2027-03-17: no flights"
   ],
-  "last_success": "2026-11-24T03:16:21Z",
+  "last_success": "2026-11-24T03:33:37Z",
   "coverage": {
     "total": 189,
     "scheduled": 189,
     "offset": 0,
-    "origin": "JFK"
+    "origin": "EWR"
   },
   "stopped_early": false
 }
