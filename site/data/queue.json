@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T11:09:03Z",
+  "updated_at": "2026-11-24T11:49:28Z",
   "run_id": "45318277847",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45318277847",
   "legs": [
@@ -152,9 +152,9 @@
       "label": "Madrid",
       "origin": "EWR",
       "dest": "MAD",
-      "state": "running",
+      "state": "done",
       "started_at": "2026-11-24T11:09:03Z",
-      "finished_at": null
+      "finished_at": "2026-11-24T11:49:28Z"
     },
     {
       "route": "mad",
