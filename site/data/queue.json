@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T22:49:57Z",
+  "updated_at": "2026-11-24T22:50:14Z",
   "run_id": "45503110965",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45503110965",
   "legs": [
@@ -80,8 +80,8 @@
       "label": "Lima",
       "origin": "BOS",
       "dest": "LIM",
-      "state": "pending",
-      "started_at": null,
+      "state": "running",
+      "started_at": "2026-11-24T22:50:14Z",
       "finished_at": "2026-11-24T06:58:18Z"
     },
     {
