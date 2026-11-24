@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-24T03:14:45Z",
-  "run_id": null,
-  "run_url": null,
+  "updated_at": "2026-11-24T03:16:07Z",
+  "run_id": "45318277847",
+  "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45318277847",
   "legs": [
     {
       "route": "bog",
