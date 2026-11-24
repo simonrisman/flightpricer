@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T23:21:48Z",
+  "updated_at": "2026-11-24T23:22:08Z",
   "run_id": "45503110965",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45503110965",
   "legs": [
@@ -359,9 +359,9 @@
       "label": "Ponta Delgada",
       "origin": "JFK",
       "dest": "PDL",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-24T23:21:48Z",
-      "finished_at": null
+      "finished_at": "2026-11-24T23:22:08Z"
     },
     {
       "route": "pdl",
