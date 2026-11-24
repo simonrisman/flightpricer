@@ -259,6 +259,117 @@ routes:
     assert "scheduled 4" in capsys.readouterr().out
 
 
+def test_unreadable_dates_continue_and_save_the_prices(tmp_path: Path, monkeypatch):
+    config = tmp_path / "config.yaml"
+    _write(
+        config,
+        """
+settings:
+  currency: USD
+  max_requests_per_run: 20
+  delay_seconds: [0, 0]
+routes:
+  - id: x
+    label: Test
+    origins: [JFK]
+    destinations: [SGN]
+    trip: one_way
+    depart_window: { start: 2027-04-01, end: 2027-04-06 }
+    active: true
+""",
+    )
+    data = tmp_path / "data"
+    data.mkdir()
+    fare = FlightOption(price=640, airlines="Example", stops=1, duration="20h", depart_time="08:00", arrive_time="18:00")
+
+    def fake_searcher(_source):
+        def search(item, **kwargs):
+            if item.depart.day in (1, 3, 5):
+                return SearchResult(
+                    key=item.key,
+                    route_id=item.route_id,
+                    origin=item.origin,
+                    dest=item.dest,
+                    depart=item.depart,
+                    return_date=item.return_date,
+                    ok=False,
+                    error="unreadable result",
+                    options=[],
+                    cheapest=None,
+                    google_url="",
+                    fetched_at=kwargs["fetched_at"],
+                )
+            if item.depart.day == 4:
+                raise IndexError("list index out of range")
+            return SearchResult(
+                key=item.key,
+                route_id=item.route_id,
+                origin=item.origin,
+                dest=item.dest,
+                depart=item.depart,
+                return_date=item.return_date,
+                ok=True,
+                error=None,
+                options=[fare],
+                cheapest=fare,
+                google_url="https://example.test",
+                fetched_at=kwargs["fetched_at"],
+            )
+
+        return search
+
+    monkeypatch.setattr("scraper.main._searcher", fake_searcher)
+    code = run(["--config", str(config), "--data-dir", str(data), "--today", "2027-04-01"])
+    status = json.loads((data / "status.json").read_text(encoding="utf-8"))
+    latest = json.loads((data / "latest.json").read_text(encoding="utf-8"))
+    saved = latest["routes"][0]["searches"]
+    assert code == 0
+    assert status["stopped_early"] is False
+    assert status["state"] == "degraded"
+    assert status["searches_attempted"] == 6
+    assert status["searches_succeeded"] == 2
+    assert sorted(row["depart"] for row in saved) == ["2027-04-02", "2027-04-06"]
+
+
+def test_index_error_from_google_is_skipped_once(monkeypatch):
+    import fast_flights
+
+    calls = {"n": 0}
+
+    class Query:
+        def url(self):
+            return "https://example.test/flights"
+
+    def explode(_query):
+        calls["n"] += 1
+        raise IndexError("list index out of range")
+
+    monkeypatch.setattr(fast_flights, "create_query", lambda **_kwargs: Query())
+    monkeypatch.setattr(fast_flights, "get_flights", explode)
+    from scraper.models import Search
+    from scraper.source_google import search
+
+    result = search(
+        Search(
+            key="sgn|JFK|SGN|2027-02-15|2027-02-25",
+            route_id="sgn",
+            origin="JFK",
+            dest="SGN",
+            depart=date(2027, 2, 15),
+            return_date=date(2027, 2, 25),
+            max_stops=None,
+            target_price=None,
+        ),
+        currency="USD",
+        cabin="economy",
+        adults=1,
+        fetched_at="2026-11-24T17:23:35Z",
+    )
+    assert calls["n"] == 1
+    assert result.ok is False
+    assert result.error == "unreadable result"
+
+
 def test_circuit_breaker_stops_a_blocked_run(tmp_path: Path):
     config = tmp_path / "config.yaml"
     _write(

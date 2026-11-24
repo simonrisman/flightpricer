@@ -148,6 +148,9 @@ def _blank(search: Search, error: str, google_url: str = "", fetched_at: str = "
     )
 
 
+UNREADABLE = "unreadable result"
+
+
 def _short_error(exc: BaseException) -> str:
     text = f"{type(exc).__name__}: {exc}".replace("\n", " ")
     return text[:300]
@@ -203,13 +206,18 @@ def search(search_item: Search, *, currency: str, cabin: str, adults: int, fetch
             result = get_flights(query)
         except FlightsNotFound:
             return _blank(search_item, "empty result", google_url, fetched_at)
+        except IndexError:
+            return _blank(search_item, UNREADABLE, google_url, fetched_at)
         except Exception as exc:
             last_error = _short_error(exc)
             if attempt < 2:
                 time.sleep(2 ** (attempt + 1))
                 continue
             return _blank(search_item, last_error, google_url, fetched_at)
-        options = options_from_itineraries(result, search_item.dest)
+        try:
+            options = options_from_itineraries(result, search_item.dest)
+        except (IndexError, KeyError, TypeError):
+            return _blank(search_item, UNREADABLE, google_url, fetched_at)
         if not options:
             return _blank(search_item, "empty result", google_url, fetched_at)
         return SearchResult(

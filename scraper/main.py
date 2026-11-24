@@ -64,6 +64,29 @@ def _find_route(config: AppConfig, route_id: str) -> Route:
     raise ConfigError(f"unknown route {route_id}")
 
 
+def _keeps_going(error: str | None) -> bool:
+    if not error:
+        return False
+    return error in ("empty result", "unreadable result") or error.startswith("IndexError")
+
+
+def _failed_result(item: Search, error: str, fetched_at: str) -> SearchResult:
+    return SearchResult(
+        key=item.key,
+        route_id=item.route_id,
+        origin=item.origin,
+        dest=item.dest,
+        depart=item.depart,
+        return_date=item.return_date,
+        ok=False,
+        error=error,
+        options=[],
+        cheapest=None,
+        google_url="",
+        fetched_at=fetched_at,
+    )
+
+
 def _searcher(source: str):
     if source == "playwright":
         from scraper.source_google_playwright import search
@@ -210,13 +233,19 @@ def run(argv: list[str] | None = None) -> int:
     for index, item in enumerate(run_list, start=1):
         if index > 1 and not adhoc:
             time.sleep(random.uniform(low, high))
-        result = search_fn(
-            item,
-            currency=config.settings.currency,
-            cabin=config.settings.cabin,
-            adults=config.settings.adults,
-            fetched_at=utc_now(),
-        )
+        fetched_at = utc_now()
+        try:
+            result = search_fn(
+                item,
+                currency=config.settings.currency,
+                cabin=config.settings.cabin,
+                adults=config.settings.adults,
+                fetched_at=fetched_at,
+            )
+        except IndexError:
+            result = _failed_result(item, "unreadable result", fetched_at)
+        except Exception as exc:
+            result = _failed_result(item, f"{type(exc).__name__}: {exc}"[:300], fetched_at)
         results.append(result)
         if result.ok and result.cheapest is not None:
             consecutive_failures = 0
@@ -224,8 +253,9 @@ def run(argv: list[str] | None = None) -> int:
                 f"[{index}/{len(run_list)}] {item.origin}->{item.dest} {item.depart} ${result.cheapest.price} {result.cheapest.airlines}",
                 flush=True,
             )
-        elif result.error == "empty result":
-            message = f"{result.key}: no flights"
+        elif _keeps_going(result.error):
+            label = "no flights" if result.error == "empty result" else "unreadable, skipping"
+            message = f"{result.key}: {label}"
             errors.append(message)
             print(f"[{index}/{len(run_list)}] {message}", flush=True)
         else:
