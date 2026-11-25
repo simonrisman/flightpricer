@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T20:50:25Z",
+  "generated_at": "2026-11-25T20:50:48Z",
   "currency": "USD",
   "routes": [
     {
@@ -196282,7 +196282,7 @@
           "best_ever": 1138,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-04|2027-10-11",
@@ -196330,7 +196330,7 @@
           "best_ever": 1332,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-04|2027-10-13",
@@ -196378,7 +196378,7 @@
           "best_ever": 1299,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-04|2027-10-14",
@@ -196474,7 +196474,7 @@
           "best_ever": 1227,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-04|2027-10-16",
@@ -196546,7 +196546,7 @@
           "best_ever": 1408,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-04|2027-10-18",
@@ -196618,7 +196618,7 @@
           "best_ever": 1332,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-05|2027-10-12",
@@ -196690,7 +196690,7 @@
           "best_ever": 1332,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-05|2027-10-13",
@@ -196762,7 +196762,7 @@
           "best_ever": 1212,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-05|2027-10-14",
@@ -196834,7 +196834,7 @@
           "best_ever": 1299,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|JFK|HAN|2027-10-05|2027-10-15",
@@ -196882,7 +196882,7 @@
           "best_ever": 1299,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-05|2027-10-16",
@@ -196954,7 +196954,7 @@
           "best_ever": 1169,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-05|2027-10-17",
@@ -197026,7 +197026,7 @@
           "best_ever": 1455,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-05|2027-10-18",
@@ -197098,7 +197098,7 @@
           "best_ever": 1187,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-05|2027-10-19",
@@ -197146,7 +197146,7 @@
           "best_ever": 1332,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-24T23:17:23Z"
+          "last_attempt_at": "2026-11-25T20:50:48Z"
         },
         {
           "key": "han|EWR|HAN|2027-10-05|2027-10-20",
