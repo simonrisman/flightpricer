@@ -1,23 +1,25 @@
 {
-  "last_run": "2026-11-25T20:32:10Z",
+  "last_run": "2026-11-25T20:32:54Z",
   "state": "failed",
-  "searches_planned": 189,
-  "searches_attempted": 189,
+  "searches_planned": 441,
+  "searches_attempted": 441,
   "searches_succeeded": 0,
   "errors": [
-    "BOS->MDE 2027-03-01: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "BOS->MDE 2027-03-11: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "BOS->MDE 2027-03-21: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
+    "JFK->LIM 2027-01-11: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "JFK->LIM 2027-01-21: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "JFK->LIM 2027-01-31: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "JFK->LIM 2027-02-10: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "JFK->LIM 2027-02-20: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
   ],
   "last_success": "2026-11-24T23:11:24Z",
   "coverage": {
-    "total": 189,
-    "scheduled": 189,
+    "total": 441,
+    "scheduled": 441,
     "offset": 0,
-    "origin": "BOS",
+    "origin": "JFK",
     "mode": "price-pass",
-    "calendar_calls": 3,
+    "calendar_calls": 5,
     "detail_calls": 0
   },
-  "stopped_early": false
+  "stopped_early": true
 }
