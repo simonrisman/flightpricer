@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T20:53:30Z",
+  "updated_at": "2026-11-25T20:53:59Z",
   "run_id": "45695355414",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45695355414",
   "legs": [
@@ -332,9 +332,9 @@
       "label": "Tbilisi",
       "origin": "JFK",
       "dest": "TBS",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-25T20:53:30Z",
-      "finished_at": "2026-11-24T23:20:11Z"
+      "finished_at": "2026-11-25T20:53:59Z"
     },
     {
       "route": "tbs",
