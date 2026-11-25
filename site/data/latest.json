@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T20:29:55Z",
+  "generated_at": "2026-11-25T20:30:27Z",
   "currency": "USD",
   "routes": [
     {
@@ -49,13 +49,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-01|2027-03-08",
@@ -120,13 +121,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-01|2027-03-09",
@@ -191,13 +193,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-01|2027-03-10",
@@ -262,13 +265,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-01|2027-03-11",
@@ -333,13 +337,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-01|2027-03-12",
@@ -404,13 +409,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-01|2027-03-13",
@@ -475,13 +481,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-01|2027-03-14",
@@ -546,13 +553,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-01|2027-03-15",
@@ -617,13 +625,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-01|2027-03-16",
@@ -688,13 +697,14 @@
           "arrive_time": "19:30",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDMtMDJqBRIDQk9TcgUSA0JPRxoaEgoyMDI3LTAzLTA5agUSA0JPR3IFEgNCT1NCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T22:43:47Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-02|2027-03-09",
@@ -759,13 +769,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 377,
           "delta": 0,
           "best_ever": 377,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-02|2027-03-10",
@@ -830,13 +841,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 376,
           "delta": 0,
           "best_ever": 376,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-02|2027-03-11",
@@ -901,13 +913,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-02|2027-03-12",
@@ -972,13 +985,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-02|2027-03-13",
@@ -1043,13 +1057,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-02|2027-03-14",
@@ -1114,13 +1129,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-02|2027-03-15",
@@ -1185,13 +1201,14 @@
           "arrive_time": "19:30",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDMtMDJqBRIDQk9TcgUSA0JPRxoaEgoyMDI3LTAzLTE2agUSA0JPR3IFEgNCT1NCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T22:44:00Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 385,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-02|2027-03-16",
@@ -1256,13 +1273,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-02|2027-03-17",
@@ -1327,13 +1345,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 378,
           "delta": 0,
           "best_ever": 378,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-03|2027-03-10",
@@ -1398,13 +1417,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 377,
           "delta": 0,
           "best_ever": 377,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-03|2027-03-11",
@@ -1469,13 +1489,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-03|2027-03-12",
@@ -1540,13 +1561,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-03|2027-03-13",
@@ -1611,13 +1633,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-03|2027-03-14",
@@ -1682,13 +1705,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-03|2027-03-15",
@@ -1753,13 +1777,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 377,
           "delta": 0,
           "best_ever": 377,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-03|2027-03-16",
@@ -1824,13 +1849,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-03|2027-03-17",
@@ -1895,13 +1921,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-03|2027-03-18",
@@ -1966,13 +1993,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 376,
           "delta": 0,
           "best_ever": 376,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-04|2027-03-11",
@@ -2060,13 +2088,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-04|2027-03-12",
@@ -2154,13 +2183,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-04|2027-03-13",
@@ -2225,13 +2255,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-04|2027-03-14",
@@ -2296,13 +2327,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-04|2027-03-15",
@@ -2367,13 +2399,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 376,
           "delta": 0,
           "best_ever": 376,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-04|2027-03-16",
@@ -2438,13 +2471,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-04|2027-03-17",
@@ -2509,13 +2543,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-04|2027-03-18",
@@ -2580,13 +2615,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-04|2027-03-19",
@@ -2651,13 +2687,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-05|2027-03-12",
@@ -2722,13 +2759,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-05|2027-03-13",
@@ -2816,13 +2854,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-05|2027-03-14",
@@ -2887,13 +2926,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-05|2027-03-15",
@@ -2958,13 +2998,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-05|2027-03-16",
@@ -3029,13 +3070,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-05|2027-03-17",
@@ -3100,13 +3142,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 392,
           "delta": 0,
           "best_ever": 392,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-05|2027-03-18",
@@ -3171,13 +3214,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 392,
           "delta": 0,
           "best_ever": 392,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-05|2027-03-19",
@@ -3242,13 +3286,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 447,
           "delta": 0,
           "best_ever": 447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-05|2027-03-20",
@@ -3313,13 +3358,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-06|2027-03-13",
@@ -3407,13 +3453,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-06|2027-03-14",
@@ -3501,13 +3548,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-06|2027-03-15",
@@ -3572,13 +3620,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-06|2027-03-16",
@@ -3643,13 +3692,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-06|2027-03-17",
@@ -3714,13 +3764,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-06|2027-03-18",
@@ -3785,13 +3836,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 457,
           "delta": 0,
           "best_ever": 457,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-06|2027-03-19",
@@ -3856,13 +3908,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 512,
           "delta": 0,
           "best_ever": 512,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-06|2027-03-20",
@@ -3927,13 +3980,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 512,
           "delta": 0,
           "best_ever": 512,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-06|2027-03-21",
@@ -3998,13 +4052,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-07|2027-03-14",
@@ -4069,13 +4124,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-07|2027-03-15",
@@ -4140,13 +4196,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 377,
           "delta": 0,
           "best_ever": 377,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-07|2027-03-16",
@@ -4211,13 +4268,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-07|2027-03-17",
@@ -4282,13 +4340,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-07|2027-03-18",
@@ -4353,13 +4412,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-07|2027-03-19",
@@ -4424,13 +4484,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 497,
           "delta": 0,
           "best_ever": 497,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-07|2027-03-20",
@@ -4495,13 +4556,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 497,
           "delta": 0,
           "best_ever": 497,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-07|2027-03-21",
@@ -4566,13 +4628,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-07|2027-03-22",
@@ -4637,13 +4700,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-08|2027-03-15",
@@ -4708,13 +4772,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-08|2027-03-16",
@@ -4779,13 +4844,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-08|2027-03-17",
@@ -4850,13 +4916,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 385,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-08|2027-03-18",
@@ -4921,13 +4988,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-08|2027-03-19",
@@ -4992,13 +5060,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 442,
           "delta": 0,
           "best_ever": 442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-08|2027-03-20",
@@ -5063,13 +5132,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 442,
           "delta": 0,
           "best_ever": 442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-08|2027-03-21",
@@ -5134,13 +5204,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-08|2027-03-22",
@@ -5205,13 +5276,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-08|2027-03-23",
@@ -5276,13 +5348,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 376,
           "delta": 0,
           "best_ever": 376,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-09|2027-03-16",
@@ -5347,13 +5420,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-09|2027-03-17",
@@ -5418,13 +5492,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 381,
           "delta": 0,
           "best_ever": 381,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-09|2027-03-18",
@@ -5489,13 +5564,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-09|2027-03-19",
@@ -5560,13 +5636,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 442,
           "delta": 0,
           "best_ever": 442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-09|2027-03-20",
@@ -5631,13 +5708,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 392,
           "delta": 0,
           "best_ever": 392,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-09|2027-03-21",
@@ -5702,13 +5780,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 385,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-09|2027-03-22",
@@ -5773,13 +5852,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-09|2027-03-23",
@@ -5844,13 +5924,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-09|2027-03-24",
@@ -5915,13 +5996,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-10|2027-03-17",
@@ -5986,13 +6068,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 385,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-10|2027-03-18",
@@ -6057,13 +6140,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-10|2027-03-19",
@@ -6128,13 +6212,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 442,
           "delta": 0,
           "best_ever": 442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-10|2027-03-20",
@@ -6199,13 +6284,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 442,
           "delta": 0,
           "best_ever": 442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-10|2027-03-21",
@@ -6270,13 +6356,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-10|2027-03-22",
@@ -6341,13 +6428,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-10|2027-03-23",
@@ -6412,13 +6500,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-10|2027-03-24",
@@ -6483,13 +6572,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:13Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-10|2027-03-25",
@@ -6554,13 +6644,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 392,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-11|2027-03-18",
@@ -6648,13 +6739,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 392,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-11|2027-03-19",
@@ -6742,13 +6834,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 447,
           "delta": 0,
           "best_ever": 444,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-11|2027-03-20",
@@ -6813,13 +6906,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 447,
           "delta": 0,
           "best_ever": 447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-11|2027-03-21",
@@ -6884,13 +6978,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-11|2027-03-22",
@@ -6955,13 +7050,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 392,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-11|2027-03-23",
@@ -7026,13 +7122,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-11|2027-03-24",
@@ -7097,13 +7194,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-11|2027-03-25",
@@ -7168,13 +7266,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-11|2027-03-26",
@@ -7239,13 +7338,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-12|2027-03-19",
@@ -7333,13 +7433,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 442,
           "delta": 0,
           "best_ever": 442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-12|2027-03-20",
@@ -7404,13 +7505,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 442,
           "delta": 0,
           "best_ever": 442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-12|2027-03-21",
@@ -7475,13 +7577,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-12|2027-03-22",
@@ -7546,13 +7649,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-12|2027-03-23",
@@ -7617,13 +7721,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-12|2027-03-24",
@@ -7688,13 +7793,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-12|2027-03-25",
@@ -7759,13 +7865,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-12|2027-03-26",
@@ -7830,13 +7937,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-12|2027-03-27",
@@ -7901,13 +8009,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 447,
           "delta": 0,
           "best_ever": 447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-13|2027-03-20",
@@ -7972,13 +8081,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 397,
           "delta": 0,
           "best_ever": 397,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-13|2027-03-21",
@@ -8066,13 +8176,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-13|2027-03-22",
@@ -8137,13 +8248,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 439,
           "delta": 0,
           "best_ever": 395,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-13|2027-03-23",
@@ -8208,13 +8320,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-13|2027-03-24",
@@ -8279,13 +8392,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-13|2027-03-25",
@@ -8350,13 +8464,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-13|2027-03-26",
@@ -8421,13 +8536,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-13|2027-03-27",
@@ -8492,13 +8608,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-13|2027-03-28",
@@ -8563,13 +8680,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 392,
           "delta": 0,
           "best_ever": 392,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-14|2027-03-21",
@@ -8634,13 +8752,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-14|2027-03-22",
@@ -8705,13 +8824,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-14|2027-03-23",
@@ -8776,13 +8896,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-14|2027-03-24",
@@ -8847,13 +8968,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-14|2027-03-25",
@@ -8918,13 +9040,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-14|2027-03-26",
@@ -8989,13 +9112,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-14|2027-03-27",
@@ -9060,13 +9184,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-14|2027-03-28",
@@ -9131,13 +9256,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-14|2027-03-29",
@@ -9202,13 +9328,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-15|2027-03-22",
@@ -9273,13 +9400,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-15|2027-03-23",
@@ -9344,13 +9472,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-15|2027-03-24",
@@ -9415,13 +9544,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-15|2027-03-25",
@@ -9486,13 +9616,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-15|2027-03-26",
@@ -9557,13 +9688,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-15|2027-03-27",
@@ -9628,13 +9760,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 385,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-15|2027-03-28",
@@ -9699,13 +9832,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 385,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-15|2027-03-29",
@@ -9770,13 +9904,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 385,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-15|2027-03-30",
@@ -9841,13 +9976,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-16|2027-03-23",
@@ -9912,13 +10048,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-16|2027-03-24",
@@ -9983,13 +10120,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-16|2027-03-25",
@@ -10054,13 +10192,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-16|2027-03-26",
@@ -10125,13 +10264,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-16|2027-03-27",
@@ -10196,13 +10336,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-16|2027-03-28",
@@ -10267,13 +10408,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-16|2027-03-29",
@@ -10338,13 +10480,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 385,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-16|2027-03-30",
@@ -10409,13 +10552,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 376,
           "delta": 0,
           "best_ever": 376,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-16|2027-03-31",
@@ -10480,13 +10624,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-17|2027-03-24",
@@ -10551,13 +10696,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-17|2027-03-25",
@@ -10622,13 +10768,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-17|2027-03-26",
@@ -10693,13 +10840,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-17|2027-03-27",
@@ -10764,13 +10912,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-17|2027-03-28",
@@ -10835,13 +10984,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-17|2027-03-29",
@@ -10906,13 +11056,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-17|2027-03-30",
@@ -10977,13 +11128,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 379,
           "delta": 0,
           "best_ever": 379,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-17|2027-03-31",
@@ -11048,13 +11200,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-17|2027-04-01",
@@ -11119,13 +11272,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-18|2027-03-25",
@@ -11213,13 +11367,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-18|2027-03-26",
@@ -11307,13 +11462,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-18|2027-03-27",
@@ -11378,13 +11534,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-18|2027-03-28",
@@ -11449,13 +11606,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-18|2027-03-29",
@@ -11520,13 +11678,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-18|2027-03-30",
@@ -11591,13 +11750,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-18|2027-03-31",
@@ -11662,13 +11822,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-18|2027-04-01",
@@ -11733,13 +11894,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-18|2027-04-02",
@@ -11804,13 +11966,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-19|2027-03-26",
@@ -11898,13 +12061,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-19|2027-03-27",
@@ -11992,13 +12156,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 392,
           "delta": 0,
           "best_ever": 392,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-19|2027-03-28",
@@ -12063,13 +12228,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-19|2027-03-29",
@@ -12134,13 +12300,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-19|2027-03-30",
@@ -12205,13 +12372,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 392,
           "delta": 0,
           "best_ever": 392,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-19|2027-03-31",
@@ -12276,13 +12444,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-19|2027-04-01",
@@ -12347,13 +12516,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-19|2027-04-02",
@@ -12418,13 +12588,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 524,
           "delta": 0,
           "best_ever": 444,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-19|2027-04-03",
@@ -12489,13 +12660,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-20|2027-03-27",
@@ -12583,13 +12755,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-20|2027-03-28",
@@ -12677,13 +12850,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-20|2027-03-29",
@@ -12748,13 +12922,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-20|2027-03-30",
@@ -12819,13 +12994,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-20|2027-03-31",
@@ -12890,13 +13066,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-20|2027-04-01",
@@ -12961,13 +13138,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-20|2027-04-02",
@@ -13032,13 +13210,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-20|2027-04-03",
@@ -13103,13 +13282,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-20|2027-04-04",
@@ -13174,13 +13354,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:38Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-21|2027-03-28",
@@ -13245,13 +13426,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:38Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-21|2027-03-29",
@@ -13316,13 +13498,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:38Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-21|2027-03-30",
@@ -13387,13 +13570,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:38Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-21|2027-03-31",
@@ -13458,13 +13642,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:38Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-21|2027-04-01",
@@ -13529,13 +13714,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:38Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-21|2027-04-02",
@@ -13600,13 +13786,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:38Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-21|2027-04-03",
@@ -13671,13 +13858,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:38Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 391,
           "delta": 0,
           "best_ever": 391,
           "best_ever_date": "2026-11-23",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-21|2027-04-04",
@@ -13742,13 +13930,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T22:43:38Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 387,
           "delta": 0,
           "best_ever": 387,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:30:27Z"
         },
         {
           "key": "bog|EWR|BOG|2027-03-21|2027-04-05",
