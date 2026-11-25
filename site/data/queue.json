@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T20:47:58Z",
+  "updated_at": "2026-11-25T20:48:23Z",
   "run_id": "45695355414",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45695355414",
   "legs": [
@@ -251,9 +251,9 @@
       "label": "Ho Chi Minh City",
       "origin": "JFK",
       "dest": "SGN",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-25T20:47:58Z",
-      "finished_at": "2026-11-24T23:14:55Z"
+      "finished_at": "2026-11-25T20:48:23Z"
     },
     {
       "route": "sgn",
