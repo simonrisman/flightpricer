@@ -1,24 +1,25 @@
 {
-  "last_run": "2026-11-25T20:38:40Z",
+  "last_run": "2026-11-25T20:39:13Z",
   "state": "failed",
-  "searches_planned": 360,
-  "searches_attempted": 360,
+  "searches_planned": 450,
+  "searches_attempted": 450,
   "searches_succeeded": 0,
   "errors": [
-    "BOS->CDG 2027-05-17: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "BOS->CDG 2027-05-27: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "BOS->CDG 2027-06-06: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "BOS->CDG 2027-06-16: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
+    "JFK->MAD 2027-04-12: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "JFK->MAD 2027-04-22: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "JFK->MAD 2027-05-02: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "JFK->MAD 2027-05-12: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "JFK->MAD 2027-05-22: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
   ],
   "last_success": "2026-11-24T23:11:24Z",
   "coverage": {
-    "total": 360,
-    "scheduled": 360,
+    "total": 450,
+    "scheduled": 450,
     "offset": 0,
-    "origin": "BOS",
+    "origin": "JFK",
     "mode": "price-pass",
-    "calendar_calls": 4,
+    "calendar_calls": 5,
     "detail_calls": 0
   },
-  "stopped_early": false
+  "stopped_early": true
 }
