@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T20:44:31Z",
+  "generated_at": "2026-11-25T20:45:14Z",
   "currency": "USD",
   "routes": [
     {
@@ -166487,13 +166487,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-25|2027-09-01",
@@ -166558,13 +166559,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-25|2027-09-02",
@@ -166629,13 +166631,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1622,
           "delta": 0,
           "best_ever": 1622,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-25|2027-09-03",
@@ -166700,13 +166703,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-25|2027-09-04",
@@ -166771,13 +166775,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-25|2027-09-05",
@@ -166842,13 +166847,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-25|2027-09-06",
@@ -166913,13 +166919,14 @@
           "arrive_time": "19:20",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDgtMjVqBRIDRVdScgUSA0hORBoaEgoyMDI3LTA5LTA3agUSA0hORHIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T23:12:03Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-25|2027-09-07",
@@ -166984,13 +166991,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-25|2027-09-08",
@@ -167055,13 +167063,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-25|2027-09-09",
@@ -167126,13 +167135,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1427,
           "delta": 0,
           "best_ever": 1427,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-26|2027-09-02",
@@ -167197,13 +167207,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1667,
           "delta": 0,
           "best_ever": 1667,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-26|2027-09-03",
@@ -167268,13 +167279,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1608,
           "delta": 0,
           "best_ever": 1608,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-26|2027-09-04",
@@ -167339,13 +167351,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1467,
           "delta": 0,
           "best_ever": 1467,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-26|2027-09-05",
@@ -167410,13 +167423,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1447,
           "delta": 0,
           "best_ever": 1447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-26|2027-09-06",
@@ -167481,13 +167495,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1407,
           "delta": 0,
           "best_ever": 1407,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-26|2027-09-07",
@@ -167552,13 +167567,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1407,
           "delta": 0,
           "best_ever": 1407,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-26|2027-09-08",
@@ -167623,13 +167639,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1427,
           "delta": 0,
           "best_ever": 1427,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-26|2027-09-09",
@@ -167694,13 +167711,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1487,
           "delta": 0,
           "best_ever": 1487,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-26|2027-09-10",
@@ -167765,13 +167783,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1673,
           "delta": 0,
           "best_ever": 1673,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-27|2027-09-03",
@@ -167836,13 +167855,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1721,
           "delta": 0,
           "best_ever": 1721,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-27|2027-09-04",
@@ -167907,13 +167927,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1542,
           "delta": 0,
           "best_ever": 1542,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-27|2027-09-05",
@@ -167978,13 +167999,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1522,
           "delta": 0,
           "best_ever": 1522,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-27|2027-09-06",
@@ -168049,13 +168071,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1480,
           "delta": 0,
           "best_ever": 1480,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-27|2027-09-07",
@@ -168120,13 +168143,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1480,
           "delta": 0,
           "best_ever": 1480,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-27|2027-09-08",
@@ -168191,13 +168215,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1502,
           "delta": 0,
           "best_ever": 1502,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-27|2027-09-09",
@@ -168262,13 +168287,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-27|2027-09-10",
@@ -168333,13 +168359,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1553,
           "delta": 0,
           "best_ever": 1553,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-27|2027-09-11",
@@ -168404,13 +168431,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1608,
           "delta": 0,
           "best_ever": 1608,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-28|2027-09-04",
@@ -168475,13 +168503,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1678,
           "delta": 0,
           "best_ever": 1678,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-28|2027-09-05",
@@ -168546,13 +168575,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1485,
           "delta": 0,
           "best_ever": 1485,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-28|2027-09-06",
@@ -168617,13 +168647,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-28|2027-09-07",
@@ -168688,13 +168719,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1457,
           "delta": 0,
           "best_ever": 1457,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-28|2027-09-08",
@@ -168759,13 +168791,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1457,
           "delta": 0,
           "best_ever": 1457,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-28|2027-09-09",
@@ -168830,13 +168863,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1457,
           "delta": 0,
           "best_ever": 1457,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-28|2027-09-10",
@@ -168901,13 +168935,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1482,
           "delta": 0,
           "best_ever": 1482,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-28|2027-09-11",
@@ -168972,13 +169007,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1507,
           "delta": 0,
           "best_ever": 1507,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-28|2027-09-12",
@@ -169043,13 +169079,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-29|2027-09-05",
@@ -169114,13 +169151,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-29|2027-09-06",
@@ -169185,13 +169223,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-29|2027-09-07",
@@ -169256,13 +169295,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-29|2027-09-08",
@@ -169327,13 +169367,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-29|2027-09-09",
@@ -169398,13 +169439,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-29|2027-09-10",
@@ -169469,13 +169511,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1487,
           "delta": 0,
           "best_ever": 1487,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-29|2027-09-11",
@@ -169540,13 +169583,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-29|2027-09-12",
@@ -169611,13 +169655,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-29|2027-09-13",
@@ -169682,13 +169727,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1447,
           "delta": 0,
           "best_ever": 1447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-30|2027-09-06",
@@ -169753,13 +169799,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1407,
           "delta": 0,
           "best_ever": 1407,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-30|2027-09-07",
@@ -169824,13 +169871,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1407,
           "delta": 0,
           "best_ever": 1407,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-30|2027-09-08",
@@ -169895,13 +169943,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1427,
           "delta": 0,
           "best_ever": 1427,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-30|2027-09-09",
@@ -169966,13 +170015,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-30|2027-09-10",
@@ -170037,13 +170087,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-30|2027-09-11",
@@ -170108,13 +170159,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1467,
           "delta": 0,
           "best_ever": 1467,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-30|2027-09-12",
@@ -170179,13 +170231,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1447,
           "delta": 0,
           "best_ever": 1447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-30|2027-09-13",
@@ -170250,13 +170303,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-30|2027-09-14",
@@ -170321,13 +170375,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1407,
           "delta": 0,
           "best_ever": 1407,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-31|2027-09-07",
@@ -170392,13 +170447,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1407,
           "delta": 0,
           "best_ever": 1407,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-31|2027-09-08",
@@ -170463,13 +170519,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1427,
           "delta": 0,
           "best_ever": 1427,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-31|2027-09-09",
@@ -170534,13 +170591,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-31|2027-09-10",
@@ -170605,13 +170663,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-31|2027-09-11",
@@ -170676,13 +170735,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1467,
           "delta": 0,
           "best_ever": 1467,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-31|2027-09-12",
@@ -170747,13 +170807,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1447,
           "delta": 0,
           "best_ever": 1447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-31|2027-09-13",
@@ -170818,13 +170879,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-31|2027-09-14",
@@ -170889,13 +170951,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1407,
           "delta": 0,
           "best_ever": 1407,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-08-31|2027-09-15",
@@ -170960,13 +171023,14 @@
           "arrive_time": "19:20",
           "google_url": "https://www.google.com/travel/flights/search?tfs=GhoSCjIwMjctMDktMDFqBRIDRVdScgUSA0hORBoaEgoyMDI3LTA5LTA4agUSA0hORHIFEgNFV1JCAQFIAZgBAQ==&hl=en&curr=USD",
           "fetched_at": "2026-11-24T23:12:14Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-01|2027-09-08",
@@ -171031,13 +171095,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-01|2027-09-09",
@@ -171102,13 +171167,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-01|2027-09-10",
@@ -171173,13 +171239,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1467,
           "delta": 0,
           "best_ever": 1467,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-01|2027-09-11",
@@ -171244,13 +171311,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-01|2027-09-12",
@@ -171315,13 +171383,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-01|2027-09-13",
@@ -171386,13 +171455,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-01|2027-09-14",
@@ -171457,13 +171527,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-01|2027-09-15",
@@ -171528,13 +171599,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-01|2027-09-16",
@@ -171599,13 +171671,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-02|2027-09-09",
@@ -171670,13 +171743,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-02|2027-09-10",
@@ -171741,13 +171815,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1467,
           "delta": 0,
           "best_ever": 1467,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-02|2027-09-11",
@@ -171812,13 +171887,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-02|2027-09-12",
@@ -171883,13 +171959,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-02|2027-09-13",
@@ -171954,13 +172031,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-02|2027-09-14",
@@ -172025,13 +172103,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-02|2027-09-15",
@@ -172096,13 +172175,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1487,
           "delta": 0,
           "best_ever": 1487,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-02|2027-09-16",
@@ -172167,13 +172247,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-02|2027-09-17",
@@ -172238,13 +172319,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1482,
           "delta": 0,
           "best_ever": 1482,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-03|2027-09-10",
@@ -172309,13 +172391,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1507,
           "delta": 0,
           "best_ever": 1507,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-03|2027-09-11",
@@ -172380,13 +172463,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1462,
           "delta": 0,
           "best_ever": 1462,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-03|2027-09-12",
@@ -172451,13 +172535,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-03|2027-09-13",
@@ -172522,13 +172607,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1482,
           "delta": 0,
           "best_ever": 1482,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-03|2027-09-14",
@@ -172593,13 +172679,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-03|2027-09-15",
@@ -172664,13 +172751,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-03|2027-09-16",
@@ -172735,13 +172823,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-03|2027-09-17",
@@ -172806,13 +172895,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:24Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1553,
           "delta": 0,
           "best_ever": 1553,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-03|2027-09-18",
@@ -172877,13 +172967,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1507,
           "delta": 0,
           "best_ever": 1507,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-04|2027-09-11",
@@ -172948,13 +173039,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1462,
           "delta": 0,
           "best_ever": 1462,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-04|2027-09-12",
@@ -173019,13 +173111,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-04|2027-09-13",
@@ -173090,13 +173183,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1482,
           "delta": 0,
           "best_ever": 1482,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-04|2027-09-14",
@@ -173161,13 +173255,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-04|2027-09-15",
@@ -173232,13 +173327,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1457,
           "delta": 0,
           "best_ever": 1457,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-04|2027-09-16",
@@ -173303,13 +173399,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1457,
           "delta": 0,
           "best_ever": 1457,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-04|2027-09-17",
@@ -173374,13 +173471,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1507,
           "delta": 0,
           "best_ever": 1507,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-04|2027-09-18",
@@ -173445,13 +173543,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1462,
           "delta": 0,
           "best_ever": 1462,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-04|2027-09-19",
@@ -173516,13 +173615,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-05|2027-09-12",
@@ -173587,13 +173687,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-05|2027-09-13",
@@ -173658,13 +173759,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-05|2027-09-14",
@@ -173729,13 +173831,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-05|2027-09-15",
@@ -173800,13 +173903,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-05|2027-09-16",
@@ -173871,13 +173975,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-05|2027-09-17",
@@ -173942,13 +174047,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-05|2027-09-18",
@@ -174013,13 +174119,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-05|2027-09-19",
@@ -174084,13 +174191,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-05|2027-09-20",
@@ -174155,13 +174263,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-06|2027-09-13",
@@ -174226,13 +174335,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-06|2027-09-14",
@@ -174297,13 +174407,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-06|2027-09-15",
@@ -174368,13 +174479,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-06|2027-09-16",
@@ -174439,13 +174551,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-06|2027-09-17",
@@ -174510,13 +174623,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-06|2027-09-18",
@@ -174581,13 +174695,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-06|2027-09-19",
@@ -174652,13 +174767,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-06|2027-09-20",
@@ -174723,13 +174839,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-06|2027-09-21",
@@ -174794,13 +174911,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-07|2027-09-14",
@@ -174865,13 +174983,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-07|2027-09-15",
@@ -174936,13 +175055,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1487,
           "delta": 0,
           "best_ever": 1487,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-07|2027-09-16",
@@ -175007,13 +175127,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1453,
           "delta": 0,
           "best_ever": 1453,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-07|2027-09-17",
@@ -175078,13 +175199,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-07|2027-09-18",
@@ -175149,13 +175271,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-07|2027-09-19",
@@ -175220,13 +175343,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-07|2027-09-20",
@@ -175291,13 +175415,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-07|2027-09-21",
@@ -175362,13 +175487,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-07|2027-09-22",
@@ -175433,13 +175559,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-08|2027-09-15",
@@ -175504,13 +175631,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1487,
           "delta": 0,
           "best_ever": 1487,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-08|2027-09-16",
@@ -175575,13 +175703,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1622,
           "delta": 0,
           "best_ever": 1622,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-08|2027-09-17",
@@ -175646,13 +175775,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1503,
           "delta": 0,
           "best_ever": 1503,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-08|2027-09-18",
@@ -175717,13 +175847,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-08|2027-09-19",
@@ -175788,13 +175919,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-08|2027-09-20",
@@ -175859,13 +175991,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-08|2027-09-21",
@@ -175930,13 +176063,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-08|2027-09-22",
@@ -176001,13 +176135,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-08|2027-09-23",
@@ -176072,13 +176207,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1487,
           "delta": 0,
           "best_ever": 1487,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-09|2027-09-16",
@@ -176143,13 +176279,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1622,
           "delta": 0,
           "best_ever": 1622,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-09|2027-09-17",
@@ -176214,13 +176351,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1678,
           "delta": 0,
           "best_ever": 1678,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-09|2027-09-18",
@@ -176285,13 +176423,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-09|2027-09-19",
@@ -176356,13 +176495,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-09|2027-09-20",
@@ -176427,13 +176567,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-09|2027-09-21",
@@ -176498,13 +176639,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-09|2027-09-22",
@@ -176569,13 +176711,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-09|2027-09-23",
@@ -176640,13 +176783,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-09|2027-09-24",
@@ -176711,13 +176855,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1662,
           "delta": 0,
           "best_ever": 1662,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-10|2027-09-17",
@@ -176782,13 +176927,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1698,
           "delta": 0,
           "best_ever": 1698,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-10|2027-09-18",
@@ -176853,13 +176999,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1462,
           "delta": 0,
           "best_ever": 1462,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-10|2027-09-19",
@@ -176924,13 +177071,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1442,
           "delta": 0,
           "best_ever": 1442,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-10|2027-09-20",
@@ -176995,13 +177143,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-10|2027-09-21",
@@ -177066,13 +177215,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-10|2027-09-22",
@@ -177137,13 +177287,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-10|2027-09-23",
@@ -177208,13 +177359,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-10|2027-09-24",
@@ -177279,13 +177431,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1462,
           "delta": 0,
           "best_ever": 1462,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-10|2027-09-25",
@@ -177350,13 +177503,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1644,
           "delta": 0,
           "best_ever": 1644,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-11|2027-09-18",
@@ -177421,13 +177575,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1507,
           "delta": 0,
           "best_ever": 1507,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-11|2027-09-19",
@@ -177492,13 +177647,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1487,
           "delta": 0,
           "best_ever": 1487,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-11|2027-09-20",
@@ -177563,13 +177719,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1447,
           "delta": 0,
           "best_ever": 1447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-11|2027-09-21",
@@ -177634,13 +177791,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1447,
           "delta": 0,
           "best_ever": 1447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-11|2027-09-22",
@@ -177705,13 +177863,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1467,
           "delta": 0,
           "best_ever": 1467,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-11|2027-09-23",
@@ -177776,13 +177935,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1447,
           "delta": 0,
           "best_ever": 1447,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-11|2027-09-24",
@@ -177847,13 +178007,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1507,
           "delta": 0,
           "best_ever": 1507,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-11|2027-09-25",
@@ -177918,13 +178079,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1507,
           "delta": 0,
           "best_ever": 1507,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-11|2027-09-26",
@@ -177989,13 +178151,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-12|2027-09-19",
@@ -178060,13 +178223,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-12|2027-09-20",
@@ -178131,13 +178295,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-12|2027-09-21",
@@ -178202,13 +178367,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-12|2027-09-22",
@@ -178273,13 +178439,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-12|2027-09-23",
@@ -178344,13 +178511,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-12|2027-09-24",
@@ -178415,13 +178583,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-12|2027-09-25",
@@ -178486,13 +178655,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-12|2027-09-26",
@@ -178557,13 +178727,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-12|2027-09-27",
@@ -178628,13 +178799,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-13|2027-09-20",
@@ -178699,13 +178871,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-13|2027-09-21",
@@ -178770,13 +178943,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-13|2027-09-22",
@@ -178841,13 +179015,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1382,
           "delta": 0,
           "best_ever": 1382,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-13|2027-09-23",
@@ -178912,13 +179087,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-13|2027-09-24",
@@ -178983,13 +179159,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-13|2027-09-25",
@@ -179054,13 +179231,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1422,
           "delta": 0,
           "best_ever": 1422,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-13|2027-09-26",
@@ -179125,13 +179303,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1402,
           "delta": 0,
           "best_ever": 1402,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-13|2027-09-27",
@@ -179196,13 +179375,14 @@
           "arrive_time": null,
           "google_url": "",
           "fetched_at": "2026-11-24T23:11:33Z",
-          "stale": false,
-          "error": null,
+          "stale": true,
+          "error": "calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
           "prev_price": 1362,
           "delta": 0,
           "best_ever": 1362,
           "best_ever_date": "2026-11-24",
-          "hit_target": false
+          "hit_target": false,
+          "last_attempt_at": "2026-11-25T20:45:14Z"
         },
         {
           "key": "tyo|JFK|HND|2027-09-13|2027-09-28",
