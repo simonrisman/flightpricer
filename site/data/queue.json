@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-11-25T21:00:10Z",
-  "run_id": "45695355414",
-  "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45695355414",
+  "updated_at": "2026-11-26T20:12:11Z",
+  "run_id": "45889275323",
+  "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45889275323",
   "legs": [
     {
       "route": "bog",
       "label": "Bogotá",
       "origin": "JFK",
       "dest": "BOG",
-      "state": "failed",
-      "started_at": "2026-11-25T20:29:17Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:29:33Z"
     },
     {
@@ -17,8 +17,8 @@
       "label": "Bogotá",
       "origin": "EWR",
       "dest": "BOG",
-      "state": "failed",
-      "started_at": "2026-11-25T20:29:52Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:30:08Z"
     },
     {
@@ -26,8 +26,8 @@
       "label": "Bogotá",
       "origin": "BOS",
       "dest": "BOG",
-      "state": "failed",
-      "started_at": "2026-11-25T20:30:24Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:30:38Z"
     },
     {
@@ -35,8 +35,8 @@
       "label": "Medellín",
       "origin": "JFK",
       "dest": "MDE",
-      "state": "failed",
-      "started_at": "2026-11-25T20:30:56Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:31:12Z"
     },
     {
@@ -44,8 +44,8 @@
       "label": "Medellín",
       "origin": "EWR",
       "dest": "MDE",
-      "state": "failed",
-      "started_at": "2026-11-25T20:31:29Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:31:46Z"
     },
     {
@@ -53,8 +53,8 @@
       "label": "Medellín",
       "origin": "BOS",
       "dest": "MDE",
-      "state": "failed",
-      "started_at": "2026-11-25T20:32:06Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:32:22Z"
     },
     {
@@ -62,8 +62,8 @@
       "label": "Lima",
       "origin": "JFK",
       "dest": "LIM",
-      "state": "failed",
-      "started_at": "2026-11-25T20:32:49Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:33:15Z"
     },
     {
@@ -71,8 +71,8 @@
       "label": "Lima",
       "origin": "EWR",
       "dest": "LIM",
-      "state": "failed",
-      "started_at": "2026-11-25T20:33:33Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:34:00Z"
     },
     {
@@ -80,8 +80,8 @@
       "label": "Lima",
       "origin": "BOS",
       "dest": "LIM",
-      "state": "failed",
-      "started_at": "2026-11-25T20:34:15Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:34:41Z"
     },
     {
@@ -89,8 +89,8 @@
       "label": "Buenos Aires",
       "origin": "JFK",
       "dest": "EZE",
-      "state": "failed",
-      "started_at": "2026-11-25T20:34:58Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:35:20Z"
     },
     {
@@ -98,8 +98,8 @@
       "label": "Buenos Aires",
       "origin": "EWR",
       "dest": "EZE",
-      "state": "failed",
-      "started_at": "2026-11-25T20:35:37Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:36:02Z"
     },
     {
@@ -107,8 +107,8 @@
       "label": "Buenos Aires",
       "origin": "BOS",
       "dest": "EZE",
-      "state": "failed",
-      "started_at": "2026-11-25T20:36:19Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:36:45Z"
     },
     {
@@ -116,8 +116,8 @@
       "label": "Paris",
       "origin": "JFK",
       "dest": "CDG",
-      "state": "failed",
-      "started_at": "2026-11-25T20:37:02Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:37:24Z"
     },
     {
@@ -125,8 +125,8 @@
       "label": "Paris",
       "origin": "EWR",
       "dest": "CDG",
-      "state": "failed",
-      "started_at": "2026-11-25T20:37:49Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:38:13Z"
     },
     {
@@ -134,8 +134,8 @@
       "label": "Paris",
       "origin": "BOS",
       "dest": "CDG",
-      "state": "failed",
-      "started_at": "2026-11-25T20:38:35Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:38:56Z"
     },
     {
@@ -143,8 +143,8 @@
       "label": "Madrid",
       "origin": "JFK",
       "dest": "MAD",
-      "state": "failed",
-      "started_at": "2026-11-25T20:39:10Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:39:36Z"
     },
     {
@@ -152,8 +152,8 @@
       "label": "Madrid",
       "origin": "EWR",
       "dest": "MAD",
-      "state": "failed",
-      "started_at": "2026-11-25T20:39:50Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:40:15Z"
     },
     {
@@ -161,8 +161,8 @@
       "label": "Madrid",
       "origin": "BOS",
       "dest": "MAD",
-      "state": "failed",
-      "started_at": "2026-11-25T20:40:41Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:41:05Z"
     },
     {
@@ -170,8 +170,8 @@
       "label": "Barcelona",
       "origin": "JFK",
       "dest": "BCN",
-      "state": "failed",
-      "started_at": "2026-11-25T20:41:34Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:41:56Z"
     },
     {
@@ -179,8 +179,8 @@
       "label": "Barcelona",
       "origin": "EWR",
       "dest": "BCN",
-      "state": "failed",
-      "started_at": "2026-11-25T20:42:12Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:42:34Z"
     },
     {
@@ -188,8 +188,8 @@
       "label": "Barcelona",
       "origin": "BOS",
       "dest": "BCN",
-      "state": "failed",
-      "started_at": "2026-11-25T20:42:50Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:43:08Z"
     },
     {
@@ -197,8 +197,8 @@
       "label": "Tokyo",
       "origin": "JFK",
       "dest": "HND",
-      "state": "failed",
-      "started_at": "2026-11-25T20:43:33Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:43:57Z"
     },
     {
@@ -206,8 +206,8 @@
       "label": "Tokyo",
       "origin": "JFK",
       "dest": "NRT",
-      "state": "failed",
-      "started_at": "2026-11-25T20:44:26Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:44:57Z"
     },
     {
@@ -215,8 +215,8 @@
       "label": "Tokyo",
       "origin": "EWR",
       "dest": "HND",
-      "state": "failed",
-      "started_at": "2026-11-25T20:45:11Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:45:35Z"
     },
     {
@@ -224,8 +224,8 @@
       "label": "Tokyo",
       "origin": "EWR",
       "dest": "NRT",
-      "state": "failed",
-      "started_at": "2026-11-25T20:45:51Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:46:11Z"
     },
     {
@@ -233,8 +233,8 @@
       "label": "Tokyo",
       "origin": "BOS",
       "dest": "HND",
-      "state": "failed",
-      "started_at": "2026-11-25T20:46:31Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:46:57Z"
     },
     {
@@ -242,8 +242,8 @@
       "label": "Tokyo",
       "origin": "BOS",
       "dest": "NRT",
-      "state": "failed",
-      "started_at": "2026-11-25T20:47:12Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:47:43Z"
     },
     {
@@ -251,8 +251,8 @@
       "label": "Ho Chi Minh City",
       "origin": "JFK",
       "dest": "SGN",
-      "state": "failed",
-      "started_at": "2026-11-25T20:47:58Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:48:23Z"
     },
     {
@@ -260,8 +260,8 @@
       "label": "Ho Chi Minh City",
       "origin": "EWR",
       "dest": "SGN",
-      "state": "failed",
-      "started_at": "2026-11-25T20:48:39Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:49:02Z"
     },
     {
@@ -269,8 +269,8 @@
       "label": "Ho Chi Minh City",
       "origin": "BOS",
       "dest": "SGN",
-      "state": "failed",
-      "started_at": "2026-11-25T20:49:17Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:49:43Z"
     },
     {
@@ -278,8 +278,8 @@
       "label": "Hanoi",
       "origin": "JFK",
       "dest": "HAN",
-      "state": "failed",
-      "started_at": "2026-11-25T20:50:00Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:50:04Z"
     },
     {
@@ -287,8 +287,8 @@
       "label": "Hanoi",
       "origin": "EWR",
       "dest": "HAN",
-      "state": "failed",
-      "started_at": "2026-11-25T20:50:22Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:50:26Z"
     },
     {
@@ -296,8 +296,8 @@
       "label": "Hanoi",
       "origin": "BOS",
       "dest": "HAN",
-      "state": "failed",
-      "started_at": "2026-11-25T20:50:45Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:50:50Z"
     },
     {
@@ -305,8 +305,8 @@
       "label": "Bangkok",
       "origin": "JFK",
       "dest": "BKK",
-      "state": "failed",
-      "started_at": "2026-11-25T20:51:07Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:51:31Z"
     },
     {
@@ -314,8 +314,8 @@
       "label": "Bangkok",
       "origin": "EWR",
       "dest": "BKK",
-      "state": "failed",
-      "started_at": "2026-11-25T20:51:50Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:52:16Z"
     },
     {
@@ -323,8 +323,8 @@
       "label": "Bangkok",
       "origin": "BOS",
       "dest": "BKK",
-      "state": "failed",
-      "started_at": "2026-11-25T20:52:39Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:53:05Z"
     },
     {
@@ -332,8 +332,8 @@
       "label": "Tbilisi",
       "origin": "JFK",
       "dest": "TBS",
-      "state": "failed",
-      "started_at": "2026-11-25T20:53:30Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:53:59Z"
     },
     {
@@ -341,8 +341,8 @@
       "label": "Tbilisi",
       "origin": "EWR",
       "dest": "TBS",
-      "state": "failed",
-      "started_at": "2026-11-25T20:54:30Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:55:00Z"
     },
     {
@@ -350,8 +350,8 @@
       "label": "Tbilisi",
       "origin": "BOS",
       "dest": "TBS",
-      "state": "failed",
-      "started_at": "2026-11-25T20:55:22Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:55:45Z"
     },
     {
@@ -359,8 +359,8 @@
       "label": "Ponta Delgada",
       "origin": "JFK",
       "dest": "PDL",
-      "state": "failed",
-      "started_at": "2026-11-25T20:56:05Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:56:28Z"
     },
     {
@@ -368,8 +368,8 @@
       "label": "Ponta Delgada",
       "origin": "EWR",
       "dest": "PDL",
-      "state": "failed",
-      "started_at": "2026-11-25T20:56:53Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:57:12Z"
     },
     {
@@ -377,8 +377,8 @@
       "label": "Ponta Delgada",
       "origin": "BOS",
       "dest": "PDL",
-      "state": "failed",
-      "started_at": "2026-11-25T20:57:30Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:57:49Z"
     },
     {
@@ -386,8 +386,8 @@
       "label": "Funchal",
       "origin": "JFK",
       "dest": "FNC",
-      "state": "failed",
-      "started_at": "2026-11-25T20:58:06Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:58:32Z"
     },
     {
@@ -395,8 +395,8 @@
       "label": "Funchal",
       "origin": "EWR",
       "dest": "FNC",
-      "state": "failed",
-      "started_at": "2026-11-25T20:59:00Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T20:59:25Z"
     },
     {
@@ -404,8 +404,8 @@
       "label": "Funchal",
       "origin": "BOS",
       "dest": "FNC",
-      "state": "failed",
-      "started_at": "2026-11-25T20:59:43Z",
+      "state": "pending",
+      "started_at": null,
       "finished_at": "2026-11-25T21:00:10Z"
     }
   ]
