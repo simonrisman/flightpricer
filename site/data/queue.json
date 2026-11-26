@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T20:13:09Z",
+  "updated_at": "2026-11-26T20:13:25Z",
   "run_id": "45889275323",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45889275323",
   "legs": [
@@ -26,8 +26,8 @@
       "label": "Bogotá",
       "origin": "BOS",
       "dest": "BOG",
-      "state": "pending",
-      "started_at": null,
+      "state": "running",
+      "started_at": "2026-11-26T20:13:25Z",
       "finished_at": "2026-11-25T20:30:38Z"
     },
     {
