@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T20:37:33Z",
+  "updated_at": "2026-11-26T20:37:57Z",
   "run_id": "45889275323",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45889275323",
   "legs": [
@@ -350,9 +350,9 @@
       "label": "Tbilisi",
       "origin": "BOS",
       "dest": "TBS",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-26T20:37:33Z",
-      "finished_at": "2026-11-25T20:55:45Z"
+      "finished_at": "2026-11-26T20:37:57Z"
     },
     {
       "route": "pdl",
