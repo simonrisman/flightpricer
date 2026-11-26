@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T20:19:35Z",
+  "updated_at": "2026-11-26T20:19:51Z",
   "run_id": "45889275323",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45889275323",
   "legs": [
@@ -116,8 +116,8 @@
       "label": "Paris",
       "origin": "JFK",
       "dest": "CDG",
-      "state": "pending",
-      "started_at": null,
+      "state": "running",
+      "started_at": "2026-11-26T20:19:51Z",
       "finished_at": "2026-11-25T20:37:24Z"
     },
     {
