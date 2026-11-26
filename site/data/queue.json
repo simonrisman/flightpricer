@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T20:23:14Z",
+  "updated_at": "2026-11-26T20:23:34Z",
   "run_id": "45889275323",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/45889275323",
   "legs": [
@@ -161,9 +161,9 @@
       "label": "Madrid",
       "origin": "BOS",
       "dest": "MAD",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-26T20:23:14Z",
-      "finished_at": "2026-11-25T20:41:05Z"
+      "finished_at": "2026-11-26T20:23:34Z"
     },
     {
       "route": "bcn",
