@@ -1,25 +1,21 @@
 {
-  "last_run": "2026-11-26T20:31:41Z",
+  "last_run": "2026-11-26T20:32:25Z",
   "state": "failed",
-  "searches_planned": 405,
-  "searches_attempted": 405,
+  "searches_planned": 18,
+  "searches_attempted": 18,
   "searches_succeeded": 0,
   "errors": [
-    "BOS->SGN 2027-02-15: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "BOS->SGN 2027-02-25: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "BOS->SGN 2027-03-07: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "BOS->SGN 2027-03-17: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "BOS->SGN 2027-03-27: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
+    "JFK->HAN 2027-10-04: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
   ],
   "last_success": "2026-11-24T23:11:24Z",
   "coverage": {
-    "total": 405,
-    "scheduled": 405,
+    "total": 18,
+    "scheduled": 18,
     "offset": 0,
-    "origin": "BOS",
+    "origin": "JFK",
     "mode": "price-pass",
-    "calendar_calls": 5,
+    "calendar_calls": 1,
     "detail_calls": 0
   },
-  "stopped_early": true
+  "stopped_early": false
 }
