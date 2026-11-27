@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T23:10:23Z",
+  "updated_at": "2026-11-27T23:20:08Z",
   "run_id": "46075606928",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46075606928",
   "legs": [
@@ -242,9 +242,9 @@
       "label": "Funchal",
       "origin": "BOS",
       "dest": "FNC",
-      "state": "failed",
-      "started_at": "2026-11-27T20:28:12Z",
-      "finished_at": "2026-11-27T20:28:35Z"
+      "state": "done",
+      "started_at": "2026-11-27T23:10:57Z",
+      "finished_at": "2026-11-27T23:20:07Z"
     }
   ]
 }
