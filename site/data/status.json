@@ -1,21 +1,21 @@
 {
-  "last_run": "2026-11-27T20:07:09Z",
+  "last_run": "2026-11-27T20:07:59Z",
   "state": "failed",
   "searches_planned": 360,
   "searches_attempted": 360,
   "searches_succeeded": 0,
   "errors": [
-    "EWR->CDG 2027-05-17: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "EWR->CDG 2027-05-27: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "EWR->CDG 2027-06-06: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "EWR->CDG 2027-06-16: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
+    "BOS->CDG 2027-05-17: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "BOS->CDG 2027-05-27: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "BOS->CDG 2027-06-06: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "BOS->CDG 2027-06-16: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
   ],
   "last_success": "2026-11-24T23:11:24Z",
   "coverage": {
     "total": 360,
     "scheduled": 360,
     "offset": 0,
-    "origin": "EWR",
+    "origin": "BOS",
     "mode": "price-pass",
     "calendar_calls": 4,
     "detail_calls": 0
