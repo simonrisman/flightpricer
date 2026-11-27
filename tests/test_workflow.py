@@ -72,7 +72,8 @@ def test_scrape_workflow_chains_pairs_per_origin_without_a_sleep():
         assert job["concurrency"]["group"] == group
         assert job["concurrency"]["cancel-in-progress"] is False
         assert job["timeout-minutes"] == 120
-        assert job["steps"][0]["uses"] == "./.github/actions/scrape-pair"
+        assert job["steps"][0]["uses"] == "actions/checkout@v4"
+        assert job["steps"][1]["uses"] == "./.github/actions/scrape-pair"
     assert "upload-artifact" not in yaml.dump(workflow)
     assert "publish" not in workflow["jobs"]
     assert workflow["jobs"]["adhoc"]["concurrency"]["group"] == "scrape-adhoc"
