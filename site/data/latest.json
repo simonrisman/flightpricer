@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T20:20:08Z",
+  "generated_at": "2026-11-27T20:20:37Z",
   "currency": "USD",
   "routes": [
     {
@@ -198937,7 +198937,7 @@
           "best_ever": 1065,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-11|2027-01-20",
@@ -198985,7 +198985,7 @@
           "best_ever": 956,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-11|2027-01-21",
@@ -199057,7 +199057,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-01-11|2027-01-23",
@@ -199081,7 +199081,7 @@
           "best_ever": 996,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-11|2027-01-24",
@@ -199129,7 +199129,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-11|2027-01-25",
@@ -199177,7 +199177,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-01-11|2027-01-26",
@@ -199201,7 +199201,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-12|2027-01-19",
@@ -199249,7 +199249,7 @@
           "best_ever": 1107,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-12|2027-01-20",
@@ -199297,7 +199297,7 @@
           "best_ever": 958,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-12|2027-01-21",
@@ -199393,7 +199393,7 @@
           "best_ever": 998,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-12|2027-01-24",
@@ -199465,7 +199465,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-12|2027-01-26",
@@ -199537,7 +199537,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-01-13|2027-01-20",
@@ -199561,7 +199561,7 @@
           "best_ever": 930,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-13|2027-01-21",
@@ -199609,7 +199609,7 @@
           "best_ever": 930,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-13|2027-01-22",
@@ -199657,7 +199657,7 @@
           "best_ever": 912,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-13|2027-01-23",
@@ -199705,7 +199705,7 @@
           "best_ever": 968,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-13|2027-01-24",
@@ -199777,7 +199777,7 @@
           "best_ever": 902,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-13|2027-01-26",
@@ -199825,7 +199825,7 @@
           "best_ever": 912,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-13|2027-01-27",
@@ -199873,7 +199873,7 @@
           "best_ever": 902,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-13|2027-01-28",
@@ -199921,7 +199921,7 @@
           "best_ever": 912,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-14|2027-01-21",
@@ -199969,7 +199969,7 @@
           "best_ever": 1011,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-14|2027-01-22",
@@ -200017,7 +200017,7 @@
           "best_ever": 1030,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-01-14|2027-01-23",
@@ -200041,7 +200041,7 @@
           "best_ever": 1051,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-14|2027-01-24",
@@ -200137,7 +200137,7 @@
           "best_ever": 949,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|LGA|BKK|2027-01-14|2027-01-26",
@@ -200208,7 +200208,7 @@
           "best_ever": 949,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-01-14|2027-01-28",
@@ -200232,7 +200232,7 @@
           "best_ever": 949,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-14|2027-01-29",
@@ -200280,7 +200280,7 @@
           "best_ever": 1055,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-15|2027-01-22",
@@ -200376,7 +200376,7 @@
           "best_ever": 950,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-15|2027-01-26",
@@ -200424,7 +200424,7 @@
           "best_ever": 968,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-15|2027-01-27",
@@ -200472,7 +200472,7 @@
           "best_ever": 950,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|LGA|BKK|2027-01-15|2027-01-27",
@@ -200543,7 +200543,7 @@
           "best_ever": 912,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-15|2027-01-29",
@@ -200591,7 +200591,7 @@
           "best_ever": 912,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-15|2027-01-30",
@@ -200687,7 +200687,7 @@
           "best_ever": 999,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-16|2027-01-25",
@@ -200735,7 +200735,7 @@
           "best_ever": 970,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-16|2027-01-26",
@@ -200783,7 +200783,7 @@
           "best_ever": 970,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-16|2027-01-27",
@@ -200831,7 +200831,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-16|2027-01-28",
@@ -200879,7 +200879,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-16|2027-01-29",
@@ -200927,7 +200927,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-16|2027-01-30",
@@ -200975,7 +200975,7 @@
           "best_ever": 970,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-16|2027-01-31",
@@ -201023,7 +201023,7 @@
           "best_ever": 878,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-17|2027-01-25",
@@ -201071,7 +201071,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-17|2027-01-26",
@@ -201143,7 +201143,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-17|2027-01-28",
@@ -201191,7 +201191,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-17|2027-01-29",
@@ -201239,7 +201239,7 @@
           "best_ever": 959,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-17|2027-01-31",
@@ -201287,7 +201287,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-17|2027-02-01",
@@ -201335,7 +201335,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-18|2027-01-25",
@@ -201383,7 +201383,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-18|2027-01-26",
@@ -201455,7 +201455,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-18|2027-01-28",
@@ -201503,7 +201503,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-01-18|2027-01-29",
@@ -201527,7 +201527,7 @@
           "best_ever": 959,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-18|2027-01-30",
@@ -201575,7 +201575,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-18|2027-01-31",
@@ -201623,7 +201623,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-18|2027-02-01",
@@ -201719,7 +201719,7 @@
           "best_ever": 878,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-19|2027-01-27",
@@ -201767,7 +201767,7 @@
           "best_ever": 878,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-19|2027-01-28",
@@ -201839,7 +201839,7 @@
           "best_ever": 878,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-19|2027-01-31",
@@ -201935,7 +201935,7 @@
           "best_ever": 878,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-19|2027-02-03",
@@ -202103,7 +202103,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-20|2027-02-02",
@@ -202175,7 +202175,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-20|2027-02-04",
@@ -202247,7 +202247,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-21|2027-01-29",
@@ -202367,7 +202367,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-21|2027-02-02",
@@ -202486,7 +202486,7 @@
           "best_ever": 910,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-22|2027-01-30",
@@ -202534,7 +202534,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-22|2027-01-31",
@@ -202606,7 +202606,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-22|2027-02-02",
@@ -202749,7 +202749,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-22|2027-02-06",
@@ -202821,7 +202821,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-23|2027-01-31",
@@ -202869,7 +202869,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-23|2027-02-02",
@@ -202917,7 +202917,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-23|2027-02-04",
@@ -202965,7 +202965,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-23|2027-02-05",
@@ -203085,7 +203085,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-24|2027-02-01",
@@ -203157,7 +203157,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-24|2027-02-03",
@@ -203205,7 +203205,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-24|2027-02-04",
@@ -203253,7 +203253,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-24|2027-02-05",
@@ -203301,7 +203301,7 @@
           "best_ever": 959,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-24|2027-02-06",
@@ -203373,7 +203373,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-25|2027-02-01",
@@ -203421,7 +203421,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-25|2027-02-02",
@@ -203469,7 +203469,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-25|2027-02-03",
@@ -203517,7 +203517,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-25|2027-02-04",
@@ -203565,7 +203565,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-25|2027-02-05",
@@ -203661,7 +203661,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-25|2027-02-09",
@@ -203709,7 +203709,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-26|2027-02-02",
@@ -203877,7 +203877,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-26|2027-02-09",
@@ -203925,7 +203925,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-26|2027-02-10",
@@ -203973,7 +203973,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-27|2027-02-03",
@@ -204045,7 +204045,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-27|2027-02-05",
@@ -204213,7 +204213,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-01-27|2027-02-11",
@@ -204237,7 +204237,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-28|2027-02-04",
@@ -204285,7 +204285,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-28|2027-02-05",
@@ -204429,7 +204429,7 @@
           "best_ever": 897,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|LGA|BKK|2027-01-28|2027-02-09",
@@ -204500,7 +204500,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-28|2027-02-11",
@@ -204596,7 +204596,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-29|2027-02-06",
@@ -204644,7 +204644,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-29|2027-02-07",
@@ -204764,7 +204764,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|LGA|BKK|2027-01-29|2027-02-10",
@@ -204859,7 +204859,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-29|2027-02-13",
@@ -204907,7 +204907,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-30|2027-02-06",
@@ -205075,7 +205075,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-30|2027-02-12",
@@ -205267,7 +205267,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-31|2027-02-13",
@@ -205315,7 +205315,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-01-31|2027-02-14",
@@ -205339,7 +205339,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-01-31|2027-02-15",
@@ -205483,7 +205483,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-01|2027-02-12",
@@ -205555,7 +205555,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-01|2027-02-14",
@@ -205651,7 +205651,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-02|2027-02-09",
@@ -205699,7 +205699,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-02|2027-02-10",
@@ -205747,7 +205747,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-02-02|2027-02-11",
@@ -205771,7 +205771,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-02|2027-02-12",
@@ -205819,7 +205819,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-02|2027-02-13",
@@ -205915,7 +205915,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-02|2027-02-16",
@@ -205987,7 +205987,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-03|2027-02-10",
@@ -206059,7 +206059,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-03|2027-02-12",
@@ -206155,7 +206155,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-03|2027-02-15",
@@ -206203,7 +206203,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-03|2027-02-16",
@@ -206251,7 +206251,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-02-03|2027-02-17",
@@ -206275,7 +206275,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-03|2027-02-18",
@@ -206323,7 +206323,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-04|2027-02-11",
@@ -206395,7 +206395,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-02-04|2027-02-13",
@@ -206419,7 +206419,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-04|2027-02-14",
@@ -206467,7 +206467,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-04|2027-02-15",
@@ -206658,7 +206658,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-05|2027-02-14",
@@ -206706,7 +206706,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-05|2027-02-15",
@@ -206897,7 +206897,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-06|2027-02-13",
@@ -206969,7 +206969,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-06|2027-02-15",
@@ -207089,7 +207089,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-06|2027-02-19",
@@ -207257,7 +207257,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-07|2027-02-17",
@@ -207353,7 +207353,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-07|2027-02-20",
@@ -207497,7 +207497,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-08|2027-02-18",
@@ -207593,7 +207593,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-08|2027-02-21",
@@ -207641,7 +207641,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|JFK|BKK|2027-02-08|2027-02-22",
@@ -207665,7 +207665,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-08|2027-02-23",
@@ -207713,7 +207713,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-09|2027-02-16",
@@ -207785,7 +207785,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-09|2027-02-18",
@@ -207881,7 +207881,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-09|2027-02-21",
@@ -207953,7 +207953,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-09|2027-02-23",
@@ -208001,7 +208001,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-09|2027-02-24",
@@ -208073,7 +208073,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-10|2027-02-18",
@@ -208145,7 +208145,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-10|2027-02-21",
@@ -208193,7 +208193,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-10|2027-02-22",
@@ -208241,7 +208241,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-10|2027-02-23",
@@ -208289,7 +208289,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-10|2027-02-24",
@@ -208600,7 +208600,7 @@
           "best_ever": 895,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-12|2027-02-23",
@@ -208767,7 +208767,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-13|2027-02-22",
@@ -209103,7 +209103,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-14|2027-02-28",
@@ -209247,7 +209247,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-15|2027-02-25",
@@ -209703,7 +209703,7 @@
           "best_ever": 828,
           "best_ever_date": "2026-11-24",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|BOS|BKK|2027-02-17|2027-02-28",
@@ -209967,7 +209967,7 @@
           "best_ever": 854,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|LGA|BKK|2027-02-18|2027-03-02",
@@ -210206,7 +210206,7 @@
           "best_ever": 853,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|LGA|BKK|2027-02-19|2027-03-03",
@@ -211357,7 +211357,7 @@
           "best_ever": 1006,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|LGA|BKK|2027-02-25|2027-03-09",
@@ -211548,7 +211548,7 @@
           "best_ever": 878,
           "best_ever_date": "2026-11-23",
           "hit_target": false,
-          "last_attempt_at": "2026-11-26T20:33:41Z"
+          "last_attempt_at": "2026-11-27T20:20:37Z"
         },
         {
           "key": "bkk|LGA|BKK|2027-02-26|2027-03-10",
