@@ -114,6 +114,7 @@ jobs:
       matrix:
         pair: ${{ fromJson(needs.prepare.outputs.bos || '[{"route":"skip","origin":"BOS","dest":"SKIP"}]') }}
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         if: matrix.pair.route != 'skip'
         with:
@@ -138,6 +139,7 @@ jobs:
       matrix:
         pair: ${{ fromJson(needs.prepare.outputs.jfk || '[{"route":"skip","origin":"JFK","dest":"SKIP"}]') }}
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         if: matrix.pair.route != 'skip'
         with:
@@ -162,6 +164,7 @@ jobs:
       matrix:
         pair: ${{ fromJson(needs.prepare.outputs.ewr || '[{"route":"skip","origin":"EWR","dest":"SKIP"}]') }}
     steps:
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         if: matrix.pair.route != 'skip'
         with:
