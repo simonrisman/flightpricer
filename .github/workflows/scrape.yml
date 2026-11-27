@@ -2,7 +2,11 @@ name: scrape
 
 on:
   schedule:
-    - cron: "17 11 * * *"
+    # UTC crons locked to Eastern Standard Time. During daylight time the same
+    # run is one hour later on the Eastern clock.
+    - cron: "0 13 * * *" # BOS 8:00am EST (9:00am EDT)
+    - cron: "0 19 * * *" # JFK 2:00pm EST (3:00pm EDT)
+    - cron: "0 3 * * *" # EWR 10:00pm EST (11:00pm EDT)
   workflow_dispatch:
     inputs:
       mode:
@@ -14,7 +18,7 @@ on:
         required: false
         default: ""
       origin:
-        description: "Origin airport"
+        description: "Origin airport for an ad-hoc date query"
         required: false
         default: ""
       dest:
@@ -30,9 +34,9 @@ on:
         required: false
         default: ""
       only_origin:
-        description: "Limit a full run to one origin: JFK, EWR, or BOS"
+        description: "Origin for a full run: BOS, JFK, EWR, or all"
         required: false
-        default: ""
+        default: all
       skip:
         description: "Skip this many searches already finished in today's slice"
         required: false
@@ -42,21 +46,39 @@ permissions:
   contents: write
   actions: write
 
-concurrency:
-  group: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'adhoc' && 'scrape-adhoc' || 'scrape' }}
-  cancel-in-progress: false
-
 jobs:
-  origins:
-    name: ${{ matrix.origin }}
+  prepare:
     if: github.event_name != 'workflow_dispatch' || github.event.inputs.mode != 'adhoc'
     runs-on: ubuntu-latest
+    outputs:
+      origins: ${{ steps.pick.outputs.origins }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: pick
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          ONLY_ORIGIN: ${{ github.event.inputs.only_origin }}
+        run: |
+          origins=$(python -m scraper.schedule)
+          echo "origins=$origins" >> "$GITHUB_OUTPUT"
+          echo "running $origins"
+
+  scrape:
+    name: ${{ matrix.origin }}
+    needs: prepare
+    if: needs.prepare.result == 'success'
+    runs-on: ubuntu-latest
     timeout-minutes: 360
+    concurrency:
+      group: scrape-${{ matrix.origin }}
+      cancel-in-progress: false
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 1
       matrix:
-        origin: [JFK, EWR, BOS]
+        origin: ${{ fromJson(needs.prepare.outputs.origins) }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,6 +93,8 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Scrape origin
+        id: scrape
+        continue-on-error: true
         env:
           ORIGIN: ${{ matrix.origin }}
           SKIP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
@@ -81,73 +105,69 @@ jobs:
           fi
           "${args[@]}"
 
-      - name: Upload shard
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: scrape-${{ matrix.origin }}
-          path: shards/${{ matrix.origin }}
-          if-no-files-found: ignore
-          retention-days: 7
-
-  publish:
-    needs: origins
-    if: ${{ always() && (github.event_name != 'workflow_dispatch' || github.event.inputs.mode != 'adhoc') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-
-      - run: pip install -r requirements.txt
-
-      - name: Download origin shards
-        continue-on-error: true
-        uses: actions/download-artifact@v4
-        with:
-          pattern: scrape-*
-          path: shards
-
-      - name: Merge shards
-        env:
-          RUN_ID: ${{ github.run_id }}
-          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: python -m scraper.shard merge --shards shards --run-id "$RUN_ID" --run-url "$RUN_URL"
-
-      - name: Commit data
+      - name: Merge and push
         if: ${{ !cancelled() }}
         env:
+          ORIGIN: ${{ matrix.origin }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: |
-          git add site/data/latest.json site/data/status.json site/data/history site/data/queue.json
-          published=0
-          if git diff --cached --quiet; then
-            echo "No data changes"
-          else
-            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "data: origins $(date -u +%F)"
-            git push origin HEAD:main || {
-              git fetch origin main
-              git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main
-              git push origin HEAD:main
-            }
-            published=1
+          set -euo pipefail
+          merge_origin() {
+            git fetch origin main
+            git reset --hard origin/main
+            python -m scraper.shard merge --shards "shards/$ORIGIN" --origin "$ORIGIN" --run-id "$RUN_ID" --run-url "$RUN_URL"
+            git add site/data/latest.json site/data/status.json site/data/history site/data/queue.json
+            if git diff --cached --quiet; then
+              echo "No data changes"
+              return 2
+            fi
+            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" \
+              commit -m "data: ${ORIGIN} $(date -u +%F)"
+          }
+          code=0
+          merge_origin || code=$?
+          if [ "$code" -eq 2 ]; then
+            exit 0
+          elif [ "$code" -ne 0 ]; then
+            exit "$code"
           fi
-          if [ "$published" = 1 ]; then
-            gh workflow run pages.yml --ref main
-          fi
+          for attempt in 1 2 3 4; do
+            if git push origin HEAD:main; then
+              gh workflow run pages.yml --ref main
+              exit 0
+            fi
+            echo "push rejected, rebasing onto main (attempt ${attempt})"
+            git fetch origin main
+            if git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main; then
+              continue
+            fi
+            echo "rebase hit a conflict; merging this origin onto latest main"
+            git rebase --abort || true
+            code=0
+            merge_origin || code=$?
+            if [ "$code" -eq 2 ]; then
+              exit 0
+            elif [ "$code" -ne 0 ]; then
+              exit "$code"
+            fi
+          done
+          echo "could not push"
+          exit 1
+
+      - name: Fail when the scrape failed
+        if: steps.scrape.outcome == 'failure'
+        run: exit 1
 
   adhoc:
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'adhoc'
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    concurrency:
+      group: scrape-adhoc
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
         with:
@@ -189,11 +209,12 @@ jobs:
             echo "No data changes"
           else
             git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "data: ${{ github.event.inputs.route_id }} $(date -u +%F)"
-            git push origin HEAD:main || {
+            for attempt in 1 2 3 4; do
+              git push origin HEAD:main && break
+              echo "push rejected, rebasing onto main (attempt ${attempt})"
               git fetch origin main
               git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main
-              git push origin HEAD:main
-            }
+            done
             published=1
           fi
           if [ "$published" = 1 ]; then

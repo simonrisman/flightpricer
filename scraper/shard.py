@@ -12,7 +12,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 from scraper.config import AppConfig, load_config
-from scraper.queue import init_queue
+from scraper.queue import init_queue, leg_id
 from scraper.store import (
     drop_expired,
     entries_from_latest,
@@ -109,14 +109,23 @@ def merge_shards(
     run_url: str,
     now: str | None = None,
     today: date | None = None,
+    scope: list[str] | None = None,
 ) -> dict:
-    """Fold origin shards into ``data_dir``. Missing origins keep their saved rows."""
+    """Fold this run's origin shards into ``data_dir``.
+
+    ``scope`` is the origins this run is responsible for. Every other origin
+    keeps its prices, history, and queue state. An origin in scope with no
+    usable shard is marked failed and its saved prices stay.
+    """
     stamp = now or utc_now()
     run_day = today or datetime.now(timezone.utc).date()
     shards = load_shards(shard_root)
-    expected = _expected_origins(config)
-    present = [origin for origin in expected if origin in shards and isinstance(shards[origin].get("entries"), list)]
-    missing = [origin for origin in expected if origin not in present]
+    if scope is None:
+        scope = [origin for origin in _expected_origins(config) if origin in shards]
+    else:
+        scope = [origin.strip().upper() for origin in scope if origin.strip()]
+    present = [origin for origin in scope if origin in shards and isinstance(shards[origin].get("entries"), list)]
+    missing = [origin for origin in scope if origin not in present]
 
     latest = read_json(data_dir / "latest.json")
     previous_status = read_json(data_dir / "status.json")
@@ -149,13 +158,14 @@ def merge_shards(
         data_dir / "queue.json",
         config,
         shards,
+        scope,
         present,
         missing,
         stamp,
         run_id,
         run_url,
     )
-    status = _merge_status(previous_status, shards, present, missing, stamp)
+    status = _merge_status(previous_status, shards, scope, present, missing, stamp)
     write_json(data_dir / "status.json", status)
     return {"present": present, "missing": missing, "status": status, "queue": queue}
 
@@ -199,6 +209,7 @@ def _merge_queue(
     path: Path,
     config: AppConfig,
     shards: dict[str, dict],
+    scope: list[str],
     present: list[str],
     missing: list[str],
     now: str,
@@ -212,6 +223,7 @@ def _merge_queue(
         except json.JSONDecodeError:
             previous = None
     queue = init_queue(_route_dicts(config), previous if isinstance(previous, dict) else None, now, run_id, run_url)
+    _restore_other_origins(queue, previous if isinstance(previous, dict) else None, set(scope))
     for origin in present:
         shard = shards[origin]
         done = {
@@ -241,6 +253,23 @@ def _merge_queue(
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(queue, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return queue
+
+
+def _restore_other_origins(queue: dict, previous: dict | None, scope: set[str]) -> None:
+    prior = {}
+    for leg in (previous or {}).get("legs") or []:
+        if not isinstance(leg, dict):
+            continue
+        prior[leg_id(str(leg.get("route") or ""), str(leg.get("origin") or ""), str(leg.get("dest") or ""))] = leg
+    for leg in queue.get("legs") or []:
+        if leg["origin"] in scope:
+            continue
+        old = prior.get(leg_id(leg["route"], leg["origin"], leg["dest"]))
+        if old is None:
+            continue
+        leg["state"] = old.get("state") or "pending"
+        leg["started_at"] = old.get("started_at")
+        leg["finished_at"] = old.get("finished_at")
 
 
 def _leg_numbers(shard: dict) -> dict:
@@ -273,6 +302,7 @@ def _leg_numbers(shard: dict) -> dict:
 def _merge_status(
     previous: dict | None,
     shards: dict[str, dict],
+    scope: list[str],
     present: list[str],
     missing: list[str],
     now: str,
@@ -308,12 +338,12 @@ def _merge_status(
             "total": totals["planned"],
             "scheduled": totals["planned"],
             "offset": 0,
-            "origin": None,
+            "origin": scope[0] if len(scope) == 1 else None,
             "mode": "price-pass",
             "date_calls": totals["date_calls"],
             "calendar_calls": totals["date_calls"],
             "detail_calls": totals["detail_calls"],
-            "origins": {origin: ("merged" if origin in present else "preserved") for origin in list(present) + list(missing)},
+            "origins": {origin: ("merged" if origin in present else "preserved") for origin in scope},
         },
         "stopped_early": stopped,
     }
@@ -334,6 +364,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--run-id", default="")
     parser.add_argument("--run-url", default="")
     parser.add_argument("--today", default=None)
+    parser.add_argument("--origin", action="append", default=[], help="origin this run should merge; repeatable")
     args = parser.parse_args(argv)
     config = load_config(Path(args.config))
     today = date.fromisoformat(args.today) if args.today else None
@@ -344,6 +375,7 @@ def main(argv: list[str] | None = None) -> int:
         run_id=args.run_id,
         run_url=args.run_url,
         today=today,
+        scope=args.origin or None,
     )
     present = ", ".join(report["present"]) or "none"
     missing = ", ".join(report["missing"]) or "none"

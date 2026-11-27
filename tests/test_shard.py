@@ -138,46 +138,47 @@ def test_merge_keeps_an_origin_whose_shard_is_missing(tmp_path: Path):
         ),
         encoding="utf-8",
     )
-    shards = tmp_path / "shards"
-    for origin, price in (("JFK", 300), ("BOS", 320)):
-        folder = shards / origin
-        folder.mkdir(parents=True)
-        (folder / "shard.json").write_text(json.dumps(_shard(origin, price)), encoding="utf-8")
+    shards = tmp_path / "shards" / "BOS"
+    shards.mkdir(parents=True)
+    (shards / "shard.json").write_text(json.dumps(_shard("BOS", 320)), encoding="utf-8")
 
     report = merge_shards(
-        shards,
+        tmp_path / "shards",
         data,
         config=load_config(config_path),
         run_id="99",
         run_url="https://example.test/99",
         now="2026-11-27T13:00:00Z",
         today=date(2026, 11, 27),
+        scope=["BOS"],
     )
     latest = json.loads((data / "latest.json").read_text(encoding="utf-8"))
     rows = {row["key"]: row for row in latest["routes"][0]["searches"]}
-    assert rows["bog|JFK|BOG|2027-03-01|2027-03-08"]["price"] == 300
+    assert rows["bog|JFK|BOG|2027-03-01|2027-03-08"]["price"] == 400
     assert rows["bog|EWR|BOG|2027-03-01|2027-03-08"]["price"] == 410
     assert rows["bog|EWR|BOG|2027-03-01|2027-03-08"]["airline"] == "Old"
     assert rows["bog|BOS|BOG|2027-03-01|2027-03-08"]["price"] == 320
     history = json.loads((data / "history" / "bog.json").read_text(encoding="utf-8"))
     keys = {point["key"] for point in history["points"]}
-    assert "bog|JFK|BOG|2027-03-01|2027-03-08" in keys
     assert "bog|EWR|BOG|2027-03-01|2027-03-08" in keys
     assert "bog|BOS|BOG|2027-03-01|2027-03-08" in keys
     status = json.loads((data / "status.json").read_text(encoding="utf-8"))
-    assert status["state"] == "degraded"
-    assert status["searches_succeeded"] == 2
-    assert "EWR" in status["errors"][0]
-    assert status["coverage"]["origins"]["EWR"] == "preserved"
-    assert status["coverage"]["origins"]["JFK"] == "merged"
+    assert status["state"] == "ok"
+    assert status["searches_succeeded"] == 1
+    assert status["errors"] == []
+    assert status["coverage"]["origin"] == "BOS"
+    assert status["coverage"]["origins"] == {"BOS": "merged"}
     queue = json.loads((data / "queue.json").read_text(encoding="utf-8"))
     by_origin = {leg["origin"]: leg for leg in queue["legs"]}
     assert by_origin["JFK"]["state"] == "done"
-    assert by_origin["JFK"]["finished_at"] == "2026-11-27T12:10:00Z"
-    assert by_origin["EWR"]["state"] == "failed"
+    assert by_origin["JFK"]["finished_at"] == "2026-11-20T00:20:00Z"
+    assert by_origin["EWR"]["state"] == "done"
+    assert by_origin["EWR"]["finished_at"] == "2026-11-20T00:20:00Z"
     assert by_origin["BOS"]["state"] == "done"
+    assert by_origin["BOS"]["finished_at"] == "2026-11-27T12:10:00Z"
     assert queue["run_id"] == "99"
-    assert report["missing"] == ["EWR"]
+    assert report["missing"] == []
+    assert report["present"] == ["BOS"]
 
 
 def test_unfinished_shard_fails_the_legs_it_did_not_reach(tmp_path: Path):
@@ -193,7 +194,25 @@ def test_unfinished_shard_fails_the_legs_it_did_not_reach(tmp_path: Path):
     jfk_mde["dest"] = "MDE"
     jfk_mde["price"] = 450
     (data / "latest.json").write_text(
-        json.dumps({"generated_at": "2026-11-20T00:00:00Z", "currency": "USD", "routes": [{"id": "bog", "searches": [jfk_bog, jfk_mde]}]}),
+        json.dumps({"generated_at": "2026-11-20T00:00:00Z", "currency": "USD", "routes": [{"id": "bog", "searches": [jfk_bog, jfk_mde, _entry("EWR", 410)]}]}),
+        encoding="utf-8",
+    )
+    (data / "queue.json").write_text(
+        json.dumps(
+            {
+                "legs": [
+                    {
+                        "route": "bog",
+                        "label": "Bogota",
+                        "origin": "EWR",
+                        "dest": "BOG",
+                        "state": "done",
+                        "started_at": "2026-11-20T00:00:00Z",
+                        "finished_at": "2026-11-20T00:20:00Z",
+                    }
+                ]
+            }
+        ),
         encoding="utf-8",
     )
     shard = _shard("JFK", 300, finished=False)
@@ -209,13 +228,15 @@ def test_unfinished_shard_fails_the_legs_it_did_not_reach(tmp_path: Path):
         run_url="",
         now="2026-11-27T13:00:00Z",
         today=date(2026, 11, 27),
+        scope=["JFK"],
     )
     latest = json.loads((data / "latest.json").read_text(encoding="utf-8"))
     rows = {row["key"]: row for row in latest["routes"][0]["searches"]}
     assert rows["bog|JFK|BOG|2027-03-01|2027-03-08"]["price"] == 300
     assert rows["bog|JFK|MDE|2027-03-01|2027-03-08"]["price"] == 450
+    assert rows["bog|EWR|BOG|2027-03-01|2027-03-08"]["price"] == 410
     queue = json.loads((data / "queue.json").read_text(encoding="utf-8"))
     states = {(leg["origin"], leg["dest"]): leg["state"] for leg in queue["legs"]}
     assert states[("JFK", "BOG")] == "done"
     assert states[("JFK", "MDE")] == "failed"
-    assert states[("EWR", "BOG")] == "failed"
+    assert states[("EWR", "BOG")] == "done"
