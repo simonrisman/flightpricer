@@ -77,3 +77,8 @@ def test_scrape_workflow_chains_pairs_per_origin_without_a_sleep():
     assert "publish" not in workflow["jobs"]
     assert workflow["jobs"]["adhoc"]["concurrency"]["group"] == "scrape-adhoc"
     assert "git push" in _scripts(workflow["jobs"]["adhoc"])
+    prepare = "\n".join(
+        step.get("run") or "" for step in workflow["jobs"]["prepare"]["steps"]
+    )
+    assert "pydantic==2.12.5" in prepare
+    assert "PyYAML==6.0.3" in prepare
