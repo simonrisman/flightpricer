@@ -455,9 +455,11 @@ def test_five_date_sweep_failures_stop_before_later_chunks():
     departures = [date(2027, 4, 1) + timedelta(days=40 * offset) for offset in range(6)]
     searches = _trips(departures, lengths=[7])
     calls = {"n": 0}
+    seen: list[date] = []
 
-    def fake_fetch(_chunk, **_kwargs):
+    def fake_fetch(chunk, **_kwargs):
         calls["n"] += 1
+        seen.append(chunk.outbound_start)
         raise DateSweepError("down")
 
     def fake_search(_item, **_kwargs):
@@ -472,8 +474,62 @@ def test_five_date_sweep_failures_stop_before_later_chunks():
         fetch=fake_fetch,
         now=lambda: "2027-04-01T00:00:00Z",
     )
-    assert calls["n"] == 5
+    sixth = departures[5]
+    assert calls["n"] == 10
+    assert sixth not in seen
+    assert seen.count(departures[0]) == 2
     assert outcome.stopped_early is True
     assert len(outcome.results) == 5
     assert outcome.detail_calls == 0
-    assert outcome.date_calls == 5
+    assert outcome.date_calls == 10
+
+
+def test_failed_dates_are_retried_once_and_can_recover():
+    searches = _trips([date(2027, 4, 1), date(2027, 4, 2)], lengths=[7])
+    calls = {"n": 0}
+
+    def fake_fetch(chunk, **_kwargs):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            return {}
+        return {(item.depart, item.return_date): 500 for item in chunk.searches}
+
+    def fake_search(item, **kwargs):
+        return _fare(item=item, fetched_at=kwargs["fetched_at"])
+
+    outcome = collect_price_pass(
+        searches,
+        currency="USD",
+        cabin="economy",
+        adults=1,
+        detail=fake_search,
+        fetch=fake_fetch,
+        now=lambda: "2027-04-01T00:00:00Z",
+    )
+    assert calls["n"] == 2
+    assert outcome.date_calls == 2
+    assert all(result.ok for result in outcome.results)
+    assert outcome.detail_calls == 2
+
+
+def test_a_date_that_fails_twice_is_not_retried_again():
+    searches = _trips([date(2027, 4, 1)], lengths=[7])
+    calls = {"n": 0}
+
+    def fake_fetch(_chunk, **_kwargs):
+        calls["n"] += 1
+        return {}
+
+    outcome = collect_price_pass(
+        searches,
+        currency="USD",
+        cabin="economy",
+        adults=1,
+        detail=lambda *_args, **_kwargs: None,
+        fetch=fake_fetch,
+        now=lambda: "2027-04-01T00:00:00Z",
+    )
+    assert calls["n"] == 2
+    assert outcome.date_calls == 2
+    assert outcome.results[0].ok is False
+    assert outcome.detail_calls == 0

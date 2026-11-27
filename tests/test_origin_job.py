@@ -126,3 +126,63 @@ routes:
     assert {entry["dest"] for entry in shard["entries"]} == {"BOG", "MDE"}
     assert "bog" in shard["history_additions"]
     assert "mde" in shard["history_additions"]
+
+
+def test_one_pair_does_not_pause_or_scrape_the_rest(tmp_path: Path, monkeypatch):
+    config = tmp_path / "config.yaml"
+    config.write_text(
+        """
+settings:
+  currency: USD
+  delay_seconds: [3, 7]
+routes:
+  - id: bog
+    label: Bogota
+    origins: [JFK]
+    destinations: [BOG]
+    trip: round_trip
+    depart_window: { start: 2027-03-01, end: 2027-03-01 }
+    trip_length_days: [7]
+    active: true
+  - id: mde
+    label: Medellin
+    origins: [JFK]
+    destinations: [MDE]
+    trip: round_trip
+    depart_window: { start: 2027-03-01, end: 2027-03-01 }
+    trip_length_days: [7]
+    active: true
+""",
+        encoding="utf-8",
+    )
+    data = tmp_path / "data"
+    data.mkdir()
+    calls: list[list[str]] = []
+
+    def fake_run(argv):
+        calls.append(argv)
+        (data / "latest.json").write_text(
+            json.dumps({"generated_at": "2026-11-27T12:00:00Z", "currency": "USD", "routes": []}),
+            encoding="utf-8",
+        )
+        (data / "status.json").write_text("{}", encoding="utf-8")
+        return 0
+
+    pauses: list[int] = []
+    monkeypatch.setattr("scraper.origin_job.run", fake_run)
+    code = execute(
+        "JFK",
+        config_path=config,
+        data_dir=data,
+        shard_dir=tmp_path / "shard",
+        only_route="bog",
+        only_dest="BOG",
+        pause=lambda *_args: pauses.append(1),
+    )
+    shard = json.loads((tmp_path / "shard" / "shard.json").read_text(encoding="utf-8"))
+    assert code == 0
+    assert pauses == []
+    assert len(calls) == 1
+    assert calls[0][calls[0].index("--only-dest") + 1] == "BOG"
+    assert [leg["dest"] for leg in shard["legs"]] == ["BOG"]
+    assert shard["finished"] is True

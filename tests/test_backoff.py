@@ -24,6 +24,8 @@ def test_throttle_delay_grows_and_stays_capped():
     delays = [throttle_delay(attempt, rng=lambda: 0) for attempt in range(6)]
     assert delays[:4] == [2.0, 4.0, 8.0, 16.0]
     assert delays[-1] == 60.0
+    assert throttle_delay(0, rng=lambda: 1) == 4.0
+    assert throttle_delay(1, rng=lambda: 1) == 8.0
 
 
 def test_backoff_retries_only_throttle():

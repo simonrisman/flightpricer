@@ -37,6 +37,10 @@ on:
         description: "Origin for a full run: BOS, JFK, EWR, or all"
         required: false
         default: all
+      only_route:
+        description: "Optional route id. Limits a full run to that route."
+        required: false
+        default: ""
       skip:
         description: "Skip this many searches already finished in today's slice"
         required: false
@@ -51,7 +55,9 @@ jobs:
     if: github.event_name != 'workflow_dispatch' || github.event.inputs.mode != 'adhoc'
     runs-on: ubuntu-latest
     outputs:
-      origins: ${{ steps.pick.outputs.origins }}
+      bos: ${{ steps.pick.outputs.bos }}
+      jfk: ${{ steps.pick.outputs.jfk }}
+      ewr: ${{ steps.pick.outputs.ewr }}
     steps:
       - uses: actions/checkout@v4
 
@@ -60,106 +66,104 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           SCHEDULE: ${{ github.event.schedule }}
           ONLY_ORIGIN: ${{ github.event.inputs.only_origin }}
+          ONLY_ROUTE: ${{ github.event.inputs.only_route }}
         run: |
-          origins=$(python -m scraper.schedule)
-          echo "origins=$origins" >> "$GITHUB_OUTPUT"
-          echo "running $origins"
+          python - << 'PY'
+          import json, os
+          from pathlib import Path
+          from scraper.config import load_config
+          from scraper.schedule import select_origins, select_pairs
 
-  scrape:
-    name: ${{ matrix.origin }}
+          origins = select_origins(
+              os.environ.get("EVENT_NAME", ""),
+              os.environ.get("SCHEDULE", ""),
+              os.environ.get("ONLY_ORIGIN", ""),
+          )
+          grouped = select_pairs(
+              load_config(Path("config.yaml")),
+              origins,
+              os.environ.get("ONLY_ROUTE", ""),
+          )
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
+              for code in ("BOS", "JFK", "EWR"):
+                  rows = grouped[code]
+                  if not rows:
+                      rows = [{"route": "skip", "origin": code, "dest": "SKIP"}]
+                  handle.write(code.lower() + "=" + json.dumps(rows, separators=(",", ":")) + "\n")
+          print("running", {code: [row["dest"] for row in grouped[code]] for code in ("BOS", "JFK", "EWR")})
+          PY
+
+  bos:
+    name: ${{ matrix.pair.origin }}-${{ matrix.pair.dest }}
     needs: prepare
-    if: needs.prepare.result == 'success'
+    if: needs.prepare.result == 'success' && !contains(needs.prepare.outputs.bos || '', '"route":"skip"')
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 120
     concurrency:
-      group: scrape-${{ matrix.origin }}
+      group: scrape-BOS
       cancel-in-progress: false
     strategy:
       fail-fast: false
       max-parallel: 1
       matrix:
-        origin: ${{ fromJson(needs.prepare.outputs.origins) }}
+        pair: ${{ fromJson(needs.prepare.outputs.bos || '[{"route":"skip","origin":"BOS","dest":"SKIP"}]') }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        if: matrix.pair.route != 'skip'
         with:
-          ref: main
-          fetch-depth: 0
+          origin: ${{ matrix.pair.origin }}
+          route: ${{ matrix.pair.route }}
+          dest: ${{ matrix.pair.dest }}
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          token: ${{ github.token }}
 
-      - uses: actions/setup-python@v5
+  jfk:
+    name: ${{ matrix.pair.origin }}-${{ matrix.pair.dest }}
+    needs: prepare
+    if: needs.prepare.result == 'success' && !contains(needs.prepare.outputs.jfk || '', '"route":"skip"')
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-JFK
+      cancel-in-progress: false
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        pair: ${{ fromJson(needs.prepare.outputs.jfk || '[{"route":"skip","origin":"JFK","dest":"SKIP"}]') }}
+    steps:
+      - uses: ./.github/actions/scrape-pair
+        if: matrix.pair.route != 'skip'
         with:
-          python-version: "3.12"
-          cache: pip
+          origin: ${{ matrix.pair.origin }}
+          route: ${{ matrix.pair.route }}
+          dest: ${{ matrix.pair.dest }}
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          token: ${{ github.token }}
 
-      - run: pip install -r requirements.txt
-
-      - name: Scrape origin
-        id: scrape
-        continue-on-error: true
-        env:
-          ORIGIN: ${{ matrix.origin }}
-          SKIP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
-        run: |
-          args=(python -m scraper.origin_job --origin "$ORIGIN" --shard-dir "shards/$ORIGIN")
-          if [ -n "$SKIP" ]; then
-            args+=(--skip "$SKIP")
-          fi
-          "${args[@]}"
-
-      - name: Merge and push
-        if: ${{ !cancelled() }}
-        env:
-          ORIGIN: ${{ matrix.origin }}
-          RUN_ID: ${{ github.run_id }}
-          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-        run: |
-          set -euo pipefail
-          merge_origin() {
-            git fetch origin main
-            git reset --hard origin/main
-            python -m scraper.shard merge --shards "shards/$ORIGIN" --origin "$ORIGIN" --run-id "$RUN_ID" --run-url "$RUN_URL"
-            git add site/data/latest.json site/data/status.json site/data/history site/data/queue.json
-            if git diff --cached --quiet; then
-              echo "No data changes"
-              return 2
-            fi
-            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" \
-              commit -m "data: ${ORIGIN} $(date -u +%F)"
-          }
-          code=0
-          merge_origin || code=$?
-          if [ "$code" -eq 2 ]; then
-            exit 0
-          elif [ "$code" -ne 0 ]; then
-            exit "$code"
-          fi
-          for attempt in 1 2 3 4; do
-            if git push origin HEAD:main; then
-              gh workflow run pages.yml --ref main
-              exit 0
-            fi
-            echo "push rejected, rebasing onto main (attempt ${attempt})"
-            git fetch origin main
-            if git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main; then
-              continue
-            fi
-            echo "rebase hit a conflict; merging this origin onto latest main"
-            git rebase --abort || true
-            code=0
-            merge_origin || code=$?
-            if [ "$code" -eq 2 ]; then
-              exit 0
-            elif [ "$code" -ne 0 ]; then
-              exit "$code"
-            fi
-          done
-          echo "could not push"
-          exit 1
-
-      - name: Fail when the scrape failed
-        if: steps.scrape.outcome == 'failure'
-        run: exit 1
+  ewr:
+    name: ${{ matrix.pair.origin }}-${{ matrix.pair.dest }}
+    needs: prepare
+    if: needs.prepare.result == 'success' && !contains(needs.prepare.outputs.ewr || '', '"route":"skip"')
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-EWR
+      cancel-in-progress: false
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        pair: ${{ fromJson(needs.prepare.outputs.ewr || '[{"route":"skip","origin":"EWR","dest":"SKIP"}]') }}
+    steps:
+      - uses: ./.github/actions/scrape-pair
+        if: matrix.pair.route != 'skip'
+        with:
+          origin: ${{ matrix.pair.origin }}
+          route: ${{ matrix.pair.route }}
+          dest: ${{ matrix.pair.dest }}
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          token: ${{ github.token }}
 
   adhoc:
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'adhoc'

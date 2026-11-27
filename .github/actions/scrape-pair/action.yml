@@ -1,0 +1,108 @@
+name: Scrape one pair
+description: Scrape one origin-destination pair, then merge and push it.
+inputs:
+  origin:
+    description: Origin airport code
+    required: true
+  route:
+    description: Route id
+    required: true
+  dest:
+    description: Destination airport code
+    required: true
+  skip:
+    description: Searches to skip
+    required: false
+    default: ""
+  token:
+    description: Token used to push and to dispatch pages
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: main
+        fetch-depth: 0
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        cache: pip
+
+    - shell: bash
+      run: pip install -r requirements.txt
+
+    - name: Scrape pair
+      id: scrape
+      shell: bash
+      continue-on-error: true
+      env:
+        ORIGIN: ${{ inputs.origin }}
+        ROUTE: ${{ inputs.route }}
+        DEST: ${{ inputs.dest }}
+        SKIP: ${{ inputs.skip }}
+      run: |
+        args=(python -m scraper.origin_job --origin "$ORIGIN" --route "$ROUTE" --dest "$DEST" --shard-dir "shards/$ORIGIN")
+        if [ -n "$SKIP" ]; then
+          args+=(--skip "$SKIP")
+        fi
+        "${args[@]}"
+
+    - name: Merge and push
+      if: ${{ !cancelled() }}
+      shell: bash
+      env:
+        ORIGIN: ${{ inputs.origin }}
+        RUN_ID: ${{ github.run_id }}
+        RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        GH_TOKEN: ${{ inputs.token }}
+        GH_REPO: ${{ github.repository }}
+      run: |
+        set -euo pipefail
+        merge_origin() {
+          git fetch origin main
+          git reset --hard origin/main
+          python -m scraper.shard merge --shards "shards/$ORIGIN" --origin "$ORIGIN" --run-id "$RUN_ID" --run-url "$RUN_URL"
+          git add site/data/latest.json site/data/status.json site/data/history site/data/queue.json
+          if git diff --cached --quiet; then
+            echo "No data changes"
+            return 2
+          fi
+          git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" \
+            commit -m "data: ${ORIGIN} $(date -u +%F)"
+        }
+        code=0
+        merge_origin || code=$?
+        if [ "$code" -eq 2 ]; then
+          exit 0
+        elif [ "$code" -ne 0 ]; then
+          exit "$code"
+        fi
+        for attempt in 1 2 3 4; do
+          if git push origin HEAD:main; then
+            gh workflow run pages.yml --ref main
+            exit 0
+          fi
+          echo "push rejected, rebasing onto main (attempt ${attempt})"
+          git fetch origin main
+          if git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main; then
+            continue
+          fi
+          echo "rebase hit a conflict; merging this origin onto latest main"
+          git rebase --abort || true
+          code=0
+          merge_origin || code=$?
+          if [ "$code" -eq 2 ]; then
+            exit 0
+          elif [ "$code" -ne 0 ]; then
+            exit "$code"
+          fi
+        done
+        echo "could not push"
+        exit 1
+
+    - name: Fail when the scrape failed
+      if: steps.scrape.outcome == 'failure'
+      shell: bash
+      run: exit 1

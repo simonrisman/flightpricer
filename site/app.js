@@ -307,7 +307,7 @@ function paintQueue() {
   });
 }
 
-let liveRunId = null;
+let cachedRuns = null;
 let nextRunCheck = 0;
 
 function pairJobName(job) {
@@ -372,10 +372,10 @@ async function githubJson(path) {
   return response.json();
 }
 
-async function liveScrapeRun() {
-  const data = await githubJson("/actions/workflows/scrape.yml/runs?per_page=5&t=" + Date.now());
+async function liveScrapeRuns() {
+  const data = await githubJson("/actions/workflows/scrape.yml/runs?per_page=8&t=" + Date.now());
   const runs = (data && data.workflow_runs) || [];
-  return runs.filter(function (run) { return run.status !== "completed"; })[0] || null;
+  return runs.filter(function (run) { return run.status !== "completed"; });
 }
 
 async function runJobs(runId) {
@@ -402,29 +402,29 @@ function jobsStillGoing(jobs) {
 
 async function withLiveJobs(fileQueue) {
   try {
-    let run = null;
-    if (liveRunId) {
-      run = {
-        id: liveRunId,
-        html_url: "https://github.com/" + DEFAULT_REPO + "/actions/runs/" + liveRunId,
-        updated_at: new Date().toISOString(),
-      };
-    } else if (Date.now() >= nextRunCheck) {
-      run = await liveScrapeRun();
-      nextRunCheck = Date.now() + 180000;
-      if (run) liveRunId = run.id;
+    const now = Date.now();
+    if (cachedRuns === null || now >= nextRunCheck) {
+      cachedRuns = await liveScrapeRuns();
+      nextRunCheck = now + (cachedRuns.length ? 60000 : 180000);
     }
-    if (!run) return fileQueue;
-    const jobs = await runJobs(run.id);
-    if (!jobs) {
-      if (state.queue && String(state.queue.run_id) === String(liveRunId)) return state.queue;
-      return fileQueue;
+    if (!cachedRuns.length) return fileQueue;
+    const jobs = [];
+    let primary = cachedRuns[0];
+    for (let i = cachedRuns.length - 1; i >= 0; i -= 1) {
+      const batch = await runJobs(cachedRuns[i].id);
+      if (!batch) continue;
+      jobs.push.apply(jobs, batch);
+      if (jobsStillGoing(batch)) primary = cachedRuns[i];
     }
+    if (!jobs.length) return fileQueue;
+    jobs.sort(function (a, b) {
+      return (a.status === "in_progress" ? 1 : 0) - (b.status === "in_progress" ? 1 : 0);
+    });
     if (!jobsStillGoing(jobs)) {
-      liveRunId = null;
+      cachedRuns = [];
       nextRunCheck = Date.now() + 180000;
     }
-    return applyLiveJobs(fileQueue || { legs: [] }, run, jobs);
+    return applyLiveJobs(fileQueue || { legs: [] }, primary, jobs);
   } catch (err) {
     return fileQueue;
   }

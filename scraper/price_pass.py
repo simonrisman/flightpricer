@@ -24,7 +24,7 @@ DATE_CHUNK = 31
 MAX_DATES_PER_SEARCH = 93
 TOP_DATES = 3
 CONSECUTIVE_CHUNK_FAILURES = 5
-DEFAULT_MAX_WORKERS = 4
+DEFAULT_MAX_WORKERS = 2
 
 SEAT = {
     "economy": "ECONOMY",
@@ -330,33 +330,24 @@ def collect_price_pass(
     )
     results_by_key: dict[str, SearchResult] = {}
     priced: list[tuple[Search, int]] = []
-    errors: list[str] = []
     stopped_early = False
     consecutive = 0
     date_calls = 0
     calls = 0
 
-    for index, chunk in enumerate(chunks, start=1):
-        calls += 1
-        if calls > 1 and pause is not None:
-            pause()
+    def _sweep(index: int, total: int, chunk: DateChunk, *, label_prefix: str) -> bool:
+        """Fetch one chunk. Return False when the chunk itself failed."""
+        nonlocal date_calls
         fetched_at = stamp()
         date_calls += 1
         try:
             found = fetch_fn(chunk, currency=currency, cabin=cabin, adults=adults)
         except Exception as exc:
             message = _public_error(exc, "")
-            errors.append(f"{chunk.origin}->{chunk.dest} {chunk.outbound_start.isoformat()}: {message}")
             for item in chunk.searches:
                 results_by_key[item.key] = _failed(item, message, fetched_at)
-            consecutive += 1
-            print(f"[dates {index}/{len(chunks)}] FAIL {chunk.origin}->{chunk.dest} {message}", flush=True)
-            if consecutive >= CONSECUTIVE_CHUNK_FAILURES:
-                stopped_early = True
-                print("circuit breaker: 5 consecutive date-sweep errors, stopping", flush=True)
-                break
-            continue
-        consecutive = 0
+            print(f"{label_prefix} {index}/{total}] FAIL {chunk.origin}->{chunk.dest} {message}", flush=True)
+            return False
         matched = 0
         for item in chunk.searches:
             price = found.get((item.depart, item.return_date)) if isinstance(found, dict) else None
@@ -366,13 +357,51 @@ def collect_price_pass(
             matched += 1
             results_by_key[item.key] = _price_only(item, price, fetched_at)
             priced.append((item, price))
-        label = f"nights {chunk.duration}" if chunk.duration is not None else "one-way"
+        nights = f"nights {chunk.duration}" if chunk.duration is not None else "one-way"
         print(
-            f"[dates {index}/{len(chunks)}] {chunk.origin}->{chunk.dest} "
+            f"{label_prefix} {index}/{total}] {chunk.origin}->{chunk.dest} "
             f"{chunk.outbound_start.isoformat()}..{chunk.outbound_end.isoformat()} "
-            f"{label} {matched} prices",
+            f"{nights} {matched} prices",
             flush=True,
         )
+        return True
+
+    for index, chunk in enumerate(chunks, start=1):
+        calls += 1
+        if calls > 1 and pause is not None:
+            pause()
+        if _sweep(index, len(chunks), chunk, label_prefix="[dates"):
+            consecutive = 0
+            continue
+        consecutive += 1
+        if consecutive >= CONSECUTIVE_CHUNK_FAILURES:
+            stopped_early = True
+            print("circuit breaker: 5 consecutive date-sweep errors, stopping", flush=True)
+            break
+
+    failed = [item for item in unique if item.key in results_by_key and not results_by_key[item.key].ok]
+    if failed:
+        print(f"retrying {len(failed)} failed dates once", flush=True)
+        retry_chunks = chunk_searches(failed)
+        recovered = 0
+        for index, chunk in enumerate(retry_chunks, start=1):
+            calls += 1
+            if pause is not None:
+                pause()
+            before = sum(1 for item in chunk.searches if results_by_key[item.key].ok)
+            _sweep(index, len(retry_chunks), chunk, label_prefix="[retry")
+            after = sum(1 for item in chunk.searches if results_by_key[item.key].ok)
+            recovered += max(0, after - before)
+        print(f"retry recovered {recovered} of {len(failed)} dates", flush=True)
+
+    errors = [
+        f"{item.origin}->{item.dest} {item.depart.isoformat()}: {results_by_key[item.key].error}"
+        for item in unique
+        if item.key in results_by_key and not results_by_key[item.key].ok
+    ]
+    priced_dates = sum(1 for item in unique if item.key in results_by_key and results_by_key[item.key].ok)
+    still_failed = sum(1 for item in unique if item.key in results_by_key and not results_by_key[item.key].ok)
+    print(f"dates priced {priced_dates} failed {still_failed}", flush=True)
 
     winners = top_per_pair(priced, TOP_DATES)
     detail_calls = 0
