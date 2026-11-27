@@ -1413,7 +1413,7 @@ function renderRoute(route) {
   const open = !!state.open[route.id];
   const card = el("article", { class: "route" + (route.active === false ? " paused" : ""), id: "route-" + route.id });
   const dates = fare
-    ? tripWhen(fare) + " · " + fare.origin + " → " + fare.dest
+    ? tripWhen(fare) + " · " + fare.origin + " → " + fare.dest + " · " + formatWhen(fare.fetched_at)
     : "No fare saved yet";
   const toggle = el("button", { type: "button", class: "route-summary", "aria-expanded": open ? "true" : "false" }, [
     el("span", { class: "route-name" }, [route.label + (route.active === false ? " · paused" : "")]),
