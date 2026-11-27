@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T20:26:39Z",
+  "updated_at": "2026-11-27T20:27:04Z",
   "run_id": "46060379269",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46060379269",
   "legs": [
@@ -386,9 +386,9 @@
       "label": "Funchal",
       "origin": "JFK",
       "dest": "FNC",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-27T20:26:39Z",
-      "finished_at": "2026-11-26T20:40:25Z"
+      "finished_at": "2026-11-27T20:27:04Z"
     },
     {
       "route": "fnc",
