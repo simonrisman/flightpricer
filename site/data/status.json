@@ -1,19 +1,24 @@
 {
-  "last_run": "2026-11-27T22:28:56Z",
-  "state": "ok",
-  "searches_planned": 405,
-  "searches_attempted": 405,
-  "searches_succeeded": 405,
-  "errors": [],
-  "last_success": "2026-11-27T22:28:56Z",
+  "last_run": "2026-11-27T22:36:32Z",
+  "state": "degraded",
+  "searches_planned": 360,
+  "searches_attempted": 360,
+  "searches_succeeded": 357,
+  "errors": [
+    "BOS->CDG 2027-05-22: empty result",
+    "BOS->CDG 2027-06-13: empty result",
+    "BOS->CDG 2027-06-15: Priced 0 of 1 dates — every date in the range failed. Reasons: the search page carried no ds:1 payload — Google may have changed the page shape, or served a consent/blocked page instead. If you are on an EU/EEA IP, Google's consent interstitial serves no results — the client sends a pre-accepted SOC",
+    "par|BOS|CDG|2027-05-18|2027-06-02: itinerary empty result"
+  ],
+  "last_success": "2026-11-27T22:36:32Z",
   "coverage": {
-    "total": 405,
-    "scheduled": 405,
+    "total": 360,
+    "scheduled": 360,
     "offset": 0,
     "origin": "BOS",
     "mode": "price-pass",
-    "date_calls": 18,
-    "calendar_calls": 18,
+    "date_calls": 42,
+    "calendar_calls": 42,
     "detail_calls": 3,
     "origins": {
       "BOS": "merged"

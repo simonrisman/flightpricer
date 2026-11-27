@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T22:28:56Z",
+  "updated_at": "2026-11-27T22:36:32Z",
   "run_id": "46075606928",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46075606928",
   "legs": [
@@ -107,9 +107,9 @@
       "label": "Paris",
       "origin": "BOS",
       "dest": "CDG",
-      "state": "failed",
-      "started_at": "2026-11-27T20:07:54Z",
-      "finished_at": "2026-11-27T20:08:15Z"
+      "state": "done",
+      "started_at": "2026-11-27T22:29:21Z",
+      "finished_at": "2026-11-27T22:36:32Z"
     },
     {
       "route": "mad",
