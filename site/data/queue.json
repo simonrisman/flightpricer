@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-27T20:28:35Z",
-  "run_id": "46060379269",
-  "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46060379269",
+  "updated_at": "2026-11-27T22:21:10Z",
+  "run_id": "46075606928",
+  "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46075606928",
   "legs": [
     {
       "route": "bog",
@@ -26,9 +26,9 @@
       "label": "Bogotá",
       "origin": "BOS",
       "dest": "BOG",
-      "state": "failed",
-      "started_at": "2026-11-27T19:59:49Z",
-      "finished_at": "2026-11-27T20:00:05Z"
+      "state": "done",
+      "started_at": "2026-11-27T22:16:56Z",
+      "finished_at": "2026-11-27T22:21:10Z"
     },
     {
       "route": "mde",
