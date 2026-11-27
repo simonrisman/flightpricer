@@ -21,7 +21,7 @@ Dates and prices in this repo are public, because GitHub Pages on a free account
 
 Saving and fetching need a fine-grained personal access token for this repo, with Contents read/write and Actions read/write. Paste it into **GitHub access**. It stays in this browser and is only sent to `api.github.com`.
 
-Each airport-to-city pair, such as Boston–Bogotá or Boston–Lima, is its own job. The chain starts at 6:17am Eastern. The next pair starts when the previous job has saved its prices, and the site updates after each pair. A 3–7 second pause stays between Google requests.
+Each airport-to-city pair, such as Boston–Bogotá or Boston–Buenos Aires, is its own job. The chain starts at 6:17am Eastern. The next pair starts when the previous job has saved its prices, and the site updates after each pair. A 3–7 second pause stays between Google requests.
 
 ## One-time GitHub setup
 
@@ -40,16 +40,11 @@ All of these are round trips from JFK, EWR, and BOS. Edit the windows in `config
 | --- | --- | --- | --- |
 | Bogotá | 2027-03-01 – 2027-03-21 | Every day | 7–15 |
 | Medellín | 2027-03-01 – 2027-03-21 | Every day | 7–15 |
-| Lima | 2027-01-11 – 2027-02-28 | Every day | 7–15 |
 | Buenos Aires | 2027-04-01 – 2027-05-15 | Every day | 7–15 |
 | Paris | 2027-05-17 – 2027-06-25 | Every day | 7–15 |
 | Madrid | 2027-04-12 – 2027-05-31 | Every day | 7–15 |
 | Barcelona | 2027-05-17 – 2027-06-20 | Every day | 7–15 |
-| Tokyo (Haneda and Narita) | 2027-08-25 – 2027-10-05 | Every day | 7–15 |
-| Ho Chi Minh City | 2027-02-15 – 2027-03-31 | Every day | 7–15 |
-| Hanoi | 2027-10-04 – 2027-10-05 | Every day | 7–15 |
-| Bangkok | 2027-01-11 – 2027-02-28 | Every day | 7–15 |
-| Tbilisi | 2027-05-03 – 2027-06-20 | Every day | 7–15 |
+| Tbilisi | 2027-07-01 – 2027-08-31 | Every day | 7–15 |
 | Ponta Delgada | 2027-06-01 – 2027-07-10 | Every day | 7–15 |
 | Funchal | 2027-04-12 – 2027-06-10 | Every day | 7–15 |
 

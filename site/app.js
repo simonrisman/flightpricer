@@ -18,16 +18,10 @@ const AIRPORTS = {
   BOS: "Boston",
   BOG: "Bogotá",
   MDE: "Medellín",
-  LIM: "Lima",
   EZE: "Buenos Aires",
   CDG: "Paris",
   MAD: "Madrid",
   BCN: "Barcelona",
-  HND: "Tokyo Haneda",
-  NRT: "Tokyo Narita",
-  SGN: "Ho Chi Minh City",
-  HAN: "Hanoi",
-  BKK: "Bangkok",
   SIN: "Singapore",
   TBS: "Tbilisi",
   PDL: "Ponta Delgada",
@@ -188,7 +182,7 @@ function legsForRoute(route, origins) {
   });
 }
 
-const DEST_SHORT = { HND: "Haneda", NRT: "Narita" };
+const DEST_SHORT = {};
 
 function legPhrase(leg) {
   if (leg.state === "running") return "scraping now";

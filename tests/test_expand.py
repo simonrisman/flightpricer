@@ -16,16 +16,11 @@ LENGTHS = [7, 8, 9, 10, 11, 12, 13, 14, 15]
 EXPECTED = {
     "bog": ("Bogotá", ["BOG"], "2027-03-01", "2027-03-21"),
     "mde": ("Medellín", ["MDE"], "2027-03-01", "2027-03-21"),
-    "lim": ("Lima", ["LIM"], "2027-01-11", "2027-02-28"),
     "eze": ("Buenos Aires", ["EZE"], "2027-04-01", "2027-05-15"),
     "par": ("Paris", ["CDG"], "2027-05-17", "2027-06-25"),
     "mad": ("Madrid", ["MAD"], "2027-04-12", "2027-05-31"),
     "bcn": ("Barcelona", ["BCN"], "2027-05-17", "2027-06-20"),
-    "tyo": ("Tokyo", ["HND", "NRT"], "2027-08-25", "2027-10-05"),
-    "sgn": ("Ho Chi Minh City", ["SGN"], "2027-02-15", "2027-03-31"),
-    "han": ("Hanoi", ["HAN"], "2027-10-04", "2027-10-05"),
-    "bkk": ("Bangkok", ["BKK"], "2027-01-11", "2027-02-28"),
-    "tbs": ("Tbilisi", ["TBS"], "2027-05-03", "2027-06-20"),
+    "tbs": ("Tbilisi", ["TBS"], "2027-07-01", "2027-08-31"),
     "pdl": ("Ponta Delgada", ["PDL"], "2027-06-01", "2027-07-10"),
     "fnc": ("Funchal", ["FNC"], "2027-04-12", "2027-06-10"),
 }
@@ -93,13 +88,13 @@ def test_expand_filters_weekdays_lengths_and_past_dates():
 
 def test_extra_date_outside_the_window_is_included_once():
     config = load_config(ROOT / "config.yaml")
-    route = _route(config, "lim").model_copy(deep=True)
+    route = _route(config, "eze").model_copy(deep=True)
     route.origins = ["JFK"]
-    route.destinations = ["LIM"]
+    route.destinations = ["EZE"]
     route.extra_dates = []
     from scraper.config import ExtraDate
 
-    route.extra_dates = [ExtraDate(depart=date(2027, 6, 2), return_date=date(2027, 6, 16), origin="BOS", dest="LIM")]
+    route.extra_dates = [ExtraDate(depart=date(2027, 6, 2), return_date=date(2027, 6, 16), origin="BOS", dest="EZE")]
     found = expand_routes([route], TODAY)
     extra = [item for item in found if item.depart == date(2027, 6, 2)]
     assert len(extra) == 1

@@ -60,7 +60,7 @@ fs.writeFileSync(process.argv[3], context.emitYaml(withExtra));
     again = public_config(reloaded)
     original = json.loads(json.dumps(payload))
     original["routes"][0]["extra_dates"] = [
-        {"depart": "2027-08-05", "return": "2027-08-12", "trip_length_days": None, "origin": "BOS", "dest": "LIM"}
+        {"depart": "2027-08-05", "return": "2027-08-12", "trip_length_days": None, "origin": "BOS", "dest": "BOG"}
     ]
     # The emitter only adds the extra date we asked for; compare the rest, then the extra itself.
     assert again["settings"] == original["settings"]
