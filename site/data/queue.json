@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T20:19:08Z",
+  "updated_at": "2026-11-27T20:19:12Z",
   "run_id": "46060379269",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46060379269",
   "legs": [
@@ -278,9 +278,9 @@
       "label": "Hanoi",
       "origin": "JFK",
       "dest": "HAN",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-27T20:19:08Z",
-      "finished_at": "2026-11-26T20:32:26Z"
+      "finished_at": "2026-11-27T20:19:12Z"
     },
     {
       "route": "han",
