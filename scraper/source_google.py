@@ -3,6 +3,7 @@ from __future__ import annotations
 import time
 from datetime import datetime
 
+from scraper.backoff import is_throttle, throttle_delay
 from scraper.models import FlightOption, Search, SearchResult
 
 
@@ -201,7 +202,9 @@ def search(search_item: Search, *, currency: str, cabin: str, adults: int, fetch
         return _blank(search_item, _short_error(exc), fetched_at=fetched_at)
 
     last_error = "empty result"
-    for attempt in range(3):
+    attempt = 0
+    throttle_attempts = 0
+    while True:
         try:
             result = get_flights(query)
         except FlightsNotFound:
@@ -210,8 +213,13 @@ def search(search_item: Search, *, currency: str, cabin: str, adults: int, fetch
             return _blank(search_item, UNREADABLE, google_url, fetched_at)
         except Exception as exc:
             last_error = _short_error(exc)
+            if is_throttle(exc) and throttle_attempts < 4:
+                time.sleep(throttle_delay(throttle_attempts))
+                throttle_attempts += 1
+                continue
             if attempt < 2:
                 time.sleep(2 ** (attempt + 1))
+                attempt += 1
                 continue
             return _blank(search_item, last_error, google_url, fetched_at)
         try:

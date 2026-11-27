@@ -47,66 +47,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  routes:
+  origins:
+    name: ${{ matrix.origin }}
     if: github.event_name != 'workflow_dispatch' || github.event.inputs.mode != 'adhoc'
-    runs-on: ubuntu-latest
-    outputs:
-      legs: ${{ steps.list.outputs.legs }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - run: pip install PyYAML==6.0.3
-
-      - id: list
-        env:
-          RUN_ID: ${{ github.run_id }}
-          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-        run: |
-          python -m scraper.queue init --run-id "$RUN_ID" --run-url "$RUN_URL"
-          python - << 'PY'
-          import json, os
-          queue = json.load(open("site/data/queue.json"))
-          legs = [{"route": leg["route"], "origin": leg["origin"], "dest": leg["dest"]} for leg in queue["legs"]]
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
-              handle.write("legs=" + json.dumps(legs) + "\n")
-          PY
-          git add site/data/queue.json
-          published=0
-          if git diff --cached --quiet; then
-            echo "Queue already current"
-          else
-            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "queue: start"
-            git push origin HEAD:main || {
-              git fetch origin main
-              git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main
-              git push origin HEAD:main
-            }
-            published=1
-          fi
-          if [ "$published" = 1 ]; then
-            gh workflow run pages.yml --ref main
-          fi
-
-  scrape:
-    name: ${{ matrix.leg.origin }}-${{ matrix.leg.dest }}
-    needs: routes
-    if: needs.routes.result == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 360
     strategy:
       fail-fast: false
-      max-parallel: 1
+      max-parallel: 3
       matrix:
-        leg: ${{ fromJson(needs.routes.outputs.legs) }}
+        origin: [JFK, EWR, BOS]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -120,68 +70,69 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Mark running
+      - name: Scrape origin
         env:
-          ROUTE: ${{ matrix.leg.route }}
-          ORIGIN: ${{ matrix.leg.origin }}
-          DEST: ${{ matrix.leg.dest }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-        run: |
-          python -m scraper.queue mark --route "$ROUTE" --origin "$ORIGIN" --dest "$DEST" --state running
-          git add site/data/queue.json
-          published=0
-          if git diff --cached --quiet; then
-            echo "Queue already running"
-          else
-            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "queue: ${ORIGIN}-${DEST} running"
-            git push origin HEAD:main || {
-              git fetch origin main
-              git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main
-              git push origin HEAD:main
-            }
-            published=1
-          fi
-          if [ "$published" = 1 ]; then
-            gh workflow run pages.yml --ref main
-          fi
-
-      - name: Scrape
-        id: scrape
-        continue-on-error: true
-        env:
-          ROUTE: ${{ matrix.leg.route }}
-          ORIGIN: ${{ matrix.leg.origin }}
-          DEST: ${{ matrix.leg.dest }}
+          ORIGIN: ${{ matrix.origin }}
           SKIP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
         run: |
-          args=(python -m scraper.main --price-pass --only-route "$ROUTE" --only-origin "$ORIGIN" --only-dest "$DEST")
+          args=(python -m scraper.origin_job --origin "$ORIGIN" --shard-dir "shards/$ORIGIN")
           if [ -n "$SKIP" ]; then
             args+=(--skip "$SKIP")
           fi
           "${args[@]}"
 
+      - name: Upload shard
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scrape-${{ matrix.origin }}
+          path: shards/${{ matrix.origin }}
+          if-no-files-found: ignore
+          retention-days: 7
+
+  publish:
+    needs: origins
+    if: ${{ always() && (github.event_name != 'workflow_dispatch' || github.event.inputs.mode != 'adhoc') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Download origin shards
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: scrape-*
+          path: shards
+
+      - name: Merge shards
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python -m scraper.shard merge --shards shards --run-id "$RUN_ID" --run-url "$RUN_URL"
+
       - name: Commit data
         if: ${{ !cancelled() }}
         env:
-          ROUTE: ${{ matrix.leg.route }}
-          ORIGIN: ${{ matrix.leg.origin }}
-          DEST: ${{ matrix.leg.dest }}
-          SCRAPE_OUTCOME: ${{ steps.scrape.outcome }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: |
-          state=done
-          if [ "$SCRAPE_OUTCOME" != "success" ]; then
-            state=failed
-          fi
-          python -m scraper.queue mark --route "$ROUTE" --origin "$ORIGIN" --dest "$DEST" --state "$state"
           git add site/data/latest.json site/data/status.json site/data/history site/data/queue.json
           published=0
           if git diff --cached --quiet; then
             echo "No data changes"
           else
-            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "data: ${ORIGIN}-${DEST} $(date -u +%F)"
+            git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" commit -m "data: origins $(date -u +%F)"
             git push origin HEAD:main || {
               git fetch origin main
               git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main

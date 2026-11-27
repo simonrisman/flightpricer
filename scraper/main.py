@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 import argparse
-import random
 import sys
-import time
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+from scraper.backoff import jitter_pause
 from scraper.config import AppConfig, ConfigError, Route, load_config
 from scraper.expand import build_adhoc, expand_routes, interleave_by_origin, select_slice
 from scraper.models import Search, SearchResult
@@ -267,7 +266,7 @@ def run(argv: list[str] | None = None) -> int:
         from scraper import source_google
 
         def pause() -> None:
-            time.sleep(random.uniform(low, high))
+            jitter_pause(low, high)
 
         outcome = collect_price_pass(
             chosen,
@@ -290,7 +289,7 @@ def run(argv: list[str] | None = None) -> int:
         print(f"running {len(run_list)} of {len(searches)} searches", flush=True)
         for index, item in enumerate(run_list, start=1):
             if index > 1 and not adhoc:
-                time.sleep(random.uniform(low, high))
+                jitter_pause(low, high)
             fetched_at = utc_now()
             try:
                 result = search_fn(

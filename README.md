@@ -21,7 +21,7 @@ Dates and prices in this repo are public, because GitHub Pages on a free account
 
 Saving and fetching need a fine-grained personal access token for this repo, with Contents read/write and Actions read/write. Paste it into **GitHub access**. It stays in this browser and is only sent to `api.github.com`.
 
-Each airport-to-city pair, such as Boston–Bogotá or Boston–Buenos Aires, is its own job. The chain starts at 6:17am Eastern. The next pair starts when the previous job has saved its prices, and the site updates after each pair. A 3–7 second pause stays between Google requests.
+JFK, Newark, and Boston scrape at the same time. Each origin walks its cities one after another, waits a random 3–7 seconds between Google requests, and backs off exponentially when Google throttles it. Those jobs do not commit. When all three have finished (or one has failed), a final job merges their results and updates the site once. If an origin job fails, that airport’s saved prices stay as they were.
 
 ## One-time GitHub setup
 
@@ -30,7 +30,7 @@ Each airport-to-city pair, such as Boston–Bogotá or Boston–Buenos Aires, is
 3. Actions → **scrape** → **Run workflow** for the first full pass.
 4. Open `https://simonrisman.github.io/flightpricer/`.
 
-The pair chain starts at 11:17 UTC (6:17am Eastern Standard Time, 7:17am Eastern Daylight Time). A keepalive step re-enables the workflow on every run so GitHub does not disable it after 60 days of inactivity.
+The three origin jobs start at 11:17 UTC (6:17am Eastern Standard Time, 7:17am Eastern Daylight Time). Each one is allowed 6 hours. A keepalive step re-enables the workflow on every run so GitHub does not disable it after 60 days of inactivity.
 
 ## Routes
 
@@ -66,4 +66,4 @@ python -m http.server -d site 8000
 
 Google Flights access is isolated in `scraper/source_google.py` (`fast-flights` 3.1.0). `settings.source: playwright` is only a stub.
 
-The scheduled scrape job runs `--price-pass`: a fli (PyPI `flights`) date sweep over the same expanded date pairs, grouped by trip length and capped at 93 departure dates per call, then a full itinerary with fast-flights for the 3 cheapest dates on each airport pair. An ad-hoc one-date job stays on fast-flights. No SearchAPI key is required. Optional `FLIGHTS_MAX_WORKERS` (default 4, max 10) caps how many Google Flights pages fli fetches at once.
+The scheduled scrape runs one job per origin airport. Each job runs `--price-pass` for its own legs, in order: a fli (PyPI `flights`) date sweep over the expanded date pairs, grouped by trip length and capped at 93 departure dates per call, then a full itinerary with fast-flights for the 3 cheapest dates on each airport pair. The job uploads a shard and does not push. A publish job downloads the shards, merges them into `latest.json`, history, `status.json`, and `queue.json`, and pushes once. An origin with no shard keeps its previous prices. An ad-hoc one-date job stays on fast-flights and still commits on its own. No SearchAPI key is required. Optional `FLIGHTS_MAX_WORKERS` (default 4, max 10) caps how many Google Flights pages fli fetches at once. Throttle errors (HTTP 429 and similar) retry with exponential backoff and jitter, up to five attempts.

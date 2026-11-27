@@ -16,6 +16,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 
+from scraper.backoff import call_with_backoff
 from scraper.models import FlightOption, Search, SearchResult
 from scraper.source_google import parse_price
 
@@ -170,9 +171,12 @@ def fetch_dates(
     from fli.search import SearchDates
     from fli.search.exceptions import SearchClientError
 
-    try:
+    def once():
         filters = date_filters(chunk, cabin=cabin, adults=adults)
-        found = SearchDates().search(filters, currency=currency, language="en", country="us")
+        return SearchDates().search(filters, currency=currency, language="en", country="us")
+
+    try:
+        found = call_with_backoff(once)
     except DateSweepError:
         raise
     except SearchClientError as exc:
