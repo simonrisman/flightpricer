@@ -1,22 +1,22 @@
 {
-  "last_run": "2026-11-27T20:13:42Z",
+  "last_run": "2026-11-27T20:14:25Z",
   "state": "failed",
   "searches_planned": 378,
   "searches_attempted": 378,
   "searches_succeeded": 0,
   "errors": [
-    "JFK->NRT 2027-08-25: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "JFK->NRT 2027-09-04: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "JFK->NRT 2027-09-14: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "JFK->NRT 2027-09-24: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
-    "JFK->NRT 2027-10-04: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
+    "EWR->HND 2027-08-25: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "EWR->HND 2027-09-04: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "EWR->HND 2027-09-14: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "EWR->HND 2027-09-24: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }",
+    "EWR->HND 2027-10-04: calendar HTTP 429: {   \"error\": \"You have used all of the searches for the month. Please upgrade your plan on SearchApi.io.\" }"
   ],
   "last_success": "2026-11-24T23:11:24Z",
   "coverage": {
     "total": 378,
     "scheduled": 378,
     "offset": 0,
-    "origin": "JFK",
+    "origin": "EWR",
     "mode": "price-pass",
     "calendar_calls": 5,
     "detail_calls": 0
