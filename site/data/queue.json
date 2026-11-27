@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T20:05:40Z",
+  "updated_at": "2026-11-27T20:06:10Z",
   "run_id": "46060379269",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46060379269",
   "legs": [
@@ -107,9 +107,9 @@
       "label": "Buenos Aires",
       "origin": "BOS",
       "dest": "EZE",
-      "state": "running",
+      "state": "failed",
       "started_at": "2026-11-27T20:05:40Z",
-      "finished_at": "2026-11-26T20:19:35Z"
+      "finished_at": "2026-11-27T20:06:10Z"
     },
     {
       "route": "par",
