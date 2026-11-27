@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T23:03:36Z",
+  "updated_at": "2026-11-27T23:10:23Z",
   "run_id": "46075606928",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46075606928",
   "legs": [
@@ -215,9 +215,9 @@
       "label": "Ponta Delgada",
       "origin": "BOS",
       "dest": "PDL",
-      "state": "failed",
-      "started_at": "2026-11-27T20:26:01Z",
-      "finished_at": "2026-11-27T20:26:20Z"
+      "state": "done",
+      "started_at": "2026-11-27T23:04:04Z",
+      "finished_at": "2026-11-27T23:10:22Z"
     },
     {
       "route": "fnc",
