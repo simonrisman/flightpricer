@@ -27,15 +27,6 @@ routes:
     trip_length_days: [7, 8, 9, 10, 11, 12, 13, 14, 15]
     active: true
 
-  - id: lim
-    label: "Lima"
-    origins: [JFK, EWR, BOS]
-    destinations: [LIM]
-    trip: round_trip
-    depart_window: { start: 2027-01-11, end: 2027-02-28 }
-    trip_length_days: [7, 8, 9, 10, 11, 12, 13, 14, 15]
-    active: true
-
   - id: eze
     label: "Buenos Aires"
     origins: [JFK, EWR, BOS]
@@ -72,48 +63,12 @@ routes:
     trip_length_days: [7, 8, 9, 10, 11, 12, 13, 14, 15]
     active: true
 
-  - id: tyo
-    label: "Tokyo"
-    origins: [JFK, EWR, BOS]
-    destinations: [HND, NRT]
-    trip: round_trip
-    depart_window: { start: 2027-08-25, end: 2027-10-05 }
-    trip_length_days: [7, 8, 9, 10, 11, 12, 13, 14, 15]
-    active: true
-
-  - id: sgn
-    label: "Ho Chi Minh City"
-    origins: [JFK, EWR, BOS]
-    destinations: [SGN]
-    trip: round_trip
-    depart_window: { start: 2027-02-15, end: 2027-03-31 }
-    trip_length_days: [7, 8, 9, 10, 11, 12, 13, 14, 15]
-    active: true
-
-  - id: han
-    label: "Hanoi"
-    origins: [JFK, EWR, BOS]
-    destinations: [HAN]
-    trip: round_trip
-    depart_window: { start: 2027-10-04, end: 2027-10-05 }
-    trip_length_days: [7, 8, 9, 10, 11, 12, 13, 14, 15]
-    active: true
-
-  - id: bkk
-    label: "Bangkok"
-    origins: [JFK, EWR, BOS]
-    destinations: [BKK]
-    trip: round_trip
-    depart_window: { start: 2027-01-11, end: 2027-02-28 }
-    trip_length_days: [7, 8, 9, 10, 11, 12, 13, 14, 15]
-    active: true
-
   - id: tbs
     label: "Tbilisi"
     origins: [JFK, EWR, BOS]
     destinations: [TBS]
     trip: round_trip
-    depart_window: { start: 2027-05-03, end: 2027-06-20 }
+    depart_window: { start: 2027-07-01, end: 2027-08-31 }
     trip_length_days: [7, 8, 9, 10, 11, 12, 13, 14, 15]
     active: true
 

@@ -48,27 +48,46 @@ def test_only_route_keeps_one_city(capsys):
     assert f"scheduled {len(lines)}" in captured.out
 
 
-def test_only_origin_and_dest_keep_one_pair(capsys):
+def test_only_origin_and_dest_keep_one_pair(tmp_path: Path, capsys):
+    config = tmp_path / "config.yaml"
+    _write(
+        config,
+        """
+settings:
+  currency: USD
+  max_requests_per_run: 3000
+  delay_seconds: [0, 0]
+routes:
+  - id: eze
+    label: Buenos Aires
+    origins: [JFK, EWR, BOS]
+    destinations: [EZE, AEP]
+    trip: round_trip
+    depart_window: { start: 2027-04-01, end: 2027-04-02 }
+    trip_length_days: [7]
+    active: true
+""",
+    )
     code = run(
         [
             "--dry-run",
             "--today",
             "2026-11-23",
             "--config",
-            str(ROOT / "config.yaml"),
+            str(config),
             "--only-route",
-            "tyo",
+            "eze",
             "--only-origin",
             "bos",
             "--only-dest",
-            "hnd",
+            "eze",
         ]
     )
     captured = capsys.readouterr()
     assert code == 0
-    lines = [line for line in captured.out.splitlines() if "|BOS|HND|" in line]
+    lines = [line for line in captured.out.splitlines() if "|BOS|EZE|" in line]
     assert lines
-    assert "|NRT|" not in captured.out
+    assert "|AEP|" not in captured.out
     assert "|JFK|" not in captured.out
     assert f"scheduled {len(lines)}" in captured.out
 
@@ -272,7 +291,7 @@ routes:
   - id: x
     label: Test
     origins: [JFK]
-    destinations: [SGN]
+    destinations: [BOG]
     trip: one_way
     depart_window: { start: 2027-04-01, end: 2027-04-06 }
     active: true
@@ -351,12 +370,12 @@ def test_index_error_from_google_is_skipped_once(monkeypatch):
 
     result = search(
         Search(
-            key="sgn|JFK|SGN|2027-02-15|2027-02-25",
-            route_id="sgn",
+            key="bog|JFK|BOG|2027-03-01|2027-03-08",
+            route_id="bog",
             origin="JFK",
-            dest="SGN",
-            depart=date(2027, 2, 15),
-            return_date=date(2027, 2, 25),
+            dest="BOG",
+            depart=date(2027, 3, 1),
+            return_date=date(2027, 3, 8),
             max_stops=None,
             target_price=None,
         ),
