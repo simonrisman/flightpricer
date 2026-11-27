@@ -84,13 +84,11 @@ runs:
             gh workflow run pages.yml --ref main
             exit 0
           fi
-          echo "push rejected, rebasing onto main (attempt ${attempt})"
-          git fetch origin main
-          if git -c user.name="flightpricer-bot" -c user.email="flightpricer-bot@users.noreply.github.com" rebase origin/main; then
-            continue
-          fi
-          echo "rebase hit a conflict; merging this origin onto latest main"
-          git rebase --abort || true
+          echo "push rejected, merging this origin onto latest main (attempt ${attempt})"
+          # Replaying the data commit with git rebase can apply a stale snapshot
+          # of this origin over rows another origin just pushed. Merge the shard
+          # again on top of current main instead.
+          git rebase --abort 2>/dev/null || true
           code=0
           merge_origin || code=$?
           if [ "$code" -eq 2 ]; then

@@ -308,3 +308,53 @@ def test_a_finished_pair_keeps_the_other_cities_and_origins(tmp_path: Path):
     assert states[("JFK", "BOG")] == "done"
     assert states[("JFK", "MDE")] == "done"
     assert states[("EWR", "BOG")] == "done"
+
+
+def test_a_pair_shard_does_not_write_stale_copies_of_other_cities(tmp_path: Path):
+    config_path = tmp_path / "config.yaml"
+    _config(config_path)
+    text = config_path.read_text(encoding="utf-8").replace("destinations: [BOG]", "destinations: [BOG, MDE]")
+    config_path.write_text(text, encoding="utf-8")
+    data = tmp_path / "data"
+    data.mkdir()
+    jfk_bog = _entry("JFK", 400)
+    jfk_mde = dict(jfk_bog)
+    jfk_mde["key"] = "bog|JFK|MDE|2027-03-01|2027-03-08"
+    jfk_mde["dest"] = "MDE"
+    jfk_mde["price"] = 450
+    jfk_mde["fetched_at"] = "2026-11-27T22:25:00Z"
+    bos = _entry("BOS", 500)
+    bos["fetched_at"] = "2026-11-27T23:20:00Z"
+    (data / "latest.json").write_text(
+        json.dumps(
+            {
+                "generated_at": "2026-11-27T23:20:00Z",
+                "currency": "USD",
+                "routes": [{"id": "bog", "searches": [jfk_bog, jfk_mde, bos]}],
+            }
+        ),
+        encoding="utf-8",
+    )
+    stale_mde = dict(jfk_mde, price=100, fetched_at="2026-11-20T00:00:00Z")
+    stale_bos = dict(bos, price=90, fetched_at="2026-11-20T00:00:00Z")
+    shard = _shard("JFK", 320, finished=True)
+    shard["entries"] = [dict(jfk_bog, price=320, fetched_at="2026-11-27T23:40:00Z"), stale_mde, stale_bos]
+    shards = tmp_path / "shards" / "JFK"
+    shards.mkdir(parents=True)
+    (shards / "shard.json").write_text(json.dumps(shard), encoding="utf-8")
+    merge_shards(
+        tmp_path / "shards",
+        data,
+        config=load_config(config_path),
+        run_id="8",
+        run_url="https://example.test/8",
+        now="2026-11-27T23:45:00Z",
+        today=date(2026, 11, 27),
+        scope=["JFK"],
+    )
+    latest = json.loads((data / "latest.json").read_text(encoding="utf-8"))
+    rows = {row["key"]: row for row in latest["routes"][0]["searches"]}
+    assert rows["bog|JFK|BOG|2027-03-01|2027-03-08"]["price"] == 320
+    assert rows["bog|JFK|MDE|2027-03-01|2027-03-08"]["price"] == 450
+    assert rows["bog|BOS|BOG|2027-03-01|2027-03-08"]["price"] == 500
+    assert len(rows) == len(set(rows))

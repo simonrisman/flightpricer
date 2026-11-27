@@ -61,7 +61,8 @@ def test_scrape_workflow_chains_pairs_per_origin_without_a_sleep():
     assert "--dest" in action
     assert "scraper.shard merge" in action
     assert "git push" in action
-    assert "rebase origin/main" in action
+    assert "merging this origin onto latest main" in action
+    assert "rebase origin/main" not in action
     assert "sleep " not in action
     assert "sleep " not in (ROOT / ".github" / "workflows" / "scrape.yml").read_text(encoding="utf-8")
     for origin, group in (("bos", "scrape-BOS"), ("jfk", "scrape-JFK"), ("ewr", "scrape-EWR")):

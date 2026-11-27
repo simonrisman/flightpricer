@@ -182,20 +182,34 @@ def _expected_origins(config: AppConfig) -> list[str]:
     return found
 
 
-def _replace_origin(entries: dict[str, dict], origin: str, shard_entries: list, shard_legs: list | None = None) -> dict[str, dict]:
-    """Replace prices for the pairs this shard actually scraped.
+def _touched_pairs(origin: str, shard_entries: list, shard_legs: list | None) -> set[tuple[str, str]]:
+    """Pairs this publish is allowed to replace.
 
-    A pair job's shard may carry every saved fare for its origin, or only the
-    city it just fetched. Cities it does not mention keep the prices already
-    on main, and so do the other origins.
+    The leg list is the source of truth. A pair job's shard also carries the
+    other cities that were already on disk when the job checked out, and those
+    copies can be older than main if another job pushed in between. Writing
+    them back would drop the newer rows. A shard with no legs still publishes
+    every pair in its entries.
     """
     touched: set[tuple[str, str]] = set()
     for leg in shard_legs or []:
         if isinstance(leg, dict):
             touched.add((str(leg.get("route") or ""), str(leg.get("dest") or "").upper()))
+    if touched:
+        return touched
     for entry in shard_entries:
         if isinstance(entry, dict) and str(entry.get("origin") or "").upper() == origin:
             touched.add((str(entry.get("route_id") or ""), str(entry.get("dest") or "").upper()))
+    return touched
+
+
+def _replace_origin(entries: dict[str, dict], origin: str, shard_entries: list, shard_legs: list | None = None) -> dict[str, dict]:
+    """Replace prices for the pairs this shard actually scraped.
+
+    Other cities for this origin, and every other origin, keep the prices
+    already on main.
+    """
+    touched = _touched_pairs(origin, shard_entries, shard_legs)
     kept: dict[str, dict] = {}
     for key, value in entries.items():
         if str(value.get("origin") or "").upper() != origin:
@@ -208,6 +222,9 @@ def _replace_origin(entries: dict[str, dict], origin: str, shard_entries: list, 
         if not isinstance(entry, dict) or not entry.get("key"):
             continue
         if str(entry.get("origin") or "").upper() != origin:
+            continue
+        pair = (str(entry.get("route_id") or ""), str(entry.get("dest") or "").upper())
+        if pair not in touched:
             continue
         kept[str(entry["key"])] = dict(entry)
     return kept
