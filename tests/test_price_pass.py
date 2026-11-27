@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import json
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -11,14 +12,14 @@ from scraper.expand import expand_routes, make_key
 from scraper.main import parse_args, run
 from scraper.models import FlightOption, Search, SearchResult
 from scraper.price_pass import (
-    CalendarAuthError,
-    CalendarError,
-    calendar_params,
+    DATE_CHUNK,
+    DateSweepError,
     chunk_searches,
     collect_price_pass,
-    fetch_calendar,
-    parse_calendar,
-    require_api_key,
+    date_filters,
+    fetch_dates,
+    format_price_plan,
+    parse_date_prices,
     select_top,
     top_per_pair,
 )
@@ -62,15 +63,15 @@ def _dated(depart: date, ret: date | None, price: int, *, origin="JFK", route_id
     return item, price
 
 
-def test_ten_departure_days_stay_inside_the_calendar_rectangle():
+def test_chunks_group_by_trip_length_and_honor_the_cap():
     start = date(2027, 3, 1)
-    departures = [start + timedelta(days=offset) for offset in range(11)]
-    chunks = chunk_searches(_trips(departures))
-    assert [chunk.combos for chunk in chunks] == [180, 9]
-    assert [len({item.depart for item in chunk.searches}) for chunk in chunks] == [10, 1]
-    assert all(chunk.combos <= 200 for chunk in chunks)
+    departures = [start + timedelta(days=offset) for offset in range(40)]
+    chunks = chunk_searches(_trips(departures), date_chunk=31)
+    assert len(chunks) == 18  # 9 lengths × 2 windows (31 + 9)
+    assert all(chunk.departure_days <= 31 for chunk in chunks)
+    assert {chunk.duration for chunk in chunks} == set(LENGTHS)
     covered = [item.key for chunk in chunks for item in chunk.searches]
-    assert len(covered) == len(set(covered)) == 11 * 9
+    assert len(covered) == len(set(covered)) == 40 * 9
 
 
 def test_bog_window_uses_the_same_pairs_the_expander_generates():
@@ -79,25 +80,13 @@ def test_bog_window_uses_the_same_pairs_the_expander_generates():
     route.origins = ["JFK"]
     found = expand_routes([route], date(2026, 11, 24))
     chunks = chunk_searches(found)
-    assert [
-        (
-            chunk.outbound_start.isoformat(),
-            chunk.outbound_end.isoformat(),
-            chunk.return_start.isoformat(),
-            chunk.return_end.isoformat(),
-            chunk.combos,
-            len(chunk.searches),
-        )
-        for chunk in chunks
-    ] == [
-        ("2027-03-01", "2027-03-10", "2027-03-08", "2027-03-25", 180, 90),
-        ("2027-03-11", "2027-03-20", "2027-03-18", "2027-04-04", 180, 90),
-        ("2027-03-21", "2027-03-21", "2027-03-28", "2027-04-05", 9, 9),
+    assert [(chunk.duration, chunk.outbound_start.isoformat(), chunk.outbound_end.isoformat(), len(chunk.searches)) for chunk in chunks] == [
+        (length, "2027-03-01", "2027-03-21", 21) for length in LENGTHS
     ]
-    assert [item.key for chunk in chunks for item in chunk.searches] == [item.key for item in found]
+    assert sorted(item.key for chunk in chunks for item in chunk.searches) == sorted(item.key for item in found)
 
 
-def test_sparse_dates_and_extra_dates_still_cover_every_expanded_pair():
+def test_sparse_dates_and_extra_dates_do_not_fetch_the_gaps():
     config = load_config(ROOT / "config.yaml")
     route = next(item for item in config.routes if item.id == "bog").model_copy(deep=True)
     route.origins = ["JFK"]
@@ -108,38 +97,18 @@ def test_sparse_dates_and_extra_dates_still_cover_every_expanded_pair():
     found = expand_routes([route], date(2026, 11, 24))
     chunks = chunk_searches(found)
     assert chunks
-    assert all(chunk.combos <= 200 for chunk in chunks)
-    assert all(len({item.depart for item in chunk.searches}) <= 10 for chunk in chunks)
-    assert [item.key for chunk in chunks for item in chunk.searches] == [item.key for item in found]
-    assert any(chunk.outbound_start == date(2027, 8, 2) and len(chunk.searches) == 1 for chunk in chunks)
-
-
-def test_a_wide_return_on_one_departure_is_split_under_the_cap():
-    depart = date(2027, 4, 1)
-    near = Search(
-        key=make_key("bog", "JFK", "BOG", depart, depart + timedelta(days=7)),
-        route_id="bog",
-        origin="JFK",
-        dest="BOG",
-        depart=depart,
-        return_date=depart + timedelta(days=7),
-        max_stops=None,
-        target_price=None,
-    )
-    far = Search(
-        key=make_key("bog", "JFK", "BOG", depart, depart + timedelta(days=250)),
-        route_id="bog",
-        origin="JFK",
-        dest="BOG",
-        depart=depart,
-        return_date=depart + timedelta(days=250),
-        max_stops=None,
-        target_price=None,
-    )
-    chunks = chunk_searches([near, far])
-    assert len(chunks) == 2
-    assert all(chunk.combos <= 200 for chunk in chunks)
-    assert {item.key for chunk in chunks for item in chunk.searches} == {near.key, far.key}
+    assert all(chunk.departure_days <= DATE_CHUNK for chunk in chunks)
+    assert sorted(item.key for chunk in chunks for item in chunk.searches) == sorted(item.key for item in found)
+    extras = [chunk for chunk in chunks if chunk.outbound_start == date(2027, 8, 2)]
+    assert len(extras) == 1
+    assert extras[0].duration == 18
+    assert len(extras[0].searches) == 1
+    # Thursday-only windows should not stretch across the skipped weekdays.
+    for chunk in chunks:
+        if chunk.duration == 18:
+            continue
+        span = (chunk.outbound_end - chunk.outbound_start).days + 1
+        assert span == len({item.depart for item in chunk.searches})
 
 
 def test_top_three_breaks_ties_by_departure_then_return():
@@ -162,72 +131,63 @@ def test_top_three_breaks_ties_by_departure_then_return():
     assert [item.origin for item, _price in paired].count("JFK") == 3
 
 
-def test_parse_calendar_keeps_prices_and_skips_empty_cells():
-    prices = parse_calendar(
-        {
-            "calendar": [
-                {"departure": "2027-03-13", "return": "2027-03-20", "price": 515},
-                {"departure": "2027-03-13", "return": "2027-03-21", "price": "$507"},
-                {"departure": "2027-03-14", "return": "2027-03-14", "has_no_flights": True},
-                {"departure": "2027-03-15", "price": 80},
-            ]
-        }
+def test_parse_date_prices_keeps_round_trip_and_one_way():
+    prices = parse_date_prices(
+        [
+            SimpleNamespace(date=(datetime(2027, 3, 13), datetime(2027, 3, 20)), price=515),
+            SimpleNamespace(date=(datetime(2027, 3, 13), datetime(2027, 3, 21)), price=507.4),
+            SimpleNamespace(date=(datetime(2027, 3, 15),), price=80),
+            SimpleNamespace(date=(datetime(2027, 3, 16), datetime(2027, 3, 23)), price=0),
+        ]
     )
     assert prices[(date(2027, 3, 13), date(2027, 3, 20))] == 515
     assert prices[(date(2027, 3, 13), date(2027, 3, 21))] == 507
     assert prices[(date(2027, 3, 15), None)] == 80
-    assert (date(2027, 3, 14), date(2027, 3, 14)) not in prices
-    with pytest.raises(CalendarError):
-        parse_calendar({"error": "Missing required parameter return_date"})
+    assert (date(2027, 3, 16), date(2027, 3, 23)) not in prices
 
 
-def test_calendar_params_describe_the_rectangle_without_the_key():
-    chunk = chunk_searches(_trips([date(2027, 3, 1)], max_stops=0))[0]
-    params = calendar_params(chunk, currency="USD", cabin="first", adults=1)
-    assert "api_key" not in params
-    assert params["engine"] == "google_flights_calendar"
-    assert params["outbound_date_start"] == "2027-03-01"
-    assert params["outbound_date_end"] == "2027-03-01"
-    assert params["return_date_start"] == "2027-03-08"
-    assert params["return_date_end"] == "2027-03-16"
-    assert params["travel_class"] == "first_class"
-    assert params["stops"] == "nonstop"
-    assert chunk.combos == 9
+def test_date_filters_describe_a_round_trip_window():
+    from fli.models import Airport, MaxStops, SeatType, TripType
+
+    chunk = chunk_searches(_trips([date(2027, 3, 1)], lengths=[7], max_stops=0))[0]
+    filters = date_filters(chunk, cabin="first", adults=1)
+    assert filters.trip_type == TripType.ROUND_TRIP
+    assert filters.duration == 7
+    assert filters.from_date == "2027-03-01"
+    assert filters.to_date == "2027-03-01"
+    assert filters.seat_type == SeatType.FIRST
+    assert filters.stops == MaxStops.NON_STOP
+    assert filters.passenger_info.adults == 1
+    assert filters.flight_segments[0].departure_airport[0][0] == Airport.JFK
+    assert filters.flight_segments[0].arrival_airport[0][0] == Airport.BOG
+    assert filters.flight_segments[0].travel_date == "2027-03-01"
+    assert filters.flight_segments[1].travel_date == "2027-03-08"
 
 
-def test_fetch_sends_the_key_in_the_header(monkeypatch):
+def test_fetch_dates_calls_fli_without_a_network(monkeypatch):
     captured = {}
 
-    class Response:
-        def read(self):
-            return b'{"calendar":[{"departure":"2027-03-01","return":"2027-03-08","price":100}]}'
+    class FakeSearch:
+        def search(self, filters, currency=None, language=None, country=None):
+            captured["filters"] = filters
+            captured["currency"] = currency
+            captured["language"] = language
+            captured["country"] = country
+            return [
+                SimpleNamespace(
+                    date=(datetime(2027, 3, 1), datetime(2027, 3, 8)),
+                    price=100,
+                )
+            ]
 
-        def __enter__(self):
-            return self
-
-        def __exit__(self, *_args):
-            return False
-
-    def fake_open(request, timeout=0):
-        captured["url"] = request.full_url
-        captured["auth"] = request.get_header("Authorization")
-        captured["timeout"] = timeout
-        return Response()
-
-    monkeypatch.setattr("urllib.request.urlopen", fake_open)
+    monkeypatch.setattr("fli.search.SearchDates", FakeSearch)
     chunk = chunk_searches(_trips([date(2027, 3, 1)], lengths=[7]))[0]
-    prices = fetch_calendar(chunk, api_key="secret-key", currency="USD", cabin="economy", adults=1)
+    prices = fetch_dates(chunk, currency="USD", cabin="economy", adults=1)
     assert prices[(date(2027, 3, 1), date(2027, 3, 8))] == 100
-    assert "secret-key" not in captured["url"]
-    assert "api_key" not in captured["url"]
-    assert captured["auth"] == "Bearer secret-key"
-
-
-def test_missing_key_is_explicit():
-    with pytest.raises(Exception) as caught:
-        require_api_key({})
-    assert "SEARCHAPI_API_KEY" in str(caught.value)
-    assert "will not fall back" in str(caught.value)
+    assert captured["currency"] == "USD"
+    assert captured["language"] == "en"
+    assert captured["country"] == "us"
+    assert captured["filters"].duration == 7
 
 
 def test_help_documents_price_pass(capsys):
@@ -236,9 +196,9 @@ def test_help_documents_price_pass(capsys):
     assert caught.value.code == 0
     text = " ".join(capsys.readouterr().out.split())
     assert "--price-pass" in text
-    assert "SEARCHAPI_API_KEY" in text
+    assert "fli" in text
+    assert "SEARCHAPI" not in text
     assert "3 cheapest" in text
-    assert "does not fall back" in text
     assert "GitHub job" in text
 
 
@@ -285,15 +245,16 @@ def _fare(**kwargs) -> SearchResult:
 
 
 def test_price_pass_stores_sweep_prices_and_details_only_the_top_three(tmp_path: Path, monkeypatch):
-    monkeypatch.setenv("SEARCHAPI_API_KEY", "test-key")
     config = tmp_path / "config.yaml"
     _config(config, origins="[JFK, EWR]")
     data = tmp_path / "data"
     data.mkdir()
     detailed: list[str] = []
 
-    def fake_fetch(chunk, *, api_key, currency, cabin, adults):
-        assert api_key == "test-key"
+    def fake_fetch(chunk, *, currency, cabin, adults):
+        assert currency == "USD"
+        assert cabin == "economy"
+        assert adults == 1
         prices = {(date(2027, 1, 1), date(2027, 1, 8)): 1}
         for item in chunk.searches:
             length = (item.return_date - item.depart).days
@@ -304,7 +265,7 @@ def test_price_pass_stores_sweep_prices_and_details_only_the_top_three(tmp_path:
         detailed.append(item.key)
         return _fare(item=item, fetched_at=kwargs["fetched_at"])
 
-    monkeypatch.setattr("scraper.price_pass.fetch_calendar", fake_fetch)
+    monkeypatch.setattr("scraper.price_pass.fetch_dates", fake_fetch)
     monkeypatch.setattr("scraper.source_google.search", fake_search)
     code = run(
         ["--price-pass", "--config", str(config), "--data-dir", str(data), "--today", "2027-04-01"]
@@ -314,7 +275,7 @@ def test_price_pass_stores_sweep_prices_and_details_only_the_top_three(tmp_path:
     rows = {row["key"]: row for row in latest["routes"][0]["searches"]}
     assert code == 0
     assert status["coverage"]["mode"] == "price-pass"
-    assert status["coverage"]["calendar_calls"] == 2
+    assert status["coverage"]["date_calls"] == 4  # 2 origins × 2 trip lengths
     assert status["coverage"]["detail_calls"] == 6
     assert len(rows) == 16
     assert len(detailed) == 6
@@ -347,7 +308,6 @@ def test_price_pass_stores_sweep_prices_and_details_only_the_top_three(tmp_path:
 
 
 def test_detail_failure_keeps_the_sweep_price(tmp_path: Path, monkeypatch):
-    monkeypatch.setenv("SEARCHAPI_API_KEY", "test-key")
     config = tmp_path / "config.yaml"
     _config(config, end="2027-04-01")
     data = tmp_path / "data"
@@ -384,7 +344,7 @@ def test_detail_failure_keeps_the_sweep_price(tmp_path: Path, monkeypatch):
     def fake_search(item, **kwargs):
         return _fare(item=item, ok=False, fetched_at=kwargs["fetched_at"])
 
-    monkeypatch.setattr("scraper.price_pass.fetch_calendar", fake_fetch)
+    monkeypatch.setattr("scraper.price_pass.fetch_dates", fake_fetch)
     monkeypatch.setattr("scraper.source_google.search", fake_search)
     code = run(["--price-pass", "--config", str(config), "--data-dir", str(data), "--today", "2027-04-01"])
     latest = json.loads((data / "latest.json").read_text(encoding="utf-8"))
@@ -397,8 +357,7 @@ def test_detail_failure_keeps_the_sweep_price(tmp_path: Path, monkeypatch):
     assert kept["stops"] is None
 
 
-def test_calendar_failure_does_not_wipe_a_saved_price(tmp_path: Path, monkeypatch):
-    monkeypatch.setenv("SEARCHAPI_API_KEY", "test-key")
+def test_date_sweep_failure_does_not_wipe_a_saved_price(tmp_path: Path, monkeypatch):
     config = tmp_path / "config.yaml"
     _config(config, end="2027-04-01")
     data = tmp_path / "data"
@@ -431,12 +390,12 @@ def test_calendar_failure_does_not_wipe_a_saved_price(tmp_path: Path, monkeypatc
     (data / "status.json").write_text(json.dumps({"last_success": "2026-11-20T00:00:00Z"}), encoding="utf-8")
 
     def fake_fetch(_chunk, **_kwargs):
-        raise CalendarError("calendar down")
+        raise DateSweepError("google blocked the date sweep")
 
     def fake_search(_item, **_kwargs):
         raise AssertionError("detail search should not run")
 
-    monkeypatch.setattr("scraper.price_pass.fetch_calendar", fake_fetch)
+    monkeypatch.setattr("scraper.price_pass.fetch_dates", fake_fetch)
     monkeypatch.setattr("scraper.source_google.search", fake_search)
     code = run(["--price-pass", "--config", str(config), "--data-dir", str(data), "--today", "2027-04-01"])
     latest = json.loads((data / "latest.json").read_text(encoding="utf-8"))
@@ -450,89 +409,7 @@ def test_calendar_failure_does_not_wipe_a_saved_price(tmp_path: Path, monkeypatc
     assert row["fetched_at"] == "2026-11-20T00:00:00Z"
 
 
-def test_missing_key_does_not_query_dates_or_change_prices(tmp_path: Path, monkeypatch, capsys):
-    monkeypatch.delenv("SEARCHAPI_API_KEY", raising=False)
-    config = tmp_path / "config.yaml"
-    _config(config, end="2027-04-01")
-    data = tmp_path / "data"
-    data.mkdir()
-    previous = {
-        "generated_at": "2026-11-20T00:00:00Z",
-        "currency": "USD",
-        "routes": [
-            {
-                "id": "bog",
-                "searches": [
-                    {
-                        "key": "bog|JFK|BOG|2027-04-01|2027-04-08",
-                        "price": 410,
-                        "stale": False,
-                        "depart": "2027-04-01",
-                        "route_id": "bog",
-                    }
-                ],
-            }
-        ],
-    }
-    latest_path = data / "latest.json"
-    latest_path.write_text(json.dumps(previous), encoding="utf-8")
-    before = latest_path.read_text(encoding="utf-8")
-
-    def boom(*_args, **_kwargs):
-        raise AssertionError("calendar should not be called")
-
-    monkeypatch.setattr("scraper.price_pass.fetch_calendar", boom)
-    monkeypatch.setattr("scraper.source_google.search", boom)
-    code = run(["--price-pass", "--config", str(config), "--data-dir", str(data), "--today", "2027-04-01"])
-    captured = capsys.readouterr()
-    status = json.loads((data / "status.json").read_text(encoding="utf-8"))
-    assert code == 1
-    assert "SEARCHAPI_API_KEY" in captured.err
-    assert "will not fall back" in captured.err
-    assert latest_path.read_text(encoding="utf-8") == before
-    assert status["state"] == "failed"
-
-
-def test_rejected_key_leaves_saved_prices_untouched(tmp_path: Path, monkeypatch):
-    monkeypatch.setenv("SEARCHAPI_API_KEY", "test-key")
-    config = tmp_path / "config.yaml"
-    _config(config, end="2027-04-01")
-    data = tmp_path / "data"
-    data.mkdir()
-    previous = {
-        "generated_at": "2026-11-20T00:00:00Z",
-        "currency": "USD",
-        "routes": [
-            {
-                "id": "bog",
-                "searches": [
-                    {
-                        "key": "bog|JFK|BOG|2027-04-01|2027-04-08",
-                        "route_id": "bog",
-                        "depart": "2027-04-01",
-                        "price": 410,
-                        "stale": False,
-                        "airline": "Old",
-                    }
-                ],
-            }
-        ],
-    }
-    latest_path = data / "latest.json"
-    latest_path.write_text(json.dumps(previous), encoding="utf-8")
-    before = latest_path.read_text(encoding="utf-8")
-
-    def fake_fetch(_chunk, **_kwargs):
-        raise CalendarAuthError("SearchAPI rejected SEARCHAPI_API_KEY. Saved prices were left unchanged.")
-
-    monkeypatch.setattr("scraper.price_pass.fetch_calendar", fake_fetch)
-    code = run(["--price-pass", "--config", str(config), "--data-dir", str(data), "--today", "2027-04-01"])
-    assert code == 1
-    assert latest_path.read_text(encoding="utf-8") == before
-
-
-def test_dry_run_price_pass_needs_no_key(capsys, monkeypatch):
-    monkeypatch.delenv("SEARCHAPI_API_KEY", raising=False)
+def test_dry_run_price_pass_needs_no_key(capsys):
     code = run(
         [
             "--dry-run",
@@ -551,44 +428,43 @@ def test_dry_run_price_pass_needs_no_key(capsys, monkeypatch):
     )
     text = capsys.readouterr().out
     assert code == 0
-    assert "calendar chunks" in text
-    assert "combos 180" in text
+    assert "date sweeps" in text
+    assert "nights 7" in text
+    assert format_price_plan([], []).startswith("price-pass 0 date pairs")
 
 
-def test_default_run_does_not_call_the_calendar(tmp_path: Path, monkeypatch):
-    monkeypatch.setenv("SEARCHAPI_API_KEY", "test-key")
+def test_default_run_does_not_call_the_date_sweep(tmp_path: Path, monkeypatch):
     config = tmp_path / "config.yaml"
     _config(config, end="2027-04-01", cap=10)
     data = tmp_path / "data"
     data.mkdir()
 
     def boom(*_args, **_kwargs):
-        raise AssertionError("calendar should not be called")
+        raise AssertionError("date sweep should not be called")
 
     def fake_search(item, **kwargs):
         return _fare(item=item, fetched_at=kwargs["fetched_at"])
 
-    monkeypatch.setattr("scraper.price_pass.fetch_calendar", boom)
+    monkeypatch.setattr("scraper.price_pass.fetch_dates", boom)
     monkeypatch.setattr("scraper.main._searcher", lambda _source: fake_search)
     code = run(["--config", str(config), "--data-dir", str(data), "--today", "2027-04-01"])
     assert code == 0
 
 
-def test_five_calendar_failures_stop_before_later_chunks():
+def test_five_date_sweep_failures_stop_before_later_chunks():
     departures = [date(2027, 4, 1) + timedelta(days=40 * offset) for offset in range(6)]
     searches = _trips(departures, lengths=[7])
     calls = {"n": 0}
 
     def fake_fetch(_chunk, **_kwargs):
         calls["n"] += 1
-        raise CalendarError("down")
+        raise DateSweepError("down")
 
     def fake_search(_item, **_kwargs):
         raise AssertionError("detail search should not run")
 
     outcome = collect_price_pass(
         searches,
-        api_key="test-key",
         currency="USD",
         cabin="economy",
         adults=1,
@@ -600,3 +476,4 @@ def test_five_calendar_failures_stop_before_later_chunks():
     assert outcome.stopped_early is True
     assert len(outcome.results) == 5
     assert outcome.detail_calls == 0
+    assert outcome.date_calls == 5

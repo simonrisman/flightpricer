@@ -329,6 +329,60 @@ dialog p { color: var(--muted); }
 .dialog-actions { justify-content: flex-end; margin-top: 12px; }
 #token-input { width: 100%; }
 
+
+.year-bar {
+  margin: 10px 0 4px;
+}
+.year-bar-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+.year-bar-track {
+  position: relative;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.year-bar-window {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--pine);
+  border-radius: 999px;
+  min-width: 3px;
+}
+.year-bar-today {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--clay);
+  border-radius: 1px;
+  z-index: 1;
+}
+.year-bar-months {
+  display: flex;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.year-bar-months span {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
 @media (min-width: 900px) {
   .board {
     display: grid;
