@@ -10,6 +10,9 @@ from __future__ import annotations
 import json
 import os
 import sys
+from pathlib import Path
+
+from scraper.config import AppConfig
 
 # minute, hour (UTC) -> airport. EST: 08:00, 14:00, and 22:00.
 SCHEDULED = {
@@ -29,6 +32,26 @@ def select_origins(event_name: str, schedule: str = "", only_origin: str = "") -
     if choice not in ORDER:
         raise ValueError("origin must be BOS, JFK, EWR, or all")
     return [choice]
+
+
+def select_pairs(config: AppConfig, origins: list[str], only_route: str = "") -> dict[str, list[dict]]:
+    """Airport pairs each selected origin should scrape, in route order.
+
+    ``only_route`` keeps a single route id. An unknown id is an error so a
+    manual run does not silently do nothing.
+    """
+    from scraper.origin_job import origin_legs
+
+    wanted = only_route.strip().lower()
+    grouped = {code: [] for code in ORDER}
+    for origin in origins:
+        for leg in origin_legs(config, origin):
+            if wanted and leg["route"] != wanted:
+                continue
+            grouped[origin].append({"route": leg["route"], "origin": origin, "dest": leg["dest"]})
+    if wanted and not any(grouped[origin] for origin in origins):
+        raise ValueError(f"no pairs for route {wanted}")
+    return grouped
 
 
 def _origin_for_schedule(schedule: str) -> str:
@@ -52,13 +75,22 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--event", default=os.environ.get("EVENT_NAME", ""))
     parser.add_argument("--schedule", default=os.environ.get("SCHEDULE", ""))
     parser.add_argument("--only-origin", default=os.environ.get("ONLY_ORIGIN", ""))
+    parser.add_argument("--only-route", default=os.environ.get("ONLY_ROUTE", ""))
+    parser.add_argument("--config", default=os.environ.get("CONFIG_PATH", "config.yaml"))
+    parser.add_argument("--pairs", action="store_true", help="print {origin: [pairs]} instead of the origin list")
     args = parser.parse_args(argv)
     try:
         origins = select_origins(args.event, args.schedule, args.only_origin)
+        if not args.pairs:
+            print(json.dumps(origins))
+            return 0
+        from scraper.config import load_config
+
+        pairs = select_pairs(load_config(Path(args.config)), origins, args.only_route)
     except ValueError as exc:
         print(str(exc), file=sys.stderr)
         return 1
-    print(json.dumps(origins))
+    print(json.dumps({origin: pairs[origin] for origin in origins}))
     return 0
 
 

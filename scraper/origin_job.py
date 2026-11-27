@@ -31,6 +31,8 @@ def execute(
     data_dir: Path,
     shard_dir: Path,
     skip: int = 0,
+    only_route: str = "",
+    only_dest: str = "",
     pause=jitter_pause,
 ) -> int:
     config = load_config(config_path)
@@ -38,6 +40,15 @@ def execute(
     data_dir.mkdir(parents=True, exist_ok=True)
     before = snapshot_history(data_dir, config)
     legs = origin_legs(config, code)
+    route_id = only_route.strip().lower()
+    dest_code = only_dest.strip().upper()
+    if route_id:
+        legs = [leg for leg in legs if leg["route"] == route_id]
+    if dest_code:
+        legs = [leg for leg in legs if leg["dest"] == dest_code]
+    if (route_id or dest_code) and not legs:
+        print(f"no leg for {code} route={route_id or '*'} dest={dest_code or '*'}", file=sys.stderr)
+        return 1
     records: list[dict] = []
     low, high = config.settings.delay_seconds
     worst = 0
@@ -120,6 +131,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--config", default="config.yaml")
     parser.add_argument("--data-dir", default="site/data")
     parser.add_argument("--shard-dir", required=True)
+    parser.add_argument("--route", default="", help="Limit the job to one route id")
+    parser.add_argument("--dest", default="", help="Limit the job to one destination")
     parser.add_argument("--skip", type=int, default=0)
     args = parser.parse_args(argv)
     if args.skip < 0:
@@ -131,6 +144,8 @@ def main(argv: list[str] | None = None) -> int:
         data_dir=Path(args.data_dir),
         shard_dir=Path(args.shard_dir),
         skip=args.skip,
+        only_route=args.route,
+        only_dest=args.dest,
     )
 
 

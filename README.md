@@ -21,7 +21,7 @@ Dates and prices in this repo are public, because GitHub Pages on a free account
 
 Saving and fetching need a fine-grained personal access token for this repo, with Contents read/write and Actions read/write. Paste it into **GitHub access**. It stays in this browser and is only sent to `api.github.com`.
 
-Boston, JFK, and Newark scrape at different times of day, one origin at a time. Each run walks that airport’s cities in order, waits a random 3–7 seconds between Google requests, and backs off exponentially when Google throttles it. It then merges its own prices into the saved data and pushes. The other airports’ prices and queue rows stay as they were. A slow run waits out the next run of that same airport, and does not block the other airports.
+Boston, JFK, and Newark each have their own chain and start at different times of day. Each airport pair is its own job. The next pair starts as soon as the previous one finishes, with no sleep between them. Inside a pair, date fetches use two workers and a wider backoff jitter, then dates that failed are tried once more. The job merges that pair into the saved data and pushes, rebasing if main moved. Other airports, and this airport’s other cities, stay as they were. A second run for the same airport waits, and does not block the other airports.
 
 ## One-time GitHub setup
 
@@ -30,7 +30,7 @@ Boston, JFK, and Newark scrape at different times of day, one origin at a time. 
 3. Actions → **scrape** → **Run workflow** for the first full pass.
 4. Open `https://simonrisman.github.io/flightpricer/`.
 
-The clocks are UTC times locked to Eastern Standard Time, so daylight time shifts them an hour later on the Eastern clock. Boston runs at 13:00 UTC (8:00am EST, 9:00am EDT). JFK runs at 19:00 UTC (2:00pm EST, 3:00pm EDT). Newark runs at 03:00 UTC (10:00pm EST, 11:00pm EDT). Each origin is allowed 6 hours. **Run workflow** takes an origin of `BOS`, `JFK`, `EWR`, or `all`. A keepalive step re-enables the workflow on every run so GitHub does not disable it after 60 days of inactivity.
+The clocks are UTC times locked to Eastern Standard Time, so daylight time shifts them an hour later on the Eastern clock. Boston runs at 13:00 UTC (8:00am EST, 9:00am EDT). JFK runs at 19:00 UTC (2:00pm EST, 3:00pm EDT). Newark runs at 03:00 UTC (10:00pm EST, 11:00pm EDT). Each pair job is allowed 2 hours. **Run workflow** takes `mode`, an origin of `BOS`, `JFK`, `EWR`, or `all`, and an optional route id. A keepalive step re-enables the workflow on every run so GitHub does not disable it after 60 days of inactivity.
 
 ## Routes
 
@@ -66,4 +66,4 @@ python -m http.server -d site 8000
 
 Google Flights access is isolated in `scraper/source_google.py` (`fast-flights` 3.1.0). `settings.source: playwright` is only a stub.
 
-Each scheduled run is one origin. It uses `--price-pass` for that airport’s legs, in order: a fli (PyPI `flights`) date sweep over the expanded date pairs, grouped by trip length and capped at 93 departure dates per call, then a full itinerary with fast-flights for the 3 cheapest dates on each airport pair. The run merges that origin into `latest.json`, history, `status.json`, and `queue.json`, then pushes, rebasing and retrying if `main` moved. Other origins are left untouched. An ad-hoc one-date job stays on fast-flights. No SearchAPI key is required. Optional `FLIGHTS_MAX_WORKERS` (default 4, max 10) caps how many Google Flights pages fli fetches at once. Throttle errors (HTTP 429 and similar) retry with exponential backoff and jitter, up to five attempts.
+Each scheduled run is one origin, and each airport pair is its own job in that origin’s chain. A job uses `--price-pass` for that pair: a fli (PyPI `flights`) date sweep over the expanded date pairs, grouped by trip length and capped at 93 departure dates per call, one retry of the dates that failed, then a full itinerary with fast-flights for the 3 cheapest dates. The job merges that pair into `latest.json`, history, `status.json`, and `queue.json`, then pushes, rebasing and retrying if `main` moved. Other origins and the origin’s other cities are left untouched. An ad-hoc one-date job stays on fast-flights. No SearchAPI key is required. Optional `FLIGHTS_MAX_WORKERS` (default 2, max 10) caps how many Google Flights pages fli fetches at once. Throttle errors (HTTP 429 and similar) retry with exponential backoff and a full extra base of jitter, up to five attempts.

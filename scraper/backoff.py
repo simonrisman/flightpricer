@@ -36,10 +36,14 @@ def is_throttle(exc: BaseException) -> bool:
 
 
 def throttle_delay(attempt: int, rng: Callable[[], float] | None = None) -> float:
-    """Exponential delay with a little jitter. ``attempt`` starts at 0."""
+    """Exponential delay with a full extra base of jitter. ``attempt`` starts at 0.
+
+    The random span is the whole base delay, so two workers that get throttled
+    together do not wake up on the same tick.
+    """
     roll = random.random if rng is None else rng
     base = min(THROTTLE_CAP_SECONDS, THROTTLE_BASE_SECONDS * (2 ** attempt))
-    return base + roll() * base * 0.25
+    return base + roll() * base
 
 
 def call_with_backoff(

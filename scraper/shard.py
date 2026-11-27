@@ -131,7 +131,8 @@ def merge_shards(
     previous_status = read_json(data_dir / "status.json")
     entries = entries_from_latest(latest)
     for origin in present:
-        entries = _replace_origin(entries, origin, shards[origin].get("entries") or [])
+        shard = shards[origin]
+        entries = _replace_origin(entries, origin, shard.get("entries") or [], shard.get("legs") or [])
     active_ids = {route.id for route in config.routes if route.active}
     entries = drop_expired(entries, active_ids, run_day)
 
@@ -181,8 +182,28 @@ def _expected_origins(config: AppConfig) -> list[str]:
     return found
 
 
-def _replace_origin(entries: dict[str, dict], origin: str, shard_entries: list) -> dict[str, dict]:
-    kept = {key: value for key, value in entries.items() if str(value.get("origin") or "").upper() != origin}
+def _replace_origin(entries: dict[str, dict], origin: str, shard_entries: list, shard_legs: list | None = None) -> dict[str, dict]:
+    """Replace prices for the pairs this shard actually scraped.
+
+    A pair job's shard may carry every saved fare for its origin, or only the
+    city it just fetched. Cities it does not mention keep the prices already
+    on main, and so do the other origins.
+    """
+    touched: set[tuple[str, str]] = set()
+    for leg in shard_legs or []:
+        if isinstance(leg, dict):
+            touched.add((str(leg.get("route") or ""), str(leg.get("dest") or "").upper()))
+    for entry in shard_entries:
+        if isinstance(entry, dict) and str(entry.get("origin") or "").upper() == origin:
+            touched.add((str(entry.get("route_id") or ""), str(entry.get("dest") or "").upper()))
+    kept: dict[str, dict] = {}
+    for key, value in entries.items():
+        if str(value.get("origin") or "").upper() != origin:
+            kept[key] = value
+            continue
+        pair = (str(value.get("route_id") or ""), str(value.get("dest") or "").upper())
+        if pair not in touched:
+            kept[key] = value
     for entry in shard_entries:
         if not isinstance(entry, dict) or not entry.get("key"):
             continue
@@ -222,8 +243,10 @@ def _merge_queue(
             previous = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             previous = None
-    queue = init_queue(_route_dicts(config), previous if isinstance(previous, dict) else None, now, run_id, run_url)
-    _restore_other_origins(queue, previous if isinstance(previous, dict) else None, set(scope))
+    prior = previous if isinstance(previous, dict) else None
+    queue = init_queue(_route_dicts(config), prior, now, run_id, run_url)
+    _restore_other_origins(queue, prior, set(scope))
+    saved = _legs_by_id(prior)
     for origin in present:
         shard = shards[origin]
         done = {
@@ -243,6 +266,14 @@ def _merge_queue(
             if not shard.get("finished", False):
                 leg["state"] = "failed"
                 leg["finished_at"] = now
+                continue
+            # This publish only covered some of the origin's pairs. Leave the rest.
+            old = saved.get(leg_id(leg["route"], leg["origin"], leg["dest"]))
+            if old is None:
+                continue
+            leg["state"] = old.get("state") or "pending"
+            leg["started_at"] = old.get("started_at")
+            leg["finished_at"] = old.get("finished_at")
     for origin in missing:
         for leg in queue["legs"]:
             if leg["origin"] != origin:
@@ -255,12 +286,17 @@ def _merge_queue(
     return queue
 
 
-def _restore_other_origins(queue: dict, previous: dict | None, scope: set[str]) -> None:
+def _legs_by_id(previous: dict | None) -> dict[str, dict]:
     prior = {}
     for leg in (previous or {}).get("legs") or []:
         if not isinstance(leg, dict):
             continue
         prior[leg_id(str(leg.get("route") or ""), str(leg.get("origin") or ""), str(leg.get("dest") or ""))] = leg
+    return prior
+
+
+def _restore_other_origins(queue: dict, previous: dict | None, scope: set[str]) -> None:
+    prior = _legs_by_id(previous)
     for leg in queue.get("legs") or []:
         if leg["origin"] in scope:
             continue

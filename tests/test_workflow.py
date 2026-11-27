@@ -5,7 +5,8 @@ from pathlib import Path
 import pytest
 import yaml
 
-from scraper.schedule import select_origins
+from scraper.config import load_config
+from scraper.schedule import select_origins, select_pairs
 
 ROOT = Path(__file__).parents[1]
 
@@ -33,24 +34,45 @@ def test_schedules_are_est_clocks_and_manual_runs_can_pick_one_origin():
         select_origins("schedule", "17 11 * * *")
 
 
-def test_scrape_workflow_staggers_origins_and_each_one_pushes():
+def test_select_pairs_follows_the_origin_and_an_optional_route():
+    config = load_config(ROOT / "config.yaml")
+    bos = select_pairs(config, ["BOS"])
+    assert [pair["dest"] for pair in bos["BOS"]] == ["BOG", "MDE", "EZE", "CDG", "MAD", "BCN", "TBS", "PDL", "FNC"]
+    assert bos["JFK"] == []
+    assert bos["EWR"] == []
+    one = select_pairs(config, ["BOS"], only_route="bog")
+    assert one["BOS"] == [{"route": "bog", "origin": "BOS", "dest": "BOG"}]
+    with pytest.raises(ValueError, match="no pairs for route"):
+        select_pairs(config, ["BOS"], only_route="lim")
+
+
+def test_scrape_workflow_chains_pairs_per_origin_without_a_sleep():
     workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "scrape.yml").read_text(encoding="utf-8"))
     trigger = workflow["on"] if "on" in workflow else workflow[True]
     crons = [item["cron"] for item in trigger["schedule"]]
     assert crons == ["0 13 * * *", "0 19 * * *", "0 3 * * *"]
-    assert trigger["workflow_dispatch"]["inputs"]["only_origin"]["default"] == "all"
-    scrape = workflow["jobs"]["scrape"]
-    assert scrape["strategy"]["max-parallel"] == 1
-    assert scrape["strategy"]["fail-fast"] is False
-    assert scrape["concurrency"]["group"] == "scrape-${{ matrix.origin }}"
-    assert scrape["concurrency"]["cancel-in-progress"] is False
-    assert scrape["timeout-minutes"] == 360
-    script = _scripts(scrape)
-    assert "scraper.origin_job" in script
-    assert "scraper.shard merge" in script
-    assert "--origin" in script
-    assert "git push" in script
-    assert "rebase origin/main" in script
+    inputs = trigger["workflow_dispatch"]["inputs"]
+    assert inputs["mode"]["default"] == "full"
+    assert inputs["only_origin"]["default"] == "all"
+    assert inputs["only_route"]["default"] == ""
+    action = (ROOT / ".github" / "actions" / "scrape-pair" / "action.yml").read_text(encoding="utf-8")
+    assert "scraper.origin_job" in action
+    assert "--route" in action
+    assert "--dest" in action
+    assert "scraper.shard merge" in action
+    assert "git push" in action
+    assert "rebase origin/main" in action
+    assert "sleep " not in action
+    assert "sleep " not in (ROOT / ".github" / "workflows" / "scrape.yml").read_text(encoding="utf-8")
+    for origin, group in (("bos", "scrape-BOS"), ("jfk", "scrape-JFK"), ("ewr", "scrape-EWR")):
+        job = workflow["jobs"][origin]
+        assert job["name"] == "${{ matrix.pair.origin }}-${{ matrix.pair.dest }}"
+        assert job["strategy"]["max-parallel"] == 1
+        assert job["strategy"]["fail-fast"] is False
+        assert job["concurrency"]["group"] == group
+        assert job["concurrency"]["cancel-in-progress"] is False
+        assert job["timeout-minutes"] == 120
+        assert job["steps"][0]["uses"] == "./.github/actions/scrape-pair"
     assert "upload-artifact" not in yaml.dump(workflow)
     assert "publish" not in workflow["jobs"]
     assert workflow["jobs"]["adhoc"]["concurrency"]["group"] == "scrape-adhoc"
