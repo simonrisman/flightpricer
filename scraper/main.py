@@ -11,12 +11,9 @@ from scraper.config import AppConfig, ConfigError, Route, load_config
 from scraper.expand import build_adhoc, expand_routes, interleave_by_origin, select_slice
 from scraper.models import Search, SearchResult
 from scraper.price_pass import (
-    CalendarAuthError,
-    PricePassError,
     chunk_searches,
     collect_price_pass,
     format_price_plan,
-    require_api_key,
 )
 from scraper.store import (
     StoreError,
@@ -55,13 +52,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--price-pass",
         action="store_true",
         help=(
-            "Sweep SearchAPI calendar prices for every expanded date pair, then fetch a full "
-            "Google Flights itinerary for the 3 cheapest dates on each origin-destination pair. "
-            "Calendar chunks are about 10 departure days and stay within 200 combinations. "
-            "Requires SEARCHAPI_API_KEY and does not fall back to a per-date search. "
-            "The scheduled GitHub job uses this path. Without this flag, the run stays a full "
-            "fast-flights search per date, which is what an ad-hoc one-date job uses. "
-            "Honors --only-route, --only-origin, --only-dest, "
+            "Sweep cheapest Google Flights date prices with fli (the flights package) for every "
+            "expanded date pair, then fetch a full itinerary with fast-flights for the 3 cheapest "
+            "dates on each origin-destination pair. Date sweeps are grouped by trip length and "
+            "stay within fli's 93-date cap. The scheduled GitHub job uses this path. Without this "
+            "flag, the run stays a full fast-flights search per date, which is what an ad-hoc "
+            "one-date job uses. Honors --only-route, --only-origin, --only-dest, "
             "--limit, and --skip, and does not use the rotating daily slice."
         ),
     )
@@ -245,21 +241,6 @@ def run(argv: list[str] | None = None) -> int:
             _print_plan(config, searches, chosen, offset)
         return 0
 
-    api_key = ""
-    if args.price_pass:
-        try:
-            api_key = require_api_key()
-        except PricePassError as exc:
-            print(str(exc), file=sys.stderr)
-            if data_dir.exists():
-                previous = None
-                try:
-                    previous = read_json(data_dir / "status.json")
-                except StoreError:
-                    previous = None
-                _fail_status(data_dir, str(exc), previous)
-            return 1
-
     data_dir.mkdir(parents=True, exist_ok=True)
     status_path = data_dir / "status.json"
     latest_path = data_dir / "latest.json"
@@ -288,26 +269,20 @@ def run(argv: list[str] | None = None) -> int:
         def pause() -> None:
             time.sleep(random.uniform(low, high))
 
-        try:
-            outcome = collect_price_pass(
-                chosen,
-                api_key=api_key,
-                currency=config.settings.currency,
-                cabin=config.settings.cabin,
-                adults=config.settings.adults,
-                detail=source_google.search,
-                pause=pause,
-                now=utc_now,
-            )
-        except CalendarAuthError as exc:
-            print(str(exc), file=sys.stderr)
-            _fail_status(data_dir, str(exc), previous_status)
-            return 1
+        outcome = collect_price_pass(
+            chosen,
+            currency=config.settings.currency,
+            cabin=config.settings.cabin,
+            adults=config.settings.adults,
+            detail=source_google.search,
+            pause=pause,
+            now=utc_now,
+        )
         results = outcome.results
         errors = outcome.errors
         stopped_early = outcome.stopped_early
         detail_failures = outcome.detail_failures
-        calendar_calls = outcome.calendar_calls
+        calendar_calls = outcome.date_calls
         detail_calls = outcome.detail_calls
         run_list = chosen
     else:
@@ -397,7 +372,12 @@ def run(argv: list[str] | None = None) -> int:
                 "offset": offset,
                 "origin": (args.only_origin or "").strip().upper() or None,
                 **(
-                    {"mode": "price-pass", "calendar_calls": calendar_calls, "detail_calls": detail_calls}
+                    {
+                        "mode": "price-pass",
+                        "date_calls": calendar_calls,
+                        "calendar_calls": calendar_calls,
+                        "detail_calls": detail_calls,
+                    }
                     if args.price_pass
                     else {}
                 ),

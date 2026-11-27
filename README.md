@@ -71,4 +71,4 @@ python -m http.server -d site 8000
 
 Google Flights access is isolated in `scraper/source_google.py` (`fast-flights` 3.1.0). `settings.source: playwright` is only a stub.
 
-The scheduled scrape job runs `--price-pass`: a SearchAPI calendar sweep over the same expanded date pairs (about 10 departure days per call, never more than 200 combinations), then a full itinerary for the 3 cheapest dates on each airport pair. An ad-hoc one-date job stays on fast-flights. Export `SEARCHAPI_API_KEY` in the environment, and store the same name as a GitHub Actions secret. If it is missing, the sweep stops and does not query every date. Do not put the key in the repo.
+The scheduled scrape job runs `--price-pass`: a fli (PyPI `flights`) date sweep over the same expanded date pairs, grouped by trip length and capped at 93 departure dates per call, then a full itinerary with fast-flights for the 3 cheapest dates on each airport pair. An ad-hoc one-date job stays on fast-flights. No SearchAPI key is required. Optional `FLIGHTS_MAX_WORKERS` (default 4, max 10) caps how many Google Flights pages fli fetches at once.

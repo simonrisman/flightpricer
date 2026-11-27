@@ -154,7 +154,6 @@ jobs:
           ORIGIN: ${{ matrix.leg.origin }}
           DEST: ${{ matrix.leg.dest }}
           SKIP: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
-          SEARCHAPI_API_KEY: ${{ secrets.SEARCHAPI_API_KEY }}
         run: |
           args=(python -m scraper.main --price-pass --only-route "$ROUTE" --only-origin "$ORIGIN" --only-dest "$DEST")
           if [ -n "$SKIP" ]; then

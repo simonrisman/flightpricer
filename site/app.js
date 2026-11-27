@@ -1292,6 +1292,101 @@ async function fetchDate(route, message) {
   }
 }
 
+
+function parseISODate(value) {
+  if (!value) return null;
+  const parts = String(value).split("-").map(Number);
+  if (parts.length < 3 || parts.some(function (part) { return !part; })) return null;
+  return new Date(parts[0], parts[1] - 1, parts[2]);
+}
+
+function asDate(value) {
+  if (value instanceof Date && !isNaN(value.getTime())) return value;
+  if (typeof value === "string") return parseISODate(value);
+  return null;
+}
+
+function startOfMonth(day) {
+  const value = asDate(day);
+  if (!value) return startOfMonth(new Date());
+  return new Date(value.getFullYear(), value.getMonth(), 1);
+}
+
+function addMonths(day, count) {
+  const value = asDate(day);
+  if (!value) return addMonths(new Date(), count);
+  return new Date(value.getFullYear(), value.getMonth() + count, 1);
+}
+
+function startOfDay(day) {
+  const value = asDate(day) || new Date();
+  return new Date(value.getFullYear(), value.getMonth(), value.getDate());
+}
+
+function daysBetween(start, end) {
+  return Math.round((startOfDay(end) - startOfDay(start)) / 86400000);
+}
+
+function monthLabel(day) {
+  return day.toLocaleDateString("en-US", { month: "short" });
+}
+
+function prettyRange(start, end) {
+  if (!start || !end) return "";
+  const sameYear = start.getFullYear() === end.getFullYear();
+  const left = start.toLocaleDateString("en-US", { month: "short", day: "numeric", year: sameYear ? undefined : "numeric" });
+  const right = end.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return left + " – " + right;
+}
+
+function clamp(value, low, high) {
+  return Math.min(high, Math.max(low, value));
+}
+
+// Rolling 12 months starting on the first of this month, so the today marker
+// and every currently configured 2027 window can sit on the same bar.
+function renderWindowBar(route, today) {
+  const now = startOfDay(today || new Date());
+  const rangeStart = startOfMonth(now);
+  const rangeEnd = addMonths(rangeStart, 12);
+  const total = daysBetween(rangeStart, rangeEnd);
+  const windowStart = parseISODate(route.depart_window && route.depart_window.start);
+  const windowEnd = parseISODate(route.depart_window && route.depart_window.end);
+  const bar = el("div", { class: "year-bar" });
+  const caption = el("div", { class: "year-bar-label" });
+  const title = "Next 12 months, " + monthLabel(rangeStart) + " " + rangeStart.getFullYear() + " – " + monthLabel(new Date(rangeEnd - 86400000)) + " " + (rangeEnd.getFullYear() === rangeStart.getFullYear() ? rangeEnd.getFullYear() : new Date(rangeEnd - 86400000).getFullYear());
+  caption.append(el("span", {}, [title]));
+  if (windowStart && windowEnd) {
+    caption.append(el("span", {}, ["Window " + prettyRange(windowStart, windowEnd)]));
+  }
+  const track = el("div", {
+    class: "year-bar-track",
+    role: "img",
+    "aria-label": route.label + " watched window " + (windowStart && windowEnd ? prettyRange(windowStart, windowEnd) : "not set") + " on the next 12 months. Today is " + now.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) + ".",
+  });
+  if (windowStart && windowEnd && total > 0) {
+    const leftDays = clamp(daysBetween(rangeStart, windowStart), 0, total);
+    const rightDays = clamp(daysBetween(rangeStart, new Date(windowEnd.getFullYear(), windowEnd.getMonth(), windowEnd.getDate() + 1)), 0, total);
+    if (rightDays > leftDays) {
+      const mark = el("div", { class: "year-bar-window" });
+      mark.style.left = ((leftDays / total) * 100).toFixed(3) + "%";
+      mark.style.width = (((rightDays - leftDays) / total) * 100).toFixed(3) + "%";
+      track.append(mark);
+    }
+  }
+  if (now >= rangeStart && now < rangeEnd && total > 0) {
+    const todayMark = el("div", { class: "year-bar-today", title: "Today" });
+    todayMark.style.left = ((clamp(daysBetween(rangeStart, now), 0, total) / total) * 100).toFixed(3) + "%";
+    track.append(todayMark);
+  }
+  const months = el("div", { class: "year-bar-months" });
+  for (let index = 0; index < 12; index += 1) {
+    months.append(el("span", {}, [monthLabel(addMonths(rangeStart, index))]));
+  }
+  bar.append(caption, track, months);
+  return bar;
+}
+
 function headlineFare(route) {
   const rows = routeRows(route).filter(function (row) {
     return typeof row.price === "number";
@@ -1332,6 +1427,13 @@ function renderRoute(route) {
     el("span", { class: "fare-dates" }, [dates]),
     el("span", { class: "fare-age", "data-route": route.id }, [cardScrapeLine(route)]),
   ]);
+  let windowBar = null;
+  try {
+    windowBar = renderWindowBar(route);
+  } catch (err) {
+    windowBar = el("p", { class: "year-bar-label" }, ["Could not draw the date window."]);
+    if (typeof console !== "undefined") console.error(err);
+  }
   const edit = el("div", { class: "route-edit", id: "edit-" + route.id });
   if (!open) edit.hidden = true;
   edit.append(
@@ -1349,7 +1451,7 @@ function renderRoute(route) {
     toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
     if (willOpen) fillChart(route);
   });
-  card.append(toggle, edit);
+  card.append(toggle, windowBar, edit);
   if (open) requestAnimationFrame(function () { fillChart(route); });
   return card;
 }
