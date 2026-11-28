@@ -42,7 +42,7 @@ on:
         required: false
         default: ""
       cooldown_minutes:
-        description: "Minutes between routes and before retrying failed dates. Blank uses config.yaml."
+        description: "Minutes to wait before retrying dates that failed. Blank uses config.yaml."
         required: false
         default: ""
       skip:
@@ -141,9 +141,6 @@ jobs:
       group: scrape-BOS
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.bos-bog.result == 'success' || needs.bos-bog.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -164,9 +161,6 @@ jobs:
       group: scrape-BOS
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.bos-mde.result == 'success' || needs.bos-mde.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -187,9 +181,6 @@ jobs:
       group: scrape-BOS
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.bos-eze.result == 'success' || needs.bos-eze.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -210,9 +201,6 @@ jobs:
       group: scrape-BOS
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.bos-par.result == 'success' || needs.bos-par.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -233,9 +221,6 @@ jobs:
       group: scrape-BOS
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.bos-mad.result == 'success' || needs.bos-mad.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -256,9 +241,6 @@ jobs:
       group: scrape-BOS
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.bos-bcn.result == 'success' || needs.bos-bcn.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -279,9 +261,6 @@ jobs:
       group: scrape-BOS
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.bos-tbs.result == 'success' || needs.bos-tbs.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -302,9 +281,6 @@ jobs:
       group: scrape-BOS
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.bos-pdl.result == 'success' || needs.bos-pdl.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -345,9 +321,6 @@ jobs:
       group: scrape-JFK
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.jfk-bog.result == 'success' || needs.jfk-bog.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -368,9 +341,6 @@ jobs:
       group: scrape-JFK
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.jfk-mde.result == 'success' || needs.jfk-mde.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -391,9 +361,6 @@ jobs:
       group: scrape-JFK
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.jfk-eze.result == 'success' || needs.jfk-eze.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -414,9 +381,6 @@ jobs:
       group: scrape-JFK
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.jfk-par.result == 'success' || needs.jfk-par.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -437,9 +401,6 @@ jobs:
       group: scrape-JFK
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.jfk-mad.result == 'success' || needs.jfk-mad.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -460,9 +421,6 @@ jobs:
       group: scrape-JFK
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.jfk-bcn.result == 'success' || needs.jfk-bcn.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -483,9 +441,6 @@ jobs:
       group: scrape-JFK
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.jfk-tbs.result == 'success' || needs.jfk-tbs.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -506,9 +461,6 @@ jobs:
       group: scrape-JFK
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.jfk-pdl.result == 'success' || needs.jfk-pdl.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -549,9 +501,6 @@ jobs:
       group: scrape-EWR
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.ewr-bog.result == 'success' || needs.ewr-bog.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -572,9 +521,6 @@ jobs:
       group: scrape-EWR
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.ewr-mde.result == 'success' || needs.ewr-mde.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -595,9 +541,6 @@ jobs:
       group: scrape-EWR
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.ewr-eze.result == 'success' || needs.ewr-eze.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -618,9 +561,6 @@ jobs:
       group: scrape-EWR
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.ewr-par.result == 'success' || needs.ewr-par.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -641,9 +581,6 @@ jobs:
       group: scrape-EWR
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.ewr-mad.result == 'success' || needs.ewr-mad.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -664,9 +601,6 @@ jobs:
       group: scrape-EWR
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.ewr-bcn.result == 'success' || needs.ewr-bcn.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -687,9 +621,6 @@ jobs:
       group: scrape-EWR
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.ewr-tbs.result == 'success' || needs.ewr-tbs.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:
@@ -710,9 +641,6 @@ jobs:
       group: scrape-EWR
       cancel-in-progress: false
     steps:
-      - name: Cooldown
-        if: needs.ewr-pdl.result == 'success' || needs.ewr-pdl.result == 'failure'
-        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
         with:

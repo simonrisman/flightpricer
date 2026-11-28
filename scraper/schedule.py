@@ -83,14 +83,6 @@ def render_chain_jobs(config: AppConfig) -> str:
                 "      cancel-in-progress: false",
                 "    steps:",
             ]
-            if previous is not None:
-                lines.extend(
-                    [
-                        "      - name: Cooldown",
-                        f"        if: needs.{previous}.result == 'success' || needs.{previous}.result == 'failure'",
-                        "        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}",
-                    ]
-                )
             lines.extend(
                 [
                     "      - uses: actions/checkout@v4",
