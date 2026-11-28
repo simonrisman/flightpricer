@@ -225,20 +225,15 @@
       ],
       "trip": "round_trip",
       "depart_window": {
-        "start": "2027-07-01",
-        "end": "2027-08-31"
+        "start": "2027-08-01",
+        "end": "2027-09-30"
       },
       "depart_days": null,
       "trip_length_days": [
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
         14,
-        15
+        15,
+        16,
+        17
       ],
       "max_stops": null,
       "target_price": null,

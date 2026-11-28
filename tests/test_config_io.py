@@ -42,6 +42,13 @@ if (!context.inWindow(bog, "2027-03-05", "2027-03-20")) throw new Error("15-day 
 if (!context.inWindow(bog, "2027-03-07", "2027-03-14")) throw new Error("sunday should be inside the window");
 if (context.inWindow(bog, "2027-03-05", "2027-03-11")) throw new Error("6-day trip should be outside");
 if (context.inWindow(bog, "2027-03-05", "2027-03-21")) throw new Error("16-day trip should be outside");
+if (context.nightsLabel(bog) !== "7\u201315 nights") throw new Error("bog nights " + context.nightsLabel(bog));
+const tbs = config.routes.find((route) => route.id === "tbs");
+if (context.nightsLabel(tbs) !== "14\u201317 nights") throw new Error("tbs nights " + context.nightsLabel(tbs));
+if (!context.inWindow(tbs, "2027-08-01", "2027-08-15")) throw new Error("14-night Tbilisi trip should be inside");
+if (!context.inWindow(tbs, "2027-09-30", "2027-10-17")) throw new Error("17-night trip on the last day should be inside");
+if (context.inWindow(tbs, "2027-08-01", "2027-08-08")) throw new Error("7-night Tbilisi trip should be outside");
+if (context.inWindow(tbs, "2027-07-15", "2027-07-29")) throw new Error("July departure should be outside the new window");
 const withExtra = JSON.parse(JSON.stringify(config));
 withExtra.routes[0].extra_dates = [{ depart: "2027-08-05", return: "2027-08-12", origin: "BOS", dest: "BOG" }];
 fs.writeFileSync(process.argv[3], context.emitYaml(withExtra));
