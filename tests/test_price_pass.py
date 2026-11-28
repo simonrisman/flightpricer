@@ -512,6 +512,30 @@ def test_failed_dates_are_retried_once_and_can_recover():
     assert outcome.detail_calls == 2
 
 
+def test_retry_waits_out_the_cooldown_before_the_second_pass():
+    searches = _trips([date(2027, 4, 1)], lengths=[7])
+    slept: list[float] = []
+
+    def fake_fetch(chunk, **_kwargs):
+        if not slept:
+            return {}
+        return {(item.depart, item.return_date): 500 for item in chunk.searches}
+
+    outcome = collect_price_pass(
+        searches,
+        currency="USD",
+        cabin="economy",
+        adults=1,
+        detail=lambda item, **kwargs: _fare(item=item, fetched_at=kwargs["fetched_at"]),
+        fetch=fake_fetch,
+        now=lambda: "2027-04-01T00:00:00Z",
+        retry_cooldown=180,
+        sleep=slept.append,
+    )
+    assert slept == [180]
+    assert outcome.results[0].ok is True
+
+
 def test_a_date_that_fails_twice_is_not_retried_again():
     searches = _trips([date(2027, 4, 1)], lengths=[7])
     calls = {"n": 0}

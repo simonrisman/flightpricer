@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -268,6 +269,11 @@ def run(argv: list[str] | None = None) -> int:
         def pause() -> None:
             jitter_pause(low, high)
 
+        raw_cooldown = os.environ.get("COOLDOWN_SECONDS", "").strip()
+        if raw_cooldown:
+            retry_cooldown = float(raw_cooldown)
+        else:
+            retry_cooldown = float(config.settings.cooldown_minutes) * 60
         outcome = collect_price_pass(
             chosen,
             currency=config.settings.currency,
@@ -276,6 +282,7 @@ def run(argv: list[str] | None = None) -> int:
             detail=source_google.search,
             pause=pause,
             now=utc_now,
+            retry_cooldown=retry_cooldown,
         )
         results = outcome.results
         errors = outcome.errors

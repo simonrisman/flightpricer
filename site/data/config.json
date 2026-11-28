@@ -8,6 +8,7 @@
       3.0,
       7.0
     ],
+    "cooldown_minutes": 3,
     "dashboard_title": "Flight Pricer",
     "source": "fast_flights",
     "github_repo": "simonrisman/flightpricer"

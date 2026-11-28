@@ -41,6 +41,10 @@ on:
         description: "Optional route id. Limits a full run to that route."
         required: false
         default: ""
+      cooldown_minutes:
+        description: "Minutes between routes and before retrying failed dates. Blank uses config.yaml."
+        required: false
+        default: ""
       skip:
         description: "Skip this many searches already finished in today's slice"
         required: false
@@ -55,9 +59,7 @@ jobs:
     if: github.event_name != 'workflow_dispatch' || github.event.inputs.mode != 'adhoc'
     runs-on: ubuntu-latest
     outputs:
-      bos: ${{ steps.pick.outputs.bos }}
-      jfk: ${{ steps.pick.outputs.jfk }}
-      ewr: ${{ steps.pick.outputs.ewr }}
+      routes: ${{ steps.pick.outputs.routes }}
     steps:
       - uses: actions/checkout@v4
 
@@ -73,6 +75,7 @@ jobs:
           SCHEDULE: ${{ github.event.schedule }}
           ONLY_ORIGIN: ${{ github.event.inputs.only_origin }}
           ONLY_ROUTE: ${{ github.event.inputs.only_route }}
+          COOLDOWN_MINUTES: ${{ github.event.inputs.cooldown_minutes }}
         run: |
           python - << 'PY'
           import json, os
@@ -80,98 +83,644 @@ jobs:
           from scraper.config import load_config
           from scraper.schedule import select_origins, select_pairs
 
+          config = load_config(Path("config.yaml"))
           origins = select_origins(
               os.environ.get("EVENT_NAME", ""),
               os.environ.get("SCHEDULE", ""),
               os.environ.get("ONLY_ORIGIN", ""),
           )
-          grouped = select_pairs(
-              load_config(Path("config.yaml")),
-              origins,
-              os.environ.get("ONLY_ROUTE", ""),
-          )
+          grouped = select_pairs(config, origins, os.environ.get("ONLY_ROUTE", ""))
+          raw = os.environ.get("COOLDOWN_MINUTES", "").strip()
+          if raw:
+              try:
+                  minutes = int(raw)
+              except ValueError:
+                  raise SystemExit("cooldown_minutes must be a whole number")
+          else:
+              minutes = config.settings.cooldown_minutes
+          if minutes < 0 or minutes > 30:
+              raise SystemExit("cooldown_minutes must be from 0 to 30")
+          payload = {
+              "bos": [row["route"] for row in grouped["BOS"]],
+              "jfk": [row["route"] for row in grouped["JFK"]],
+              "ewr": [row["route"] for row in grouped["EWR"]],
+              "cooldown": minutes * 60,
+          }
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as handle:
-              for code in ("BOS", "JFK", "EWR"):
-                  rows = grouped[code]
-                  if not rows:
-                      rows = [{"route": "skip", "origin": code, "dest": "SKIP"}]
-                  handle.write(code.lower() + "=" + json.dumps(rows, separators=(",", ":")) + "\n")
-          print("running", {code: [row["dest"] for row in grouped[code]] for code in ("BOS", "JFK", "EWR")})
+              handle.write("routes=" + json.dumps(payload, separators=(",", ":")) + "\n")
+          print("running", {code: payload[code.lower()] for code in ("BOS", "JFK", "EWR")}, "cooldown", payload["cooldown"])
           PY
 
-  bos:
-    name: ${{ matrix.pair.origin }}-${{ matrix.pair.dest }}
+  bos-bog:
+    name: BOS-BOG
     needs: prepare
-    if: needs.prepare.result == 'success' && !contains(needs.prepare.outputs.bos || '', '"route":"skip"')
+    if: ${{ needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).bos, 'bog') }}
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
       group: scrape-BOS
       cancel-in-progress: false
-    strategy:
-      fail-fast: false
-      max-parallel: 1
-      matrix:
-        pair: ${{ fromJson(needs.prepare.outputs.bos || '[{"route":"skip","origin":"BOS","dest":"SKIP"}]') }}
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
-        if: matrix.pair.route != 'skip'
         with:
-          origin: ${{ matrix.pair.origin }}
-          route: ${{ matrix.pair.route }}
-          dest: ${{ matrix.pair.dest }}
+          origin: BOS
+          route: bog
+          dest: BOG
           skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
           token: ${{ github.token }}
 
-  jfk:
-    name: ${{ matrix.pair.origin }}-${{ matrix.pair.dest }}
+  bos-mde:
+    name: BOS-MDE
+    needs: [prepare, bos-bog]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).bos, 'mde') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-BOS
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.bos-bog.result == 'success' || needs.bos-bog.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: BOS
+          route: mde
+          dest: MDE
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  bos-eze:
+    name: BOS-EZE
+    needs: [prepare, bos-mde]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).bos, 'eze') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-BOS
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.bos-mde.result == 'success' || needs.bos-mde.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: BOS
+          route: eze
+          dest: EZE
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  bos-par:
+    name: BOS-CDG
+    needs: [prepare, bos-eze]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).bos, 'par') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-BOS
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.bos-eze.result == 'success' || needs.bos-eze.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: BOS
+          route: par
+          dest: CDG
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  bos-mad:
+    name: BOS-MAD
+    needs: [prepare, bos-par]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).bos, 'mad') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-BOS
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.bos-par.result == 'success' || needs.bos-par.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: BOS
+          route: mad
+          dest: MAD
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  bos-bcn:
+    name: BOS-BCN
+    needs: [prepare, bos-mad]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).bos, 'bcn') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-BOS
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.bos-mad.result == 'success' || needs.bos-mad.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: BOS
+          route: bcn
+          dest: BCN
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  bos-tbs:
+    name: BOS-TBS
+    needs: [prepare, bos-bcn]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).bos, 'tbs') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-BOS
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.bos-bcn.result == 'success' || needs.bos-bcn.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: BOS
+          route: tbs
+          dest: TBS
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  bos-pdl:
+    name: BOS-PDL
+    needs: [prepare, bos-tbs]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).bos, 'pdl') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-BOS
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.bos-tbs.result == 'success' || needs.bos-tbs.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: BOS
+          route: pdl
+          dest: PDL
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  bos-fnc:
+    name: BOS-FNC
+    needs: [prepare, bos-pdl]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).bos, 'fnc') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-BOS
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.bos-pdl.result == 'success' || needs.bos-pdl.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: BOS
+          route: fnc
+          dest: FNC
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  jfk-bog:
+    name: JFK-BOG
     needs: prepare
-    if: needs.prepare.result == 'success' && !contains(needs.prepare.outputs.jfk || '', '"route":"skip"')
+    if: ${{ needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).jfk, 'bog') }}
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
       group: scrape-JFK
       cancel-in-progress: false
-    strategy:
-      fail-fast: false
-      max-parallel: 1
-      matrix:
-        pair: ${{ fromJson(needs.prepare.outputs.jfk || '[{"route":"skip","origin":"JFK","dest":"SKIP"}]') }}
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
-        if: matrix.pair.route != 'skip'
         with:
-          origin: ${{ matrix.pair.origin }}
-          route: ${{ matrix.pair.route }}
-          dest: ${{ matrix.pair.dest }}
+          origin: JFK
+          route: bog
+          dest: BOG
           skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
           token: ${{ github.token }}
 
-  ewr:
-    name: ${{ matrix.pair.origin }}-${{ matrix.pair.dest }}
+  jfk-mde:
+    name: JFK-MDE
+    needs: [prepare, jfk-bog]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).jfk, 'mde') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-JFK
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.jfk-bog.result == 'success' || needs.jfk-bog.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: JFK
+          route: mde
+          dest: MDE
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  jfk-eze:
+    name: JFK-EZE
+    needs: [prepare, jfk-mde]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).jfk, 'eze') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-JFK
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.jfk-mde.result == 'success' || needs.jfk-mde.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: JFK
+          route: eze
+          dest: EZE
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  jfk-par:
+    name: JFK-CDG
+    needs: [prepare, jfk-eze]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).jfk, 'par') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-JFK
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.jfk-eze.result == 'success' || needs.jfk-eze.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: JFK
+          route: par
+          dest: CDG
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  jfk-mad:
+    name: JFK-MAD
+    needs: [prepare, jfk-par]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).jfk, 'mad') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-JFK
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.jfk-par.result == 'success' || needs.jfk-par.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: JFK
+          route: mad
+          dest: MAD
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  jfk-bcn:
+    name: JFK-BCN
+    needs: [prepare, jfk-mad]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).jfk, 'bcn') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-JFK
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.jfk-mad.result == 'success' || needs.jfk-mad.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: JFK
+          route: bcn
+          dest: BCN
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  jfk-tbs:
+    name: JFK-TBS
+    needs: [prepare, jfk-bcn]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).jfk, 'tbs') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-JFK
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.jfk-bcn.result == 'success' || needs.jfk-bcn.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: JFK
+          route: tbs
+          dest: TBS
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  jfk-pdl:
+    name: JFK-PDL
+    needs: [prepare, jfk-tbs]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).jfk, 'pdl') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-JFK
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.jfk-tbs.result == 'success' || needs.jfk-tbs.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: JFK
+          route: pdl
+          dest: PDL
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  jfk-fnc:
+    name: JFK-FNC
+    needs: [prepare, jfk-pdl]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).jfk, 'fnc') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-JFK
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.jfk-pdl.result == 'success' || needs.jfk-pdl.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: JFK
+          route: fnc
+          dest: FNC
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  ewr-bog:
+    name: EWR-BOG
     needs: prepare
-    if: needs.prepare.result == 'success' && !contains(needs.prepare.outputs.ewr || '', '"route":"skip"')
+    if: ${{ needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).ewr, 'bog') }}
     runs-on: ubuntu-latest
     timeout-minutes: 120
     concurrency:
       group: scrape-EWR
       cancel-in-progress: false
-    strategy:
-      fail-fast: false
-      max-parallel: 1
-      matrix:
-        pair: ${{ fromJson(needs.prepare.outputs.ewr || '[{"route":"skip","origin":"EWR","dest":"SKIP"}]') }}
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/scrape-pair
-        if: matrix.pair.route != 'skip'
         with:
-          origin: ${{ matrix.pair.origin }}
-          route: ${{ matrix.pair.route }}
-          dest: ${{ matrix.pair.dest }}
+          origin: EWR
+          route: bog
+          dest: BOG
           skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  ewr-mde:
+    name: EWR-MDE
+    needs: [prepare, ewr-bog]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).ewr, 'mde') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-EWR
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.ewr-bog.result == 'success' || needs.ewr-bog.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: EWR
+          route: mde
+          dest: MDE
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  ewr-eze:
+    name: EWR-EZE
+    needs: [prepare, ewr-mde]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).ewr, 'eze') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-EWR
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.ewr-mde.result == 'success' || needs.ewr-mde.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: EWR
+          route: eze
+          dest: EZE
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  ewr-par:
+    name: EWR-CDG
+    needs: [prepare, ewr-eze]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).ewr, 'par') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-EWR
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.ewr-eze.result == 'success' || needs.ewr-eze.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: EWR
+          route: par
+          dest: CDG
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  ewr-mad:
+    name: EWR-MAD
+    needs: [prepare, ewr-par]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).ewr, 'mad') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-EWR
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.ewr-par.result == 'success' || needs.ewr-par.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: EWR
+          route: mad
+          dest: MAD
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  ewr-bcn:
+    name: EWR-BCN
+    needs: [prepare, ewr-mad]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).ewr, 'bcn') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-EWR
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.ewr-mad.result == 'success' || needs.ewr-mad.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: EWR
+          route: bcn
+          dest: BCN
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  ewr-tbs:
+    name: EWR-TBS
+    needs: [prepare, ewr-bcn]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).ewr, 'tbs') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-EWR
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.ewr-bcn.result == 'success' || needs.ewr-bcn.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: EWR
+          route: tbs
+          dest: TBS
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  ewr-pdl:
+    name: EWR-PDL
+    needs: [prepare, ewr-tbs]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).ewr, 'pdl') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-EWR
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.ewr-tbs.result == 'success' || needs.ewr-tbs.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: EWR
+          route: pdl
+          dest: PDL
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+          token: ${{ github.token }}
+
+  ewr-fnc:
+    name: EWR-FNC
+    needs: [prepare, ewr-pdl]
+    if: ${{ !cancelled() && needs.prepare.result == 'success' && contains(fromJson(needs.prepare.outputs.routes).ewr, 'fnc') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    concurrency:
+      group: scrape-EWR
+      cancel-in-progress: false
+    steps:
+      - name: Cooldown
+        if: needs.ewr-pdl.result == 'success' || needs.ewr-pdl.result == 'failure'
+        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/scrape-pair
+        with:
+          origin: EWR
+          route: fnc
+          dest: FNC
+          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}
+          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}
           token: ${{ github.token }}
 
   adhoc:

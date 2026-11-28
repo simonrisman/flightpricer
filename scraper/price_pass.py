@@ -12,6 +12,7 @@ The dates themselves still come from expand_routes.
 from __future__ import annotations
 
 import os
+import time
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
@@ -317,6 +318,8 @@ def collect_price_pass(
     pause: Callable[[], None] | None = None,
     now: Callable[[], str] | None = None,
     fetch: Callable[..., dict] | None = None,
+    retry_cooldown: float = 0,
+    sleep: Callable[[float], None] | None = None,
 ) -> PricePassOutcome:
     stamp = now or _utc_now
     fetch_fn = fetch or fetch_dates
@@ -382,6 +385,9 @@ def collect_price_pass(
     failed = [item for item in unique if item.key in results_by_key and not results_by_key[item.key].ok]
     if failed:
         print(f"retrying {len(failed)} failed dates once", flush=True)
+        if retry_cooldown > 0:
+            print(f"cooldown {int(retry_cooldown)}s before retry", flush=True)
+            (sleep or time.sleep)(retry_cooldown)
         retry_chunks = chunk_searches(failed)
         recovered = 0
         for index, chunk in enumerate(retry_chunks, start=1):

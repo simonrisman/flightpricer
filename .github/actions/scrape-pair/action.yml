@@ -14,6 +14,10 @@ inputs:
     description: Searches to skip
     required: false
     default: ""
+  cooldown_seconds:
+    description: Seconds to wait before retrying dates that failed
+    required: false
+    default: "0"
   token:
     description: Token used to push and to dispatch pages
     required: true
@@ -22,7 +26,6 @@ runs:
   steps:
     - uses: actions/checkout@v4
       with:
-        ref: main
         fetch-depth: 0
 
     - uses: actions/setup-python@v5
@@ -42,6 +45,7 @@ runs:
         ROUTE: ${{ inputs.route }}
         DEST: ${{ inputs.dest }}
         SKIP: ${{ inputs.skip }}
+        COOLDOWN_SECONDS: ${{ inputs.cooldown_seconds }}
       run: |
         args=(python -m scraper.origin_job --origin "$ORIGIN" --route "$ROUTE" --dest "$DEST" --shard-dir "shards/$ORIGIN")
         if [ -n "$SKIP" ]; then
