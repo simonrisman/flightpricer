@@ -1,19 +1,26 @@
 {
-  "last_run": "2026-11-28T00:38:59Z",
-  "state": "ok",
-  "searches_planned": 558,
-  "searches_attempted": 558,
-  "searches_succeeded": 558,
-  "errors": [],
-  "last_success": "2026-11-28T00:38:59Z",
+  "last_run": "2026-11-28T00:49:00Z",
+  "state": "degraded",
+  "searches_planned": 360,
+  "searches_attempted": 360,
+  "searches_succeeded": 357,
+  "errors": [
+    "JFK->PDL 2027-06-06: empty result",
+    "JFK->PDL 2027-06-16: Priced 0 of 1 dates — every date in the range failed. Reasons: the search page carried no ds:1 payload — Google may have changed the page shape, or served a consent/blocked page instead. If you are on an EU/EEA IP, Google's consent interstitial serves no results — the client sends a pre-accepted SOC",
+    "JFK->PDL 2027-07-08: Priced 0 of 1 dates — every date in the range failed. Reasons: the search page carried no ds:1 payload — Google may have changed the page shape, or served a consent/blocked page instead. If you are on an EU/EEA IP, Google's consent interstitial serves no results — the client sends a pre-accepted SOC",
+    "pdl|JFK|PDL|2027-06-02|2027-06-09: itinerary empty result",
+    "pdl|JFK|PDL|2027-06-02|2027-06-11: itinerary empty result",
+    "pdl|JFK|PDL|2027-06-02|2027-06-13: itinerary empty result"
+  ],
+  "last_success": "2026-11-28T00:49:00Z",
   "coverage": {
-    "total": 558,
-    "scheduled": 558,
+    "total": 360,
+    "scheduled": 360,
     "offset": 0,
     "origin": "JFK",
     "mode": "price-pass",
-    "date_calls": 23,
-    "calendar_calls": 23,
+    "date_calls": 61,
+    "calendar_calls": 61,
     "detail_calls": 3,
     "origins": {
       "JFK": "merged"
