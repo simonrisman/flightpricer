@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-28T00:28:55Z",
+  "updated_at": "2026-11-28T00:34:05Z",
   "run_id": "46085187059",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46085187059",
   "legs": [
@@ -143,9 +143,9 @@
       "label": "Barcelona",
       "origin": "JFK",
       "dest": "BCN",
-      "state": "failed",
-      "started_at": "2026-11-27T20:10:53Z",
-      "finished_at": "2026-11-27T20:11:16Z"
+      "state": "done",
+      "started_at": "2026-11-28T00:29:21Z",
+      "finished_at": "2026-11-28T00:34:04Z"
     },
     {
       "route": "bcn",
