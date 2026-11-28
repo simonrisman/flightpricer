@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-27T23:20:08Z",
-  "run_id": "46075606928",
-  "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46075606928",
+  "updated_at": "2026-11-28T00:00:50Z",
+  "run_id": "46085187059",
+  "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46085187059",
   "legs": [
     {
       "route": "bog",
       "label": "Bogotá",
       "origin": "JFK",
       "dest": "BOG",
-      "state": "failed",
-      "started_at": "2026-11-27T19:58:51Z",
-      "finished_at": "2026-11-27T19:59:05Z"
+      "state": "done",
+      "started_at": "2026-11-27T23:56:43Z",
+      "finished_at": "2026-11-28T00:00:50Z"
     },
     {
       "route": "bog",

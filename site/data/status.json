@@ -1,25 +1,26 @@
 {
-  "last_run": "2026-11-27T23:20:08Z",
-  "state": "ok",
-  "searches_planned": 540,
-  "searches_attempted": 540,
-  "searches_succeeded": 540,
+  "last_run": "2026-11-28T00:00:50Z",
+  "state": "degraded",
+  "searches_planned": 189,
+  "searches_attempted": 189,
+  "searches_succeeded": 188,
   "errors": [
-    "fnc|BOS|FNC|2027-04-12|2027-04-19: itinerary empty result",
-    "fnc|BOS|FNC|2027-04-12|2027-04-22: itinerary empty result"
+    "JFK->BOG 2027-03-12: Priced 0 of 1 dates — every date in the range failed. Reasons: the search page carried no ds:1 payload — Google may have changed the page shape, or served a consent/blocked page instead. If you are on an EU/EEA IP, Google's consent interstitial serves no results — the client sends a pre-accepted SOC",
+    "bog|JFK|BOG|2027-03-02|2027-03-14: itinerary empty result",
+    "bog|JFK|BOG|2027-03-03|2027-03-14: itinerary empty result"
   ],
-  "last_success": "2026-11-27T23:20:08Z",
+  "last_success": "2026-11-28T00:00:50Z",
   "coverage": {
-    "total": 540,
-    "scheduled": 540,
+    "total": 189,
+    "scheduled": 189,
     "offset": 0,
-    "origin": "BOS",
+    "origin": "JFK",
     "mode": "price-pass",
-    "date_calls": 51,
-    "calendar_calls": 51,
+    "date_calls": 26,
+    "calendar_calls": 26,
     "detail_calls": 3,
     "origins": {
-      "BOS": "merged"
+      "JFK": "merged"
     }
   },
   "stopped_early": false
