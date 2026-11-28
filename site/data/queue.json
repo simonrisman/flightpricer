@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-28T11:37:20Z",
+  "updated_at": "2026-11-28T11:47:46Z",
   "run_id": "46139864254",
   "run_url": "https://github.com/simonrisman/flightpricer/actions/runs/46139864254",
   "legs": [
@@ -44,9 +44,9 @@
       "label": "Medellín",
       "origin": "EWR",
       "dest": "MDE",
-      "state": "failed",
-      "started_at": "2026-11-27T20:00:51Z",
-      "finished_at": "2026-11-27T20:01:07Z"
+      "state": "done",
+      "started_at": "2026-11-28T11:37:48Z",
+      "finished_at": "2026-11-28T11:47:45Z"
     },
     {
       "route": "mde",
