@@ -54,6 +54,61 @@ def select_pairs(config: AppConfig, origins: list[str], only_route: str = "") ->
     return grouped
 
 
+def render_chain_jobs(config: AppConfig) -> str:
+    """GitHub Actions jobs for one needs-chain per origin, in config route order."""
+    pairs = select_pairs(config, list(ORDER))
+    blocks: list[str] = []
+    for origin in ORDER:
+        previous: str | None = None
+        for leg in pairs[origin]:
+            job_id = f"{origin.lower()}-{leg['route']}"
+            route_check = (
+                f"contains(fromJson(needs.prepare.outputs.routes).{origin.lower()}, '{leg['route']}')"
+            )
+            if previous is None:
+                needs = "prepare"
+                condition = f"needs.prepare.result == 'success' && {route_check}"
+            else:
+                needs = f"[prepare, {previous}]"
+                condition = f"!cancelled() && needs.prepare.result == 'success' && {route_check}"
+            lines = [
+                f"  {job_id}:",
+                f"    name: {origin}-{leg['dest']}",
+                f"    needs: {needs}",
+                f"    if: ${{{{ {condition} }}}}",
+                "    runs-on: ubuntu-latest",
+                "    timeout-minutes: 120",
+                "    concurrency:",
+                f"      group: scrape-{origin}",
+                "      cancel-in-progress: false",
+                "    steps:",
+            ]
+            if previous is not None:
+                lines.extend(
+                    [
+                        "      - name: Cooldown",
+                        f"        if: needs.{previous}.result == 'success' || needs.{previous}.result == 'failure'",
+                        "        run: sleep ${{ fromJson(needs.prepare.outputs.routes).cooldown }}",
+                    ]
+                )
+            lines.extend(
+                [
+                    "      - uses: actions/checkout@v4",
+                    "      - uses: ./.github/actions/scrape-pair",
+                    "        with:",
+                    f"          origin: {origin}",
+                    f"          route: {leg['route']}",
+                    f"          dest: {leg['dest']}",
+                    "          skip: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.skip || '' }}",
+                    "          cooldown_seconds: ${{ fromJson(needs.prepare.outputs.routes).cooldown }}",
+                    "          token: ${{ github.token }}",
+                ]
+            )
+            blocks.append("\n".join(lines))
+            previous = job_id
+    return "\n\n".join(blocks) + "\n"
+
+
 def _origin_for_schedule(schedule: str) -> str:
     parts = schedule.split()
     if len(parts) < 2:

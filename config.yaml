@@ -4,6 +4,7 @@ settings:
   cabin: economy
   max_requests_per_run: 3000
   delay_seconds: [3, 7]
+  cooldown_minutes: 3
   dashboard_title: "Flight Pricer"
   source: fast_flights
   github_repo: simonrisman/flightpricer

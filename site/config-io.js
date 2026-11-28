@@ -43,6 +43,7 @@ function emitYaml(config) {
     "  cabin: " + settings.cabin,
     "  max_requests_per_run: " + settings.max_requests_per_run,
     "  delay_seconds: [" + delay[0] + ", " + delay[1] + "]",
+    "  cooldown_minutes: " + (settings.cooldown_minutes == null ? 0 : settings.cooldown_minutes),
     "  dashboard_title: " + quoteYaml(settings.dashboard_title),
     "  source: " + settings.source,
     "  github_repo: " + settings.github_repo,

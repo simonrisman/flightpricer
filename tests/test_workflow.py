@@ -6,7 +6,7 @@ import pytest
 import yaml
 
 from scraper.config import load_config
-from scraper.schedule import select_origins, select_pairs
+from scraper.schedule import render_chain_jobs, select_origins, select_pairs
 
 ROOT = Path(__file__).parents[1]
 
@@ -46,8 +46,11 @@ def test_select_pairs_follows_the_origin_and_an_optional_route():
         select_pairs(config, ["BOS"], only_route="lim")
 
 
-def test_scrape_workflow_chains_pairs_per_origin_without_a_sleep():
-    workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "scrape.yml").read_text(encoding="utf-8"))
+def test_scrape_workflow_chains_each_route_and_waits_between_them():
+    text = (ROOT / ".github" / "workflows" / "scrape.yml").read_text(encoding="utf-8")
+    config = load_config(ROOT / "config.yaml")
+    assert render_chain_jobs(config) in text
+    workflow = yaml.safe_load(text)
     trigger = workflow["on"] if "on" in workflow else workflow[True]
     crons = [item["cron"] for item in trigger["schedule"]]
     assert crons == ["0 13 * * *", "0 19 * * *", "0 3 * * *"]
@@ -55,6 +58,7 @@ def test_scrape_workflow_chains_pairs_per_origin_without_a_sleep():
     assert inputs["mode"]["default"] == "full"
     assert inputs["only_origin"]["default"] == "all"
     assert inputs["only_route"]["default"] == ""
+    assert "cooldown_minutes" in inputs
     action = (ROOT / ".github" / "actions" / "scrape-pair" / "action.yml").read_text(encoding="utf-8")
     assert "scraper.origin_job" in action
     assert "--route" in action
@@ -64,23 +68,34 @@ def test_scrape_workflow_chains_pairs_per_origin_without_a_sleep():
     assert "merging this origin onto latest main" in action
     assert "rebase origin/main" not in action
     assert "sleep " not in action
-    assert "sleep " not in (ROOT / ".github" / "workflows" / "scrape.yml").read_text(encoding="utf-8")
-    for origin, group in (("bos", "scrape-BOS"), ("jfk", "scrape-JFK"), ("ewr", "scrape-EWR")):
-        job = workflow["jobs"][origin]
-        assert job["name"] == "${{ matrix.pair.origin }}-${{ matrix.pair.dest }}"
-        assert job["strategy"]["max-parallel"] == 1
-        assert job["strategy"]["fail-fast"] is False
-        assert job["concurrency"]["group"] == group
-        assert job["concurrency"]["cancel-in-progress"] is False
-        assert job["timeout-minutes"] == 120
-        assert job["steps"][0]["uses"] == "actions/checkout@v4"
-        assert job["steps"][1]["uses"] == "./.github/actions/scrape-pair"
+    assert "COOLDOWN_SECONDS" in action
+    plan = select_pairs(config, ["BOS", "JFK", "EWR"])
+    for origin, legs in plan.items():
+        previous = None
+        for leg in legs:
+            job_id = f"{origin.lower()}-{leg['route']}"
+            job = workflow["jobs"][job_id]
+            assert job["name"] == f"{origin}-{leg['dest']}"
+            assert job["timeout-minutes"] == 120
+            assert job["concurrency"]["group"] == f"scrape-{origin}"
+            assert job["concurrency"]["cancel-in-progress"] is False
+            assert "!cancelled()" in str(job["if"]) or previous is None
+            needs = job["needs"] if isinstance(job["needs"], list) else [job["needs"]]
+            assert "prepare" in needs
+            names = [step.get("name") for step in job["steps"]]
+            if previous is None:
+                assert "Cooldown" not in names
+            else:
+                assert previous in needs
+                cooldown = next(step for step in job["steps"] if step.get("name") == "Cooldown")
+                assert cooldown["run"].startswith("sleep ")
+                assert "success" in cooldown["if"] and "failure" in cooldown["if"]
+            previous = job_id
     assert "upload-artifact" not in yaml.dump(workflow)
     assert "publish" not in workflow["jobs"]
     assert workflow["jobs"]["adhoc"]["concurrency"]["group"] == "scrape-adhoc"
     assert "git push" in _scripts(workflow["jobs"]["adhoc"])
-    prepare = "\n".join(
-        step.get("run") or "" for step in workflow["jobs"]["prepare"]["steps"]
-    )
+    prepare = "\n".join(step.get("run") or "" for step in workflow["jobs"]["prepare"]["steps"])
     assert "pydantic==2.12.5" in prepare
     assert "PyYAML==6.0.3" in prepare
+    assert '"cooldown"' in prepare

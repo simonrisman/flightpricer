@@ -25,6 +25,7 @@ class Settings(BaseModel):
     cabin: str = "economy"
     max_requests_per_run: int = Field(default=3000, ge=1, le=100000)
     delay_seconds: list[float] = Field(default_factory=lambda: [3.0, 7.0], min_length=2, max_length=2)
+    cooldown_minutes: int = Field(default=0, ge=0, le=30)
     dashboard_title: str = "Flight Pricer"
     source: str = "fast_flights"
     github_repo: str = "simonrisman/flightpricer"
