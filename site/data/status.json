@@ -1,21 +1,19 @@
 {
-  "last_run": "2026-11-28T00:34:05Z",
+  "last_run": "2026-11-28T00:38:59Z",
   "state": "ok",
-  "searches_planned": 315,
-  "searches_attempted": 315,
-  "searches_succeeded": 315,
-  "errors": [
-    "bcn|JFK|BCN|2027-05-19|2027-05-26: itinerary empty result"
-  ],
-  "last_success": "2026-11-28T00:34:05Z",
+  "searches_planned": 558,
+  "searches_attempted": 558,
+  "searches_succeeded": 558,
+  "errors": [],
+  "last_success": "2026-11-28T00:38:59Z",
   "coverage": {
-    "total": 315,
-    "scheduled": 315,
+    "total": 558,
+    "scheduled": 558,
     "offset": 0,
     "origin": "JFK",
     "mode": "price-pass",
-    "date_calls": 26,
-    "calendar_calls": 26,
+    "date_calls": 23,
+    "calendar_calls": 23,
     "detail_calls": 3,
     "origins": {
       "JFK": "merged"
