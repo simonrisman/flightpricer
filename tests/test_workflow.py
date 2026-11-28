@@ -46,7 +46,7 @@ def test_select_pairs_follows_the_origin_and_an_optional_route():
         select_pairs(config, ["BOS"], only_route="lim")
 
 
-def test_scrape_workflow_chains_each_route_and_waits_between_them():
+def test_scrape_workflow_chains_each_route_without_a_sleep_between_them():
     text = (ROOT / ".github" / "workflows" / "scrape.yml").read_text(encoding="utf-8")
     config = load_config(ROOT / "config.yaml")
     assert render_chain_jobs(config) in text
@@ -82,14 +82,10 @@ def test_scrape_workflow_chains_each_route_and_waits_between_them():
             assert "!cancelled()" in str(job["if"]) or previous is None
             needs = job["needs"] if isinstance(job["needs"], list) else [job["needs"]]
             assert "prepare" in needs
-            names = [step.get("name") for step in job["steps"]]
-            if previous is None:
-                assert "Cooldown" not in names
-            else:
+            assert "sleep " not in _scripts(job)
+            assert all(step.get("name") != "Cooldown" for step in job["steps"])
+            if previous is not None:
                 assert previous in needs
-                cooldown = next(step for step in job["steps"] if step.get("name") == "Cooldown")
-                assert cooldown["run"].startswith("sleep ")
-                assert "success" in cooldown["if"] and "failure" in cooldown["if"]
             previous = job_id
     assert "upload-artifact" not in yaml.dump(workflow)
     assert "publish" not in workflow["jobs"]
