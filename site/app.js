@@ -1350,13 +1350,14 @@ function renderWindowBar(route, today) {
   const caption = el("div", { class: "year-bar-label" });
   const title = "Next 12 months, " + monthLabel(rangeStart) + " " + rangeStart.getFullYear() + " – " + monthLabel(new Date(rangeEnd - 86400000)) + " " + (rangeEnd.getFullYear() === rangeStart.getFullYear() ? rangeEnd.getFullYear() : new Date(rangeEnd - 86400000).getFullYear());
   caption.append(el("span", {}, [title]));
+  const nights = typeof nightsLabel === "function" ? nightsLabel(route) : "";
   if (windowStart && windowEnd) {
-    caption.append(el("span", {}, ["Window " + prettyRange(windowStart, windowEnd)]));
+    caption.append(el("span", {}, ["Window " + prettyRange(windowStart, windowEnd) + (nights ? " · " + nights : "")]));
   }
   const track = el("div", {
     class: "year-bar-track",
     role: "img",
-    "aria-label": route.label + " watched window " + (windowStart && windowEnd ? prettyRange(windowStart, windowEnd) : "not set") + " on the next 12 months. Today is " + now.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) + ".",
+    "aria-label": route.label + " watched window " + (windowStart && windowEnd ? prettyRange(windowStart, windowEnd) : "not set") + (nights ? ", " + nights : "") + " on the next 12 months. Today is " + now.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) + ".",
   });
   if (windowStart && windowEnd && total > 0) {
     const leftDays = clamp(daysBetween(rangeStart, windowStart), 0, total);
@@ -1432,7 +1433,7 @@ function renderRoute(route) {
   if (!open) edit.hidden = true;
   edit.append(
     el("p", { class: "how" }, [
-      "Every day from the start date through the end date is checked, including weekends, unless you uncheck a weekday. Each departure is paired with each listed trip length. 7 through 15 means a 7-day trip, an 8-day trip, and so on up to 15 days. Each airport-to-city pair, such as Boston–Bogotá, is its own job. The chain starts at 6:17am Eastern, and the next pair starts when the previous one has saved.",
+      "Every day from the start date through the end date is checked, including weekends, unless you uncheck a weekday. Each departure is paired with each listed trip length" + (typeof nightsLabel === "function" && nightsLabel(route) ? " (" + nightsLabel(route) + ")" : "") + ". Each airport-to-city pair, such as Boston–Bogotá, is its own job. The chain starts at 6:17am Eastern, and the next pair starts when the previous one has saved.",
     ]),
     el("div", { class: "tools" }, [renderEditor(route), renderQuery(route)]),
     el("div", { class: "chart-wrap", id: "chart-" + route.id })

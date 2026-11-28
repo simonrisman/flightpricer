@@ -69,8 +69,8 @@ routes:
     origins: [JFK, EWR, BOS]
     destinations: [TBS]
     trip: round_trip
-    depart_window: { start: 2027-07-01, end: 2027-08-31 }
-    trip_length_days: [7, 8, 9, 10, 11, 12, 13, 14, 15]
+    depart_window: { start: 2027-08-01, end: 2027-09-30 }
+    trip_length_days: [14, 15, 16, 17]
     active: true
 
   - id: pdl

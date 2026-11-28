@@ -8,6 +8,7 @@ import pytest
 from scraper.config import ConfigError, load_config
 from scraper.expand import build_adhoc, expand_routes, interleave_by_origin, make_key, select_slice
 from scraper.models import Search
+from scraper.price_pass import chunk_searches
 
 ROOT = Path(__file__).parents[1]
 TODAY = date(2026, 11, 23)
@@ -20,7 +21,7 @@ EXPECTED = {
     "par": ("Paris", ["CDG"], "2027-05-17", "2027-06-25"),
     "mad": ("Madrid", ["MAD"], "2027-04-12", "2027-05-31"),
     "bcn": ("Barcelona", ["BCN"], "2027-05-17", "2027-06-20"),
-    "tbs": ("Tbilisi", ["TBS"], "2027-07-01", "2027-08-31"),
+    "tbs": ("Tbilisi", ["TBS"], "2027-08-01", "2027-09-30"),
     "pdl": ("Ponta Delgada", ["PDL"], "2027-06-01", "2027-07-10"),
     "fnc": ("Funchal", ["FNC"], "2027-04-12", "2027-06-10"),
 }
@@ -39,7 +40,7 @@ def test_real_config_matches_the_route_list():
         assert route.depart_window.start.isoformat() == start
         assert route.depart_window.end.isoformat() == end
         assert route.depart_days is None
-        assert route.trip_length_days == LENGTHS
+        assert route.trip_length_days == ([14, 15, 16, 17] if route.id == "tbs" else LENGTHS)
         assert route.target_price is None
 
 
@@ -176,3 +177,21 @@ def test_real_routes_only_use_requested_weekdays():
             assert item.dest in route.destinations
             if route.trip == "round_trip":
                 assert (item.return_date - item.depart).days in route.trip_length_days
+
+
+def test_tbilisi_window_and_trip_length_set_its_date_sweeps():
+    config = load_config(ROOT / "config.yaml")
+    route = _route(config, "tbs")
+    found = expand_routes([route], TODAY)
+    departures = {item.depart for item in found}
+    lengths = {(item.return_date - item.depart).days for item in found}
+    assert min(departures) == date(2027, 8, 1)
+    assert max(departures) == date(2027, 9, 30)
+    assert len(departures) == 61
+    assert lengths == {14, 15, 16, 17}
+    assert len(found) == 61 * 4 * 3
+    bos = [item for item in found if item.origin == "BOS"]
+    sweeps = chunk_searches(bos)
+    assert len(sweeps) == 8
+    assert {chunk.duration for chunk in sweeps} == {14, 15, 16, 17}
+    assert sum(len(chunk.searches) for chunk in sweeps) == len(bos)

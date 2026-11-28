@@ -112,6 +112,20 @@ function weekdayName(iso) {
   return names[jsDay === 0 ? 6 : jsDay - 1];
 }
 
+function nightsLabel(route) {
+  const lengths = (route.trip_length_days || [])
+    .map(Number)
+    .filter(function (length) { return length > 0; })
+    .sort(function (a, b) { return a - b; });
+  if (!lengths.length) return "";
+  if (lengths.length === 1) return lengths[0] + " nights";
+  const contiguous = lengths.every(function (length, index) {
+    return index === 0 || length === lengths[index - 1] + 1;
+  });
+  if (contiguous) return lengths[0] + "\u2013" + lengths[lengths.length - 1] + " nights";
+  return lengths.join(", ") + " nights";
+}
+
 function inWindow(route, depart, ret) {
   const window = route.depart_window || {};
   if (!window.start || !window.end || depart < window.start || depart > window.end) return false;
@@ -134,3 +148,4 @@ globalThis.addDays = addDays;
 globalThis.daysBetween = daysBetween;
 globalThis.weekdayName = weekdayName;
 globalThis.inWindow = inWindow;
+globalThis.nightsLabel = nightsLabel;
